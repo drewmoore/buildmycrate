@@ -1,0 +1,8 @@
+%p
+  Hey, yo
+
+%div
+  - @tracks.each do |track|
+    %div
+      %span= track.bpm
+      %span= track.downloadable
