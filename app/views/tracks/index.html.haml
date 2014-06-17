@@ -4,5 +4,10 @@
 %div
   - @tracks.each do |track|
     %div
-      %span= track.bpm
-      %span= track.downloadable
+      %span= " Title: #{track.title} "
+      %span= " Artist: #{track.user.username} "
+      %span= " Bpm: #{track.bpm} "
+      %span= " Downloadable: #{track.downloadable} "
+      %span= " Streamable: #{track.streamable} "
+      %span= " Key: #{track.key_signature} "
+      %span= " Purchase: #{track.purchase_url} "
