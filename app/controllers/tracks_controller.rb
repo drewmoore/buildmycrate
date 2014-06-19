@@ -18,8 +18,8 @@ class TracksController < ApplicationController
     return tracks_filtered
   end
   def get_search_conditions
-    #search_conditions = {:bpm_low => 100, :bpm_high => 105, :downloadable => true, :key_signature => "B"}
-    search_conditions = {:bpm_low => 100, :bpm_high => 105, :artist => "mikun"}
+    #search_conditions = {:bpm_low => 100, :bpm_high => 105, :downloadable => true, :key_signature => "B", :artist => "mikun"}
+    search_conditions = {:bpm_low => 100, :bpm_high => 105}
   end
   def send_soundcloud_request(search_conditions)
     client = Soundcloud.new(:client_id => "3b231e0d3965769fca79609187395e53", :client_secret => "6fa197d26ceca704d88d5b3d070b6949")
@@ -30,9 +30,9 @@ class TracksController < ApplicationController
     if bpm_diff < bpm_safe
       bpm_high += (bpm_safe - bpm_diff)
     end
-    call_limit = 200
+    call_limit = 100
     offset = 0
-    calls_to_make = 200
+    calls_to_make = 100
     tracks_accumulated = []
     until offset == calls_to_make
       begin
@@ -41,10 +41,10 @@ class TracksController < ApplicationController
         search_conditions[:bpm_high] += 1
         send_soundcloud_request(search_conditions)
       end
-      offset += call_limit
       unless tracks.nil?
         tracks_accumulated << tracks
       end
+      offset += call_limit
     end
     return tracks_accumulated
   end
