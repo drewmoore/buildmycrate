@@ -1,5 +1,9 @@
 %div.search-container
-  %p= " Number of Search Results: #{@tracks.size} "
+  .search-console
+    %span.search-number-of-results
+      %p= " Number of Search Results: #{@tracks.size} "
+    %span.search-spinner-container
+      =image_tag("spin.png", class: "spinner")
   %table
     %thead
       %tr
@@ -29,3 +33,24 @@
                 =image_tag("turntable-left.png", class: "search-result-buttons")
               %a{:href => track.stream_url}
                 =image_tag("turntable-right.png", class: "search-result-buttons")
+  .dj-coffin
+    .dj-coffin-separator
+    .turntable-left
+      .turntable-top-panel
+        =image_tag("track-image-default.png", class: "turntable-track-image")
+        %span.turntable-track-info
+          %div
+            %span.turntable-track-title
+              %p= "This is the title"
+            %span.turntable-track-bpm
+              %p= "120 bpm"
+          %div
+            %span.turntable-track-artist
+              %p= "This is the artist"
+            %span.turntable-track-key
+              %p= "Key: E"
+      .turntable-bottom-panel
+        =image_tag("waveform-default.png", class: "turntable-waveform-image")
+    .mixer
+    .turntable-right
+    .dj-coffin-separator
