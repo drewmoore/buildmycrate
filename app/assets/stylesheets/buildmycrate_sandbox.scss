@@ -111,16 +111,17 @@ td {
   }
   .turntable-left {
     display: inline-block;
-    //border: 1px dashed pink;
     height: 90%;
     width: 40%;
     float: left;
     text-align: left;
+    margin: 0px 0px 0px 8px;
     background-color: $panel-background-color;
     span {
       display: inline-block;
     }
     .turntable-top-panel {
+      height: 45%;
       .turntable-track-image {
         width: 15%;
         float: left;
@@ -128,10 +129,14 @@ td {
       }
       .turntable-track-info {
         width: 80%;
-        height: 30%;
+        height: 100%;
         div {
           height: 45%;
           position: relative;
+        }
+        .turntable-track-title {
+          max-width: 75%;
+          overflow: hidden;
         }
         .turntable-track-bpm, .turntable-track-key {
           position: absolute;
@@ -140,8 +145,14 @@ td {
       }
     }
     .turntable-bottom-panel {
-      .turntable-waveform-image {
+      margin: 8px;
+      .turntable-track-waveform-image {
         width: 50%;
+      }
+      .turntable-controls {
+        img {
+          width: 50px;
+        }
       }
     }
   }
@@ -158,6 +169,7 @@ td {
     height: 90%;
     float: right;
     width: 40%;
+    margin: 0px 8px 0px 0px;
     background-color: $panel-background-color;
   }
 }
