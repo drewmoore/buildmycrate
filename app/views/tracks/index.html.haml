@@ -52,6 +52,8 @@
       .turntable-bottom-panel
         =image_tag("waveform-default.png", class: "turntable-track-waveform-image")
         .turntable-controls
+          //%audio{:controls => "controls"}
+          //  %source{:src => ""}
           =image_tag("play-button.png", class: "turntable-play-button")
           =image_tag("pause-button.png", class: "pause-play-button")
     .mixer
