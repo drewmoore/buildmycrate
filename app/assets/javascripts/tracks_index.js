@@ -1,4 +1,10 @@
 (function() {
+
+  var timeElapsedTimerLeft;
+  var songProgressTimerLeft;
+  var timeElapsedTimerRight;
+  var songProgressTimerRight;
+
   $(document).ready(initialize);
 
   function initialize() {
@@ -21,6 +27,7 @@
   function defineEvents() {
     $('.turntable-loader').click(loadTurnTable);
     $('.turntable-play-button').click(playTrack);
+    $('.turntable-pause-button').click(pauseTrack);
   }
   function loadTurnTable() {
     var $trackTr = $($(this).parents('tr')[0]);
@@ -33,6 +40,9 @@
     var streamUrl = $trackTr.attr('data-stream-url') || null;
     var downloadUrl = $trackTr.attr('data-download-url') || null;
     var purchaseUrl = $trackTr.attr('data-purchase-url') || null;
+
+    var duration = $trackTr.attr('data-duration') || '00:00';
+
     var turntableSide;
     if ($(this).hasClass('turntable-loader-left')) {
       turntableSide = 'left';
@@ -56,23 +66,82 @@
       }
       $turntable.find(selectorString + 'artist').text(artist);
       $turntable.find(selectorString + 'waveform-image').attr('src', waveform);
+
+      $timeDurationDisplay = $($('.time-elapsed-'+ turntableSide +' > small')[2]);
+
       $source.attr('src', sound.url);
+      $audio.attr('data-side', turntableSide);
       $audio.append($source);
       $turntableControls.append($audio);
 
-      console.log('fucking shit', image, title, artist, bpm, key, waveform, streamUrl, downloadUrl, purchaseUrl, turntableSide, $turntable);
+      $timeDurationDisplay.text(formatTimeDisplay(duration));
+
+
+      console.log('fucking shit', image, title, artist, bpm, key, waveform, streamUrl, downloadUrl, purchaseUrl, duration, turntableSide, $turntable);
     });
   }
   function playTrack() {
     var $self = $(this);
     var audio = $($self.parents('div')[0]).find('audio')[0];
-
     if (audio) {
-      console.log('audio is here');
       audio.play();
+      if ($(audio).attr('data-side') == 'left') {
+        clearInterval(timeElapsedTimerLeft);
+        timeElapsedTimerLeft = setInterval(timeElapsedTimerLeftFunction, 1000);
+      }
     }
+  }
+  function pauseTrack() {
+    var $self = $(this);
+    var audio = $($self.parents('div')[0]).find('audio')[0];
+    if (audio) {
+      audio.pause();
+    }
+  }
+  function timeElapsedTimerLeftFunction() {
+    var audio = $('.turntable-left').find('audio')[0];
+    var currentTime = audio.currentTime;
 
 
-    console.log('playTrack: ' + $self, audio);
+    $timeElapsedDisplay = $($('.time-elapsed-left > small')[0]);
+
+    $timeElapsedDisplay.text(formatTimeDisplay(currentTime));
+
+    console.log('timeElapsedTimerleftFunction: ', audio, audio.currentTime, currentTime, totalMinutes, totalSeconds, min, sec, $timeElapsedDisplay);
+  }
+  function formatTimeDisplay(seconds) {
+    var totalMinutes = Math.floor(seconds / 60);
+    var totalSeconds = Math.floor(seconds % 60);
+    var min = totalMinutes.toString();
+    var sec = totalSeconds.toString();
+    if (totalMinutes < 10) {
+      min = '0' + min;
+    }
+    if (totalSeconds < 10) {
+      sec = '0' + sec;
+    }
+    var timeString = min + ":" + sec;
+    return timeString;
   }
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

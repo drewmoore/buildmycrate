@@ -16,7 +16,7 @@
       - @tracks.each do |track|
         %tr.search-result-row{:data => {:title => track.title, :artist => track.user.username, :bpm => ("%g" % track.bpm), :key => track.key_signature,
           :download_url => track.download_url, :purchase_url => track.purchase_url, :stream_url => track.stream_url, :image => track.artwork_url,
-          :waveform => track.waveform_url}}
+          :waveform => track.waveform_url, :duration => (track.duration / 1000)}}
           %td.search-column-title= track.title
           %td.search-column-artist= track.user.username
           %td.search-column-bpm= "%g" % track.bpm
@@ -54,8 +54,12 @@
         .turntable-controls
           //%audio{:controls => "controls"}
           //  %source{:src => ""}
+          .time-elapsed-left
+            %small= "00:00"
+            %small= " / "
+            %small= "00:00"
           =image_tag("play-button.png", class: "turntable-play-button")
-          =image_tag("pause-button.png", class: "pause-play-button")
+          =image_tag("pause-button.png", class: "turntable-pause-button")
     .mixer
     .turntable-right
     .dj-coffin-separator
