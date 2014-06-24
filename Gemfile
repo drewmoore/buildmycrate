@@ -9,7 +9,6 @@ group :test, :development do
   gem 'rspec-rails', '~> 3.0'
 end
 
-gem 'rails_12factor', group: :production
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -41,7 +40,6 @@ gem 'spring',        group: :development
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -49,4 +47,8 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :production do
+  gem 'rails_12factor'
+end
+gem 'unicorn'
 ruby "2.1.1"
