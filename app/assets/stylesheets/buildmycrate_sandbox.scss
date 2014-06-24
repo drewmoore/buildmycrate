@@ -20,7 +20,7 @@ body {
   margin: 0px auto;
 }
 .search-console {
-  background-image: url("mosaic.jpg");
+  background-image: asset-data-url("mosaic.jpg");
   position: center;
 }
 .search-number-of-results {
