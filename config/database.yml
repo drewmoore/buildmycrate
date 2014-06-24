@@ -58,7 +58,7 @@ production:
   encoding: unicode
   database: buildmycrate_sandbox_production
   pool: 5
-  host: localhost
-  username: postgres
-  password: postgres
+#  host: localhost
+#  username: postgres
+#  password: postgres
 
