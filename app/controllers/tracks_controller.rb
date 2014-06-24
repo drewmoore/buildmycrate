@@ -1,3 +1,6 @@
+# heroku url:
+# http://boiling-anchorage-1792.herokuapp.com/tracks
+
 class TracksController < ApplicationController
   def index
     @tracks = get_tracks
