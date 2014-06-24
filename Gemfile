@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'haml-rails'
 gem 'soundcloud'
 gem 'unirest'
+gem 'simple_form'
 
 group :test, :development do
   gem 'rspec', '~> 3.0'

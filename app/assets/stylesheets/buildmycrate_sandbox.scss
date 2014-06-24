@@ -1,4 +1,5 @@
 $panel-background-color: rgba(7, 7, 7, .68);
+$font-red: #a4111f;
 @font-face {
   font-family: "Nunito-Regular";
   src: font-url("fonts/Nunito/Nunito-Regular.ttf");
@@ -11,6 +12,18 @@ $panel-background-color: rgba(7, 7, 7, .68);
   font-family: "Alegreya-Regular";
   src: font-url("fonts/Alegreya/Alegreya-Regular.ttf");
 }
+@font-face {
+  font-family: "Graffonti-Gradient";
+  src: font-url("fonts/graffonti/Graffonti-Gradient.ttf");
+}
+@font-face {
+  font-family: "Graffonti-3d";
+  src: font-url("fonts/graffonti/Graffonti-3d.ttf");
+}
+@font-face {
+  font-family: "Graffonti-Atomic";
+  src: font-url("fonts/graffonti/Graffonti-Atomic.ttf");
+}
 body {
   background-color: rgba(7, 7, 7, .9);
   color: rgba(230, 230, 230, .8);
@@ -18,21 +31,35 @@ body {
 .search-container {
   width: 1200px;
   margin: 0px auto;
-}
-.search-console {
-  background-image: asset-data-url("mosaic.jpg");
-  position: center;
-}
-.search-number-of-results {
-  display: inline-block;
-}
-.search-spinner-container {
-  display: inline-block;
-  float: right;
-  .spinner {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+  .search-console {
+    background-image: asset-data-url("mosaic.jpg");
+    position: center;
+    .search-header {
+      display: inline-block;
+      font-family: "Nunito-Bold";
+      text-align: center;
+      width: 100%;
+      h1 {
+        font-family: "Graffonti-3d";
+        color: $font-red;
+        font-size: 5em;
+      }
+    }
+    .search-fieldspace {
+      background-color: rgba(5, 5, 5, .9);
+    }
+    .search-number-of-results {
+      display: inline-block;
+    }
+    .search-spinner-container {
+      display: inline-block;
+      float: right;
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+    }
   }
 }
 
@@ -57,7 +84,7 @@ tbody {
 }
 th {
   font-family: "Nunito-Bold";
-  color: #a4111f;
+  color: $font-red;
 }
 .search-column-title, .search-column-artist {
   width: 30%;

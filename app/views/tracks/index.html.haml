@@ -12,7 +12,7 @@
         %th.search-column-bpm-head Bpm
         %th.search-column-key-head Key
         %th.search-column-buttons-head
-    %tbody.search-results-body
+    %tbody
       - @tracks.each do |track|
         %tr.search-result-row{:data => {:title => track.title, :artist => track.user.username, :bpm => ("%g" % track.bpm), :key => track.key_signature,
           :download_url => track.download_url, :purchase_url => track.purchase_url, :stream_url => track.stream_url, :image => track.artwork_url,
