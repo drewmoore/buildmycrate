@@ -55,7 +55,7 @@
             %small= "00:00"
             %small= " / "
             %small= "00:00"
-          .turntable-waveform-interface
+          .turntable-waveform-interface{:data => {:side => "left"}}
             .turntable-waveform-progress
             =image_tag("waveform-default.png", class: "turntable-track-waveform-image")
         .turntable-controls
@@ -82,7 +82,7 @@
             %small= "00:00"
             %small= " / "
             %small= "00:00"
-          .turntable-waveform-interface
+          .turntable-waveform-interface{:data => {:side => "right"}}
             .turntable-waveform-progress
             =image_tag("waveform-default.png", class: "turntable-track-waveform-image")
         .turntable-controls

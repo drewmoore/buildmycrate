@@ -76,6 +76,8 @@
       }
       $timeElapsedDisplay = $($('.time-elapsed-'+ turntableSide +' > small')[0]);
       $timeDurationDisplay = $($('.time-elapsed-'+ turntableSide +' > small')[2]);
+
+
       $source.attr('src', sound.url);
       $audio.attr('data-side', turntableSide);
       $audio.addClass('track-audio');
@@ -85,7 +87,7 @@
       $timeElapsedDisplay.text(formatTimeDisplay(0));
       $timeDurationDisplay.text(formatTimeDisplay(duration));
 
-      //console.log('fucking shit', image, title, artist, bpm, key, waveform, streamUrl, downloadUrl, purchaseUrl, duration, turntableSide, $turntable);
+      //console.log('load turn table: ', image, title, artist, bpm, key, waveform, streamUrl, downloadUrl, purchaseUrl, duration, turntableSide, $turntable);
     });
   }
   function playTrack() {
@@ -94,22 +96,32 @@
     var audio = $turntable.find('audio')[0];
     if (audio) {
       audio.play();
-      if ($(audio).attr('data-side') == 'left') {
+      var side = $(audio).attr('data-side');
+      if (side == 'left') {
         clearInterval(timeElapsedTimerLeft);
         clearInterval(songProgressTimerLeft);
         timeElapsedTimerLeft = setInterval(timeElapsedTimerLeftFunction, 1000);
         songProgressTimerLeft = setInterval(songProgressTimerLeftFunction, getProgressInterval(audio));
+      } else if (side == 'right') {
+        clearInterval(timeElapsedTimerRight);
+        clearInterval(songProgressTimerRight);
+        timeElapsedTimerRight = setInterval(timeElapsedTimerRightFunction, 1000);
+        songProgressTimerRight = setInterval(songProgressTimerRightFunction, getProgressInterval(audio));
       }
     }
   }
   function pauseTrack() {
     var $self = $(this);
+    var side = $self.attr('data-side');
     var audio = $($self.parents('div')[0]).find('audio')[0];
     if (audio) {
       audio.pause();
-      if ($(audio).attr('data-side') == 'left') {
+      if (side == 'left') {
         clearInterval(timeElapsedTimerLeft);
         clearInterval(songProgressTimerLeft);
+      } else if (side == 'right') {
+        clearInterval(timeElapsedTimerRight);
+        clearInterval(songProgressTimerRight);
       }
     }
   }
@@ -119,6 +131,9 @@
     if (side == 'left') {
       clearInterval(timeElapsedTimerLeft);
       clearInterval(songProgressTimerLeft);
+    } else if (side == 'right') {
+      clearInterval(timeElapsedTimerRight);
+      clearInterval(songProgressTimerRight);
     }
     var $timeElapsedDisplay = $($('.time-elapsed-' + side + ' > small')[0]);
     $timeElapsedDisplay.text(formatTimeDisplay(0));
@@ -129,6 +144,12 @@
     var audio = $('.turntable-left').find('audio')[0];
     var currentTime = audio.currentTime;
     var $timeElapsedDisplay = $($('.time-elapsed-left > small')[0]);
+    $timeElapsedDisplay.text(formatTimeDisplay(currentTime));
+  }
+  function timeElapsedTimerRightFunction() {
+    var audio = $('.turntable-right').find('audio')[0];
+    var currentTime = audio.currentTime;
+    var $timeElapsedDisplay = $($('.time-elapsed-right > small')[0]);
     $timeElapsedDisplay.text(formatTimeDisplay(currentTime));
   }
   function formatTimeDisplay(seconds) {
@@ -156,6 +177,17 @@
     var fillPercentage = totalWidth * timePercentage;
     $timeProgress.css('width', fillPercentage + 'px')
   }
+  function songProgressTimerRightFunction(event) {
+    var audio = $('.turntable-right').find('audio')[0];
+    var currentTime = audio.currentTime;
+    var duration = audio.duration;
+    var timePercentage = currentTime / duration;
+    var $timeProgress = $('.turntable-right').find('.turntable-waveform-progress');
+    var $timeBar = $('.turntable-right').find('.turntable-waveform-interface');
+    var totalWidth = $timeBar.css('width').split('p')[0] * 1;
+    var fillPercentage = totalWidth * timePercentage;
+    $timeProgress.css('width', fillPercentage + 'px')
+  }
   function getProgressInterval(audio) {
     var duration = audio.duration;
     var width = $(audio).parents('.turntable').find('.turntable-waveform-progress').css('width').split('p')[0] * 1;
@@ -164,19 +196,23 @@
   }
   function adjustTime() {
     var $interface = $(this);
-    var $turntable = $interface.parents().find('.turntable');
+    var side = $interface.attr('data-side');
+    var $turntable = $('.turntable-' + side);
     var audio = $turntable.find('audio')[0];
     var totalWidth = $interface.css('width').split('p')[0] * 1;
     var position = event.offsetX;
     var percentage = position / totalWidth;
     var duration = audio.duration;
     var newTime = duration * percentage;
+    var side = $(audio).attr('data-side');
     audio.currentTime = newTime;
-    if ($(audio).attr('data-side') == 'left') {
+    if (side == 'left') {
       songProgressTimerLeftFunction();
+    } else if (side == 'right') {
+      songProgressTimerRightFunction();
     }
 
-    console.log(this);
+    console.log('adjustTime: ', $turntable, audio);
   }
 })();
 
