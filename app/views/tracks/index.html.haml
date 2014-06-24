@@ -35,7 +35,7 @@
               =image_tag("turntable-right.png", class: "search-result-buttons turntable-loader turntable-loader-right")
   .dj-coffin
     .dj-coffin-separator
-    .turntable-left
+    .turntable.turntable-left
       .turntable-top-panel
         =image_tag("track-image-default.png", class: "turntable-track-image")
         %span.turntable-track-info
@@ -50,16 +50,17 @@
             %span.turntable-track-key
               %p= "Key: E"
       .turntable-bottom-panel
-        =image_tag("waveform-default.png", class: "turntable-track-waveform-image")
-        .turntable-controls
-          //%audio{:controls => "controls"}
-          //  %source{:src => ""}
-          .time-elapsed-left
+        .turntable-time-wave-container
+          .time-elapsed.time-elapsed-left
             %small= "00:00"
             %small= " / "
             %small= "00:00"
+          .turntable-waveform-interface
+            .turntable-waveform-progress
+            =image_tag("waveform-default.png", class: "turntable-track-waveform-image")
+        .turntable-controls
           =image_tag("play-button.png", class: "turntable-play-button")
           =image_tag("pause-button.png", class: "turntable-pause-button")
     .mixer
-    .turntable-right
+    .turntable.turntable-right
     .dj-coffin-separator
