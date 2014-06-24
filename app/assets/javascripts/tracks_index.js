@@ -28,6 +28,7 @@
     $('.turntable-loader').click(loadTurnTable);
     $('.turntable-play-button').click(playTrack);
     $('.turntable-pause-button').click(pauseTrack);
+    $('.turntable-waveform-interface').click(adjustTime);
   }
   function loadTurnTable() {
     var $trackTr = $($(this).parents('tr')[0]);
@@ -160,6 +161,22 @@
     var width = $(audio).parents('.turntable').find('.turntable-waveform-progress').css('width').split('p')[0] * 1;
     var interval = parseInt(width / duration);
     return interval;
+  }
+  function adjustTime() {
+    var $interface = $(this);
+    var $turntable = $interface.parents().find('.turntable');
+    var audio = $turntable.find('audio')[0];
+    var totalWidth = $interface.css('width').split('p')[0] * 1;
+    var position = event.offsetX;
+    var percentage = position / totalWidth;
+    var duration = audio.duration;
+    var newTime = duration * percentage;
+    audio.currentTime = newTime;
+    if ($(audio).attr('data-side') == 'left') {
+      songProgressTimerLeftFunction();
+    }
+
+    console.log(this);
   }
 })();
 
