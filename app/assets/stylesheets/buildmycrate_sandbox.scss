@@ -88,7 +88,7 @@ td {
     width: 12px;
 }
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(100,100,100,0.7); 
+    -webkit-box-shadow: inset 0 0 6px rgba(100,100,100,0.7);
     border-radius: 6px;
     background-color: rgba(10, 10, 10, .2);
 }
@@ -110,14 +110,12 @@ td {
     width: 100%;
     height: 5%;
   }
-  .turntable-left {
-    position: relative;
+  .turntable {
     display: inline-block;
+    position: relative;
     height: 90%;
     width: 40%;
-    float: left;
     text-align: left;
-    margin: 0px 0px 0px 8px;
     background-color: $panel-background-color;
     span {
       display: inline-block;
@@ -201,6 +199,13 @@ td {
       }
     }
   }
+  .turntable-left {
+
+    float: left;
+    margin: 0px 0px 0px 8px;
+
+
+  }
   .mixer {
     display: inline-block;
     //border: 1px dashed blue;
@@ -209,12 +214,8 @@ td {
     background-color: $panel-background-color;
   }
   .turntable-right {
-    display: inline-block;
-    //border: 1px dashed pink;
-    height: 90%;
     float: right;
-    width: 40%;
     margin: 0px 8px 0px 0px;
-    background-color: $panel-background-color;
+
   }
 }
