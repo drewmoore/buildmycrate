@@ -1,4 +1,4 @@
-SoundCloud::API.configure(mime: "application/json",
+Soundcloud::API.configure(mime: "application/json",
                            host: "https://api.soundcloud.com",
                            adapter: :net_http,
                            client_id: "3b231e0d3965769fca79609187395e53",
