@@ -1,5 +1,10 @@
+$white: rgba(230, 230, 230, .8);
 $panel-background-color: rgba(7, 7, 7, .68);
 $font-red: #a4111f;
+$grey-highlight: rgba(20, 20, 20, 1);
+$black: rgba(2, 2, 2, .9);
+$blackish: rgba(7, 7, 7, .9);
+$yellow: rgba(175, 150, 0, 1);
 @font-face {
   font-family: "Nunito-Regular";
   src: font-url("fonts/Nunito/Nunito-Regular.ttf");
@@ -26,13 +31,14 @@ $font-red: #a4111f;
 }
 body {
   background-color: rgba(7, 7, 7, .9);
-  color: rgba(230, 230, 230, .8);
+  color: $white;
+  font-family: "Alegreya-Regular";
 }
 .search-container {
   width: 1200px;
   margin: 0px auto;
+  background-image: asset-data-url("mosaic.jpg");
   .search-console {
-    background-image: asset-data-url("mosaic.jpg");
     position: center;
     .search-header {
       display: inline-block;
@@ -46,14 +52,66 @@ body {
       }
     }
     .search-fieldspace {
-      background-color: rgba(5, 5, 5, .9);
+      width: 98%;
+      margin: 0px auto;
+      padding: 12px;
+      background-color: $black;
+      form {
+        width: 60%;
+        margin: 0px auto;
+        padding: 12px;
+        background-color: $blackish;
+        fieldset {
+          border-color: $grey-highlight;
+        }
+        div {
+          position: relative;
+          margin: 18px;
+          input, select {
+            position: absolute;
+            right: 0px;
+            padding: 6px;
+            background-color: $grey-highlight;
+            border: 6px solid $black;
+            color: $white;
+          }
+          input:focus, select:focus {
+            outline: none;
+            box-shadow: 0px 0px 3px 0px $white;
+          }
+          label {
+            background-color: $black;
+            padding: 6px;
+            border-radius: 50px;
+          }
+        }
+        button {
+          width: 50%;
+          min-height: 30px;
+          padding: 1%;
+          border-radius: 50px;
+          border: 12px solid $black;
+          background-color: $blackish;
+          color: $font-red;
+          font-family: "Graffonti-3d";
+          font-size: 2em;
+        }
+        button:hover {
+          color: $yellow;
+        }
+      }
     }
     .search-number-of-results {
       display: inline-block;
+      padding: 12px;
+      .filler {
+        min-height: 60px;
+      }
     }
     .search-spinner-container {
       display: inline-block;
       float: right;
+      margin: 10px;
       .spinner {
         width: 50px;
         height: 50px;
@@ -90,14 +148,13 @@ th {
   width: 30%;
 }
 .search-result-row:nth-child(even) {
-  background-color: rgba(2, 2, 2, .9);
+  background-color: $black;
 }
 .search-result-row:hover {
-  background-color: rgba(20, 20, 20, 1);
+  background-color: $grey-highlight;
 }
 td {
   padding: 6px;
-  font-family: "Alegreya-Regular";
 }
 .search-column-buttons {
   text-align: right;
@@ -131,7 +188,6 @@ td {
   //border: 2px solid black;
   text-align: center;
   height: 250px;
-  background-image: asset-data-url("mosaic.jpg");
   background-position: center;
   .dj-coffin-separator {
     width: 100%;

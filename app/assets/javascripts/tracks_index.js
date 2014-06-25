@@ -4,6 +4,8 @@
   var songProgressTimerLeft;
   var timeElapsedTimerRight;
   var songProgressTimerRight;
+  var spinTimer;
+  var spinCounter = 0;
 
   $(document).ready(initialize);
 
@@ -29,6 +31,7 @@
     $('.turntable-play-button').click(playTrack);
     $('.turntable-pause-button').click(pauseTrack);
     $('.turntable-waveform-interface').click(adjustTime);
+    $('form > button').click(spinIt);
   }
   function loadTurnTable() {
     var $trackTr = $($(this).parents('tr')[0]);
@@ -211,9 +214,17 @@
     } else if (side == 'right') {
       songProgressTimerRightFunction();
     }
-
-    console.log('adjustTime: ', $turntable, audio);
   }
+  function spinIt() {
+    spinTimer = setInterval(spinTimerFunction, 1);
+  }
+  function spinTimerFunction() {
+    $('.spinner').css('transform', 'rotate(' + spinCounter + 'deg)');
+    $('.spinner').css('-ms-transform', 'rotate(' + spinCounter + 'deg)');
+    $('.spinner').css('-webkit-transform', 'rotate(' + spinCounter + 'deg');
+    spinCounter += 3;
+  }
+
 })();
 
 
