@@ -12,9 +12,8 @@ class TracksController < ApplicationController
     search_conditions = get_search_conditions
     tracks = send_soundcloud_request(search_conditions)
 
-    Rails.logger.debug "\nfuck these are the search conds: #{search_conditions.inspect}\n"
-    Rails.logger.debug "\nfuck these are the tracks class shit: #{tracks.class}\n"
-    Rails.logger.debug "\nfuck these are the tracks inspect shit: #{tracks.inspect}\n"
+    #Rails.logger.debug "\nthese are the search conds: #{search_conditions.inspect}\n"
+    #Rails.logger.debug "\nthese are the tracks inspect: #{tracks.inspect}\n"
 
     tracks_filtered = filter_soundcloud(search_conditions, tracks)
 
@@ -22,12 +21,32 @@ class TracksController < ApplicationController
   end
   def get_search_conditions
     #search_conditions = {:bpm_low => 100, :bpm_high => 105, :downloadable => true, :key_signature => "B", :artist => "mikun"}
-    search_conditions = {:bpm_low => 100, :bpm_high => 105}
+    #search_conditions = {:bpm_low => 100, :bpm_high => 105}
+
+    #Rails.logger.debug "\nthese are the params: #{params.inspect}\n"
+
+    params_symbols = params.symbolize_keys
+    search_conditions = {}
+    params_symbols.each do |k, v|
+      unless v.empty? or k == :action or k == :controller
+        if v.to_i.to_s == v
+          v = v.to_f
+        end
+        search_conditions[k] = v
+      end
+    end
+
+    #Rails.logger.debug "\nthese are the search conditions: #{search_conditions.inspect}\n"
+
+    return search_conditions
   end
   def send_soundcloud_request(search_conditions)
     client = Soundcloud.new(:client_id => "3b231e0d3965769fca79609187395e53", :client_secret => "6fa197d26ceca704d88d5b3d070b6949")
     bpm_low = search_conditions[:bpm_low]
     bpm_high = search_conditions[:bpm_high]
+
+    #Rails.logger.debug "\nthese are the send_soundcloud_req search conditions and stuff: #{search_conditions.inspect} #{bpm_low} #{bpm_high}\n"
+
     bpm_diff = bpm_high - bpm_low
     bpm_safe = 10
     if bpm_diff < bpm_safe
@@ -57,19 +76,19 @@ class TracksController < ApplicationController
       tracks.each do |track|
         true_count = 0
         search_conditions.each do |key, value|
-          #Rails.logger.debug "\nfuck this is a search cond: #{key}, #{value}, #{track[key]}\n"
+          #Rails.logger.debug "\n this is a search cond: #{key}, #{value}, #{track[key]}\n"
 
           case key
           when :bpm_low
-            #Rails.logger.debug "\nfuck this is a bpm_low: #{key}, #{value}, #{track[key]}\n"
+            #Rails.logger.debug "\n this is a bpm_low: #{key}, #{value}, #{track[key]}\n"
             if track.bpm >= search_conditions[:bpm_low] and track.bpm <= search_conditions[:bpm_high]
-              #Rails.logger.debug "\nfuck this is a bpm_low and bpm_high match: #{key}, #{value}, #{track[key]}\n"
+              #Rails.logger.debug "\n this is a bpm_low and bpm_high match: #{key}, #{value}, #{track[key]}\n"
               true_count += 1
             end
           when :bpm_high
-            #Rails.logger.debug "\nfuck this is a bpm_high: #{key}, #{value}, #{track[key]}\n"
+            #Rails.logger.debug "\n this is a bpm_high: #{key}, #{value}, #{track[key]}\n"
             if track.bpm >= search_conditions[:bpm_low] and track.bpm <= search_conditions[:bpm_high]
-              #Rails.logger.debug "\nfuck this is a bpm_low and bpm_high match: #{key}, #{value}, #{track[key]}\n"
+              #Rails.logger.debug "\n this is a bpm_low and bpm_high match: #{key}, #{value}, #{track[key]}\n"
               true_count += 1
             end
           when :artist

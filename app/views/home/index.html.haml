@@ -3,18 +3,19 @@
     .search-header
       %h1= "Build My Crate"
     .search-fieldspace
-      %form
+      %form{ action: "/tracks", method: "get" }
         %label Artist
-        %input{type: "text"}
+        %input{ type: "text", :name => :artist }
 
         %fieldset
           %legend Bpm Range
           %label From:
-          %input{type: "text"}
+          %input{ type: "text", :name => :bpm_low }
           %label To:
-          %input{type: "text"}
+          %input{ type: "text", :name => :bpm_high }
         %label Key Signature
-        %select
+        %select{ :name => :key_signature }
+          %option
           %option Ab
           %option A
           %option A#
