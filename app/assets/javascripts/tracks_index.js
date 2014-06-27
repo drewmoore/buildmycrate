@@ -65,6 +65,10 @@
       var $turntableControls = $($turntable.find('.turntable-controls'));
       var $audio = $('<audio>');
       var $source = $('<source>');
+      var $img = $('<img>');
+      var $img2 = $('<img>');
+      var $a = $('<a>');
+
       $turntable.find(selectorString + 'image').attr('src', image);
       $turntable.find(selectorString + 'title').text(title);
       $turntable.find(selectorString + 'bpm').text(bpm + 'bpm');
@@ -91,6 +95,22 @@
       $turntableControls.append($audio);
       $timeElapsedDisplay.text(formatTimeDisplay(0));
       $timeDurationDisplay.text(formatTimeDisplay(duration));
+      $turntableControls.find('.download-button').remove();
+      $turntableControls.find('.purchase-link').remove();
+      if (downloadUrl) {
+        $img.attr('data-download-url', downloadUrl).attr('src', '/assets/down-arrow.png').addClass('download-button');
+        $img.bind('click', download);
+        $turntableControls.append($img);
+      }
+
+      console.log('purchase: ', purchaseUrl);
+
+      if (purchaseUrl) {
+        $img2.attr('src', '/assets/dollar-sign.png');
+        $a.attr('href', purchaseUrl).addClass('purchase-link');
+        $a.append($img2);
+        $turntableControls.append($a);
+      }
 
       //console.log('load turn table: ', image, title, artist, bpm, key, waveform, streamUrl, downloadUrl, purchaseUrl, duration, turntableSide, $turntable);
     });
