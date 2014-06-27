@@ -1,5 +1,6 @@
 (function() {
 
+  var soundCloudClientId = '3b231e0d3965769fca79609187395e53';
   var timeElapsedTimerLeft;
   var songProgressTimerLeft;
   var timeElapsedTimerRight;
@@ -10,7 +11,7 @@
   $(document).ready(initialize);
 
   function initialize() {
-    SC.initialize({client_id: '3b231e0d3965769fca79609187395e53', redirect_uri: 'localhost:3000/callback'});
+    SC.initialize({client_id: soundCloudClientId, redirect_uri: 'localhost:3000/callback'});
     SC.connect(function() {
       SC.get('/me', function(me) {
         //console.log(me);
@@ -32,6 +33,7 @@
     $('.turntable-pause-button').click(pauseTrack);
     $('.turntable-waveform-interface').click(adjustTime);
     $('form > button').click(spinIt);
+    $('.download-button').click(download);
   }
   function loadTurnTable() {
     var $trackTr = $($(this).parents('tr')[0]);
@@ -223,6 +225,11 @@
     $('.spinner').css('-ms-transform', 'rotate(' + spinCounter + 'deg)');
     $('.spinner').css('-webkit-transform', 'rotate(' + spinCounter + 'deg');
     spinCounter += 3;
+  }
+  function download() {
+    var self = this;
+    var url = $(self).attr('data-download-url');
+    window.location.replace(url + '?&client_id=' + soundCloudClientId);
   }
 
 })();

@@ -13,7 +13,7 @@ class TracksController < ApplicationController
     tracks = send_soundcloud_request(search_conditions)
 
     #Rails.logger.debug "\nthese are the search conds: #{search_conditions.inspect}\n"
-    #Rails.logger.debug "\nthese are the tracks inspect: #{tracks.inspect}\n"
+    Rails.logger.debug "\nthese are the tracks inspect: #{tracks.inspect}\n"
 
     tracks_filtered = filter_soundcloud(search_conditions, tracks)
 

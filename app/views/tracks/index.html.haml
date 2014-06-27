@@ -23,13 +23,12 @@
           %td.search-column-key= track.key_signature
           %td.search-column-buttons
             - if track.download_url
-              %a{:href => track.download_url}
-                =image_tag("down-arrow.png", class: "search-result-buttons")
+              =image_tag("down-arrow.png", class: "search-result-buttons download-button", :data => {:download_url => track.download_url})
             - if track.purchase_url
               %a{:href => track.purchase_url}
                 =image_tag("dollar-sign.png", class: "search-result-buttons")
-            %a{:href => "#"}
-              =image_tag("plus-sign.png", class: "search-result-buttons")
+            //%a{:href => "#"}
+            //  =image_tag("plus-sign.png", class: "search-result-buttons")
             - if track.streamable
               =image_tag("turntable-left.png", class: "search-result-buttons turntable-loader turntable-loader-left")
               =image_tag("turntable-right.png", class: "search-result-buttons turntable-loader turntable-loader-right")
