@@ -7,11 +7,11 @@
         %fieldset
           %legend Bpm Range
           %div
-            %label From:
-            %input{ type: "text", :name => :bpm_low }
+            %label From <small class="asterisk">*</small> :
+            %input{ type: "text", :name => :bpm_low, :required => true }
           %div
-            %label To:
-            %input{ type: "text", :name => :bpm_high }
+            %label To <small class="asterisk">*</small> :
+            %input{ type: "text", :name => :bpm_high, :required => true }
         %div
           %label Key Signature:
           %select{ :name => :key_signature }
@@ -62,6 +62,8 @@
           %label Artist:
           %input{ type: "text", :name => :artist }
         %button Find Trax!
+        %label.required-label
+          %small.asterisk * required
   .search-console
     %span.search-number-of-results
       .filler
