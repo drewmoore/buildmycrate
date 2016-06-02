@@ -1,6 +1,3 @@
-# heroku url:
-# http://boiling-anchorage-1792.herokuapp.com/tracks
-
 class TracksController < ApplicationController
   before_action :set_soundcloud_keys
 
@@ -9,6 +6,7 @@ class TracksController < ApplicationController
   end
 
   def get_tracks
+    # Retrieve tracks from any APIs that are to be used.
     get_soundcloud
   end
 
@@ -21,22 +19,12 @@ class TracksController < ApplicationController
 
   def get_soundcloud
     search_conditions = get_search_conditions
-    tracks = send_soundcloud_request(search_conditions)
-
-    #Rails.logger.debug "\nthese are the search conds: #{search_conditions.inspect}\n"
-    Rails.logger.debug "\nthese are the tracks inspect: #{tracks.inspect}\n"
-
-    tracks_filtered = filter_soundcloud(search_conditions, tracks)
-
+    tracks            = send_soundcloud_request(search_conditions)
+    tracks_filtered   = filter_soundcloud(search_conditions, tracks)
     return tracks_filtered
   end
 
   def get_search_conditions
-    #search_conditions = {:bpm_low => 100, :bpm_high => 105, :downloadable => true, :key_signature => "B", :artist => "mikun"}
-    #search_conditions = {:bpm_low => 100, :bpm_high => 105}
-
-    #Rails.logger.debug "\nthese are the params: #{params.inspect}\n"
-
     params_symbols = params.symbolize_keys
     search_conditions = {}
     params_symbols.each do |k, v|
@@ -47,31 +35,26 @@ class TracksController < ApplicationController
         search_conditions[k] = v
       end
     end
-
-    #Rails.logger.debug "\nthese are the search conditions: #{search_conditions.inspect}\n"
-
     return search_conditions
   end
 
   def send_soundcloud_request(search_conditions)
-    client = Soundcloud.new(client_id: @soundcloud_client_id, :client_secret => @soundcloud_client_secret)
-    bpm_low = search_conditions[:bpm_low]
+    client   = Soundcloud.new(:client_id => @soundcloud_client_id,
+                              :client_secret => @soundcloud_client_secret)
+    bpm_low  = search_conditions[:bpm_low]
     bpm_high = search_conditions[:bpm_high]
-
-    #Rails.logger.debug "\nthese are the send_soundcloud_req search conditions and stuff: #{search_conditions.inspect} #{bpm_low} #{bpm_high}\n"
-
     bpm_diff = bpm_high - bpm_low
     bpm_safe = 10
     if bpm_diff < bpm_safe
       bpm_high += (bpm_safe - bpm_diff)
     end
-    call_limit = 100
-    offset = 0
-    calls_to_make = 100
+    call_limit         = 100
+    offset             = 0
+    calls_to_make      = 100
     tracks_accumulated = []
     until offset == calls_to_make
       begin
-        tracks = client.get('/tracks', :limit => call_limit, :offset => offset, :bpm => { :from => bpm_low, :to => bpm_high } )
+        tracks = client.get(tracks_path, :limit => call_limit, :offset => offset, :bpm => { :from => bpm_low, :to => bpm_high } )
       rescue
         search_conditions[:bpm_high] += 1
         send_soundcloud_request(search_conditions)
@@ -90,19 +73,13 @@ class TracksController < ApplicationController
       tracks.each do |track|
         true_count = 0
         search_conditions.each do |key, value|
-          #Rails.logger.debug "\n this is a search cond: #{key}, #{value}, #{track[key]}\n"
-
           case key
           when :bpm_low
-            #Rails.logger.debug "\n this is a bpm_low: #{key}, #{value}, #{track[key]}\n"
             if track.bpm >= search_conditions[:bpm_low] and track.bpm <= search_conditions[:bpm_high]
-              #Rails.logger.debug "\n this is a bpm_low and bpm_high match: #{key}, #{value}, #{track[key]}\n"
               true_count += 1
             end
           when :bpm_high
-            #Rails.logger.debug "\n this is a bpm_high: #{key}, #{value}, #{track[key]}\n"
             if track.bpm >= search_conditions[:bpm_low] and track.bpm <= search_conditions[:bpm_high]
-              #Rails.logger.debug "\n this is a bpm_low and bpm_high match: #{key}, #{value}, #{track[key]}\n"
               true_count += 1
             end
           when :artist
