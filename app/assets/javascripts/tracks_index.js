@@ -13,11 +13,7 @@
   function initialize() {
     soundCloudClientId = $('.search-container').data('soundcloud-client-id');
     SC.initialize({client_id: soundCloudClientId, redirect_uri: 'localhost:3000/callback'});
-    SC.connect(function() {
-      SC.get('/me', function(me) {
-        //console.log(me);
-      });
-    });
+    SC.connect(function() { SC.get('/me', function(me) {}); });
     setTableHeaders();
     defineEvents();
   }
@@ -87,7 +83,6 @@
       $timeElapsedDisplay = $($('.time-elapsed-'+ turntableSide +' > small')[0]);
       $timeDurationDisplay = $($('.time-elapsed-'+ turntableSide +' > small')[2]);
 
-
       $source.attr('src', sound.url);
       $audio.attr('data-side', turntableSide);
       $audio.addClass('track-audio');
@@ -103,17 +98,12 @@
         $img.bind('click', download);
         $turntableControls.append($img);
       }
-
-      console.log('purchase: ', purchaseUrl);
-
       if (purchaseUrl) {
         $img2.attr('src', '/assets/dollar-sign.png');
         $a.attr('href', purchaseUrl).addClass('purchase-link');
         $a.append($img2);
         $turntableControls.append($a);
       }
-
-      //console.log('load turn table: ', image, title, artist, bpm, key, waveform, streamUrl, downloadUrl, purchaseUrl, duration, turntableSide, $turntable);
     });
   }
   function playTrack() {
@@ -201,7 +191,7 @@
     var $timeBar = $('.turntable-left').find('.turntable-waveform-interface');
     var totalWidth = $timeBar.css('width').split('p')[0] * 1;
     var fillPercentage = totalWidth * timePercentage;
-    $timeProgress.css('width', fillPercentage + 'px')
+    $timeProgress.css('width', fillPercentage + 'px');
   }
   function songProgressTimerRightFunction(event) {
     var audio = $('.turntable-right').find('audio')[0];
@@ -212,7 +202,7 @@
     var $timeBar = $('.turntable-right').find('.turntable-waveform-interface');
     var totalWidth = $timeBar.css('width').split('p')[0] * 1;
     var fillPercentage = totalWidth * timePercentage;
-    $timeProgress.css('width', fillPercentage + 'px')
+    $timeProgress.css('width', fillPercentage + 'px');
   }
   function getProgressInterval(audio) {
     var duration = audio.duration;
@@ -252,5 +242,4 @@
     var url = $(self).attr('data-download-url');
     window.location.replace(url + '?&client_id=' + soundCloudClientId);
   }
-
 })();

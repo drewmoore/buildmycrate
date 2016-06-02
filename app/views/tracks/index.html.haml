@@ -27,8 +27,6 @@
             - if track.purchase_url
               %a{:href => track.purchase_url, :class => "purchase-link"}
                 =image_tag("dollar-sign.png", class: "search-result-buttons")
-            //%a{:href => "#"}
-            //  =image_tag("plus-sign.png", class: "search-result-buttons")
             - if track.streamable
               =image_tag("turntable-left.png", class: "search-result-buttons turntable-loader turntable-loader-left")
               =image_tag("turntable-right.png", class: "search-result-buttons turntable-loader turntable-loader-right")

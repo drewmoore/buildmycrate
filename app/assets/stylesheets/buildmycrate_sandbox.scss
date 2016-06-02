@@ -5,6 +5,7 @@ $grey-highlight: rgba(20, 20, 20, 1);
 $black: rgba(2, 2, 2, .9);
 $blackish: rgba(7, 7, 7, .9);
 $yellow: rgba(175, 150, 0, 1);
+
 @font-face {
   font-family: "Nunito-Regular";
   src: font-url("fonts/Nunito/Nunito-Regular.ttf");
@@ -197,7 +198,6 @@ td {
 }
 
 .dj-coffin {
-  //border: 2px solid black;
   text-align: center;
   height: 250px;
   background-position: center;
@@ -295,15 +295,11 @@ td {
     }
   }
   .turntable-left {
-
     float: left;
     margin: 0px 0px 0px 8px;
-
-
   }
   .mixer {
     display: inline-block;
-    //border: 1px dashed blue;
     height: 90%;
     width: 15%;
     background-color: $panel-background-color;
@@ -311,6 +307,5 @@ td {
   .turntable-right {
     float: right;
     margin: 0px 8px 0px 0px;
-
   }
 }
