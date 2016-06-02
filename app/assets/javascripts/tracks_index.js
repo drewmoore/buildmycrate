@@ -1,6 +1,6 @@
 (function() {
 
-  var soundCloudClientId = '3b231e0d3965769fca79609187395e53';
+  var soundCloudClientId;
   var timeElapsedTimerLeft;
   var songProgressTimerLeft;
   var timeElapsedTimerRight;
@@ -11,6 +11,7 @@
   $(document).ready(initialize);
 
   function initialize() {
+    soundCloudClientId = $('.search-container').data('soundcloud-client-id');
     SC.initialize({client_id: soundCloudClientId, redirect_uri: 'localhost:3000/callback'});
     SC.connect(function() {
       SC.get('/me', function(me) {
@@ -229,7 +230,7 @@
     var percentage = position / totalWidth;
     var duration = audio.duration;
     var newTime = duration * percentage;
-    var side = $(audio).attr('data-side');
+    side = $(audio).attr('data-side');
     audio.currentTime = newTime;
     if (side == 'left') {
       songProgressTimerLeftFunction();
@@ -253,24 +254,3 @@
   }
 
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

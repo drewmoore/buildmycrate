@@ -2,12 +2,23 @@
 # http://boiling-anchorage-1792.herokuapp.com/tracks
 
 class TracksController < ApplicationController
+  before_action :set_soundcloud_keys
+
   def index
     @tracks = get_tracks
   end
+
   def get_tracks
     get_soundcloud
   end
+
+  private
+
+  def set_soundcloud_keys
+    @soundcloud_client_id     = ENV['SOUND_CLOUD_CLIENT_ID']
+    @soundcloud_client_secret = ENV['SOUND_CLOUD_CLIENT_SECRET']
+  end
+
   def get_soundcloud
     search_conditions = get_search_conditions
     tracks = send_soundcloud_request(search_conditions)
@@ -19,6 +30,7 @@ class TracksController < ApplicationController
 
     return tracks_filtered
   end
+
   def get_search_conditions
     #search_conditions = {:bpm_low => 100, :bpm_high => 105, :downloadable => true, :key_signature => "B", :artist => "mikun"}
     #search_conditions = {:bpm_low => 100, :bpm_high => 105}
@@ -40,8 +52,9 @@ class TracksController < ApplicationController
 
     return search_conditions
   end
+
   def send_soundcloud_request(search_conditions)
-    client = Soundcloud.new(:client_id => "3b231e0d3965769fca79609187395e53", :client_secret => "6fa197d26ceca704d88d5b3d070b6949")
+    client = Soundcloud.new(client_id: @soundcloud_client_id, :client_secret => @soundcloud_client_secret)
     bpm_low = search_conditions[:bpm_low]
     bpm_high = search_conditions[:bpm_high]
 
@@ -70,6 +83,7 @@ class TracksController < ApplicationController
     end
     return tracks_accumulated
   end
+
   def filter_soundcloud(search_conditions, tracks_accumulated)
     tracks_filtered = []
     tracks_accumulated.each do |tracks|
