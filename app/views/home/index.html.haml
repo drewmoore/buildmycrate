@@ -4,6 +4,8 @@
       %h1= "Build My Crate"
     .search-fieldspace
       %form{ action: "/tracks", method: "get" }
+        - if flash[:alert]
+          %div.asterisk=flash[:alert]
         %fieldset
           %legend Bpm Range
           %div

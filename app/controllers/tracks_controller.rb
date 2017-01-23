@@ -5,7 +5,11 @@ class TracksController < ApplicationController
     @tracks               = soundcloud.tracks
     @error                = soundcloud.error
     if @error
-      flash[:alert] = @error.message
+      if @error.message.include?('503')
+        flash[:alert] = 'Sorry, but Soundcloud is currently down.'
+      else
+        flash[:alert] = @error.message
+      end
       redirect_to controller: :home, action: :index
     end
   end
