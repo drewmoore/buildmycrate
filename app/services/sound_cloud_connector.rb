@@ -1,7 +1,7 @@
 class SoundCloudConnector
   class << self
     def request_limit
-      7
+      5
     end
 
     def result_limit
@@ -10,18 +10,15 @@ class SoundCloudConnector
   end
 
   def initialize(query)
-    @tracks     = []
-    @soundcloud = Soundcloud.new(
-      client_id:     ENV['SOUND_CLOUD_CLIENT_ID'],
-      client_secret: ENV['SOUND_CLOUD_CLIENT_SECRET']
-    )
-    @filters    = { key_signature: query[:key_signature] }
+    @tracks  = []
+    @filters = { key_signature: query[:key_signature] }
     retrieve_tracks(bpm_min: query[:bpm_min], bpm_max: query[:bpm_max])
   end
 
   def tracks
     @tracks.select do |track|
       matches = @filters.map do |key, value|
+        next unless value.present?
         track[key] == value
       end
       !matches.include? false
@@ -36,9 +33,13 @@ class SoundCloudConnector
 
   def retrieve_tracks(query)
     request_count = 0
+    soundcloud    = Soundcloud.new(
+      client_id:     ENV['SOUND_CLOUD_CLIENT_ID'],
+      client_secret: ENV['SOUND_CLOUD_CLIENT_SECRET']
+    )
     until request_count == self.class.request_limit
       begin
-        @tracks += @soundcloud.get(
+        @tracks += soundcloud.get(
           '/tracks', limit: self.class.result_limit,
           offset: request_count * self.class.result_limit,
           bpm: {
