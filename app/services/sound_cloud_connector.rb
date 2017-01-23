@@ -1,7 +1,7 @@
 class SoundCloudConnector
   class << self
     def request_limit
-      5
+      3
     end
 
     def result_limit
@@ -12,6 +12,7 @@ class SoundCloudConnector
   def initialize(query)
     @tracks  = []
     @filters = { key_signature: query[:key_signature] }
+    @error   = nil
     retrieve_tracks(bpm_min: query[:bpm_min], bpm_max: query[:bpm_max])
   end
 
