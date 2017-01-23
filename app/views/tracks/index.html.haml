@@ -1,7 +1,7 @@
 %div.search-container{:data=> {:soundcloud_client_id => @soundcloud_client_id}}
   .search-console
     %span.search-number-of-results
-      %p= " Number of Search Results: #{@tracks.size} "
+      %p= "Number of Search Results: #{@tracks.count} "
     %span.search-spinner-container
       =image_tag("spin.png", class: "spinner")
   %table

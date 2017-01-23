@@ -12,7 +12,7 @@ class SoundCloudConnector
   def initialize(query)
     @tracks     = []
     @soundcloud = Soundcloud.new(
-      client_id: ENV['SOUND_CLOUD_CLIENT_ID'],
+      client_id:     ENV['SOUND_CLOUD_CLIENT_ID'],
       client_secret: ENV['SOUND_CLOUD_CLIENT_SECRET']
     )
     @filters    = { key_signature: query[:key_signature] }
@@ -20,9 +20,6 @@ class SoundCloudConnector
   end
 
   def tracks
-
-    puts "\n hello tracks: #{@tracks.count}, error: #{@error}\n"
-
     @tracks.select do |track|
       matches = @filters.map do |key, value|
         track[key] == value
