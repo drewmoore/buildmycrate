@@ -1,11 +1,9 @@
 .container-fluid
   .row.section
-    .col-xs-2
-    .col-xs-8
+    .col-lg-offset-2.col-lg-8.col-xs-12
       %h1.search-header.text-center Build My Crate
       .row.section.console
-        .col-xs-2
-        .col-xs-8
+        .col-lg-offset-2.col-lg-8.col-xs-12
           %form#search.form-horizontal{action: tracks_path, method: :get}
             - if flash[:alert]
               .form-group.has-error
@@ -15,23 +13,18 @@
               %fieldset.col-xs-12
                 %legend BPM Range
                 .form-group
-                  .col-xs-2
-                  %label.col-xs-2.control-label{for: :bpm_min}
+                  %label.col-xs-offset-2.col-xs-2.control-label{for: :bpm_min}
                     %small.asterisk *
                     %span Min:
-                  .col-xs-6
+                  %div.col-xs-6
                     %input.form-control{type: :text, id: :bpm_min, name: :bpm_min, required: true}
-                  .col-xs-2
                 .form-group
-                  .col-xs-2
-                  %label.col-xs-2.control-label{for: :bpm_max} Max:
-                  .col-xs-6
+                  %label.col-xs-offset-2.col-xs-2.control-label{for: :bpm_max} Max:
+                  %div.col-xs-6
                     %input.form-control{type: :text, id: :bpm_max, name: :bpm_max}
-                  .col-xs-2
             .form-group
-              .col-xs-2
-              %label.col-xs-2.control-label{for: :key_signature} Key Signature:
-              .col-xs-6
+              %label.col-xs-offset-2.col-xs-2.control-label{for: :key_signature} Key Signature:
+              %div.col-xs-6
                 %select.form-control{id: :key_signature, name: :key_signature}
                   %option{value: ''}
                   - ('a'..'g').each do |base_note|
@@ -39,13 +32,8 @@
                       - ['', 'maj', 'min'].each do |key|
                         %option{value: base_note + accidental_set.first + key}
                           =(base_note + accidental_set.last).capitalize + ' ' + key
-              .col-xs-2
             .row
-              .col-xs-2
-              .col-xs-2.control-label
+              .col-xs-offset-2.col-xs-2.control-label
                 =image_tag('spin.png', class: 'spinner', alt: 'Loading Indicator')
               .col-xs-6.text-right
                 %button{type: :submit} Find Trax!
-              .col-xs-2
-        .col-xs-2
-    .col-xs-2

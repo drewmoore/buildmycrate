@@ -67,7 +67,6 @@ button {
   }
 }
 
-
 // Original Styles
 
 .section {
@@ -83,6 +82,9 @@ button {
   background-color: $black-translucent;
   border-radius:    1em;
   margin-bottom:    1em;
+  @media (min-width: $screen-sm-min) and (orientation: portrait) {
+    font-size: 2.2em;
+  }
 }
 
 .asterisk {
