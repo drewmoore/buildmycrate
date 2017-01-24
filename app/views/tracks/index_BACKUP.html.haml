@@ -1,4 +1,4 @@
-%div{data: {hook: 'search-container', soundcloud_client_id: @soundcloud_client_id}}
+%div.search-container{:data=> {:soundcloud_client_id => @soundcloud_client_id}}
   .search-console
     %span.search-number-of-results
       %p= "Number of Search Results: #{@tracks.count} "

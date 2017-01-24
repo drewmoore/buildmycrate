@@ -1,8 +1,101 @@
-$white: rgba(230, 230, 230, .8);
+@import 'variables';
+
+// Fonts
+
+@font-face {
+  font-family: 'Graffonti-3d';
+  src:         font-url('fonts/graffonti/Graffonti-3d.ttf');
+}
+@font-face {
+  font-family: 'Alegreya-Regular';
+  src:         font-url('fonts/Alegreya/Alegreya-Regular.ttf');
+}
+
+// Element Styles
+
+body {
+  background-color: black;
+  background-image: asset-data-url('mosaic.jpg');
+  font-family:      'Alegreya-Regular';
+  color:            $white;
+}
+
+h1 {
+  font-family: 'Graffonti-3d';
+  color:       $red;
+  font-size:   5em;
+}
+
+fieldset {
+  border:        1px solid $grey;
+  border-radius: 1em;
+}
+
+legend {
+  width:         auto;
+  border:        none;
+  margin-left:   2em;
+  margin-bottom: 0em;
+  color:         inherit;
+  font-size:     1.1em;
+}
+
+button {
+  font-size:        2em;
+  background-color: $black;
+  color:            $red;
+  font-family:      'Graffonti-3d';
+  border:           none;
+  &:hover {
+    color: $yellow;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+// Bootstrap Customizations
+
+.form-control {
+  background-color: $grey;
+  color:            $white;
+  border:           none;
+  // Restore bootstrap defaults on focus.
+  &:focus {
+    border:        1px solid $input-border;
+    border-radius: 4px;
+  }
+}
+
+
+// Original Styles
+
+.section {
+  padding-top:    3em;
+  padding-bottom: 3em;
+}
+
+.search-header {
+  padding-bottom: 0.5em;
+}
+
+.console {
+  background-color: $black-translucent;
+  border-radius:    1em;
+  margin-bottom:    1em;
+}
+
+.asterisk {
+  color: $red;
+}
+
+.spinner {
+  max-width: 50%;
+}
+
+/*
 $panel-background-color: rgba(7, 7, 7, .68);
 $font-red: #a4111f;
-$grey-highlight: rgba(20, 20, 20, 1);
-$black: rgba(2, 2, 2, .9);
 $blackish: rgba(7, 7, 7, .9);
 $yellow: rgba(175, 150, 0, 1);
 
@@ -13,10 +106,6 @@ $yellow: rgba(175, 150, 0, 1);
 @font-face {
   font-family: "Nunito-Bold";
   src: font-url("fonts/Nunito/Nunito-Bold.ttf");
-}
-@font-face {
-  font-family: "Alegreya-Regular";
-  src: font-url("fonts/Alegreya/Alegreya-Regular.ttf");
 }
 @font-face {
   font-family: "Graffonti-Gradient";
@@ -38,7 +127,6 @@ body {
 .search-container {
   width: 1200px;
   margin: 0px auto;
-  background-image: asset-data-url("mosaic.jpg");
   .search-console {
     position: center;
     .search-header {
@@ -309,3 +397,5 @@ td {
     margin: 0px 8px 0px 0px;
   }
 }
+
+*/

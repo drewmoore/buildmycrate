@@ -8,14 +8,18 @@
   var spinTimer;
   var spinCounter = 0;
 
-  $(document).ready(initialize);
+  document.addEventListener('turbolinks:load', initialize);
 
   function initialize() {
-    soundCloudClientId = $('.search-container').data('soundcloud-client-id');
-    SC.initialize({client_id: soundCloudClientId, redirect_uri: 'localhost:3000/callback'});
-    SC.connect(function() { SC.get('/me', function(me) {}); });
+    initSoundCloud();
     setTableHeaders();
     defineEvents();
+  }
+  function initSoundCloud() {
+    soundCloudClientId = $('.search-container').data('soundcloud-client-id');
+    if (!soundCloudClientId) { return; }
+    SC.initialize({client_id: soundCloudClientId, redirect_uri: 'localhost:3000/callback'});
+    SC.connect(function() { SC.get('/me', function(me) {}); });
   }
   function setTableHeaders() {
     $('.search-column-title-head').width($('.search-column-title').width());
@@ -29,7 +33,7 @@
     $('.turntable-play-button').click(playTrack);
     $('.turntable-pause-button').click(pauseTrack);
     $('.turntable-waveform-interface').click(adjustTime);
-    $('form > button').click(spinIt);
+    $('form#search').submit(spinIt);
     $('.download-button').click(download);
   }
   function loadTurnTable() {
@@ -228,7 +232,7 @@
       songProgressTimerRightFunction();
     }
   }
-  function spinIt() {
+  function spinIt(event) {
     spinTimer = setInterval(spinTimerFunction, 1);
   }
   function spinTimerFunction() {
