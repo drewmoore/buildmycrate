@@ -16,9 +16,12 @@
     defineEvents();
   }
   function initSoundCloud() {
-    soundCloudClientId = $('.search-container').data('soundcloud-client-id');
+    soundCloudClientId = $('[data-hook="track-list"]').data('soundcloud-client-id');
     if (!soundCloudClientId) { return; }
-    SC.initialize({client_id: soundCloudClientId, redirect_uri: 'localhost:3000/callback'});
+    SC.initialize({
+      client_id: soundCloudClientId,
+      redirect_uri: window.location.host + '/callback'
+    });
     SC.connect(function() { SC.get('/me', function(me) {}); });
   }
   function setTableHeaders() {
