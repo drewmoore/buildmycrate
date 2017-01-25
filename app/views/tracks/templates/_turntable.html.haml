@@ -1,0 +1,40 @@
+%script{id: 'turntable-template', type: 'text/x-handlebars-template'}
+  .col-xs-12.section.console{data: {hook: 'turntable'}}
+    .row
+      .col-xs-3
+        {{#if image}}
+        %img.turntable-track-image{src: '{{image}}', alt: 'Track Image'}
+        {{else}}
+        =image_tag('track-image-default.png', alt: 'Track Image', class: 'turntable-track-image')
+        {{/if}}
+      .col-xs-9
+        .row
+          .col-xs-12
+            %p {{title}}
+            %p {{bpm}}
+        .row
+          .col-xs-12
+            %p {{artist}}
+            %p {{key}}
+    .row
+      .col-xs-12
+        %small 0.00
+        %small
+        %small {{duration}}
+    .row
+      .col-xs-12
+        .turntable-waveform-progress
+        %img.turntable-track-waveform-image{src: '{{waveform}}', alt: 'Track Waveform'}
+    .row
+      .col-xs-12.controls
+        =image_tag('play-button.png', class: 'turntable-play-button', alt: 'Play Button')
+        =image_tag('pause-button.png', class: 'turntable-pause-button', alt: 'Pause Button')
+        {{#if downloadUrl}}
+        =image_tag('down-arrow.png', class: 'track-button download-button', alt: 'Download Track Button', data: {download_url: '{{downloadUrl}}'})
+        {{/if}}
+        {{#if purchaseUrl}}
+        %a{href: '{{purchaseUrl}}', target: '_blank', class: 'purchase-link'}
+          =image_tag('dollar-sign.png', alt: 'Purchase Track Button', class: 'track-button')
+        {{/if}}
+        %audio{data: {hook: 'track-audio'}}
+          %source{src: '{{audioUrl}}'}

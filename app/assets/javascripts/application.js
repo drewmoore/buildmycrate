@@ -16,4 +16,5 @@
 //= require_tree .
 //= require sdk
 //= require lodash
+//= require handlebars
 //= require bootstrap-sprockets

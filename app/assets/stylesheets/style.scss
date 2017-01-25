@@ -75,7 +75,7 @@ button {
   }
 }
 .panel-body {
-  height:     30em;
+  height:     24em;
   overflow-y: auto;
   overflow-x: auto;
 }
@@ -154,12 +154,17 @@ button {
   width: 75%;
 }
 .turntable-track-waveform-image {
-  min-height: 2em;
+  width:      100%;
+  max-height: 6em;
+  padding:    1em 0em;
 }
-.turntable-button {
-  width: 8%;
-  &:hover {
-    cursor: pointer;
+
+.controls {
+  img {
+    width: 8%;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 

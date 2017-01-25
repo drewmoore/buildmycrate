@@ -32,25 +32,44 @@
     $('.search-column-buttons-head').width($('.search-column-buttons').width());
   }
   function defineEvents() {
-    $('.turntable-loader').click(loadTurnTable);
+    $('[data-hook="turntable-loader"]').click(loadTurnTable);
+    $('[data-hook="turntable-container"]').on('ended', '[data-hook="track-audio"]', trackEnds);
+
     $('.turntable-play-button').click(playTrack);
     $('.turntable-pause-button').click(pauseTrack);
     $('.turntable-waveform-interface').click(adjustTime);
     $('form#search').submit(spinIt);
     $('.download-button').click(download);
   }
-  function loadTurnTable() {
+  function loadTurnTable(event) {
+    var $element            = $(event.target);
+    var $track              = $element.closest('[data-hook="track"]');
+    var trackData           = $track.data();
+    var turntableIndex      = $track.find('[data-hook="' + $element.data().hook + '"]').index($element);
+    var $turntableContainer = $($('[data-hook="turntable-container"]')[turntableIndex]);
+
+    var template = Handlebars.compile($('#turntable-template').html());
+
+    SC.stream(trackData.streamUrl, function(sound){
+      trackData.audioUrl = sound.url;
+
+      $turntableContainer.html(template(trackData));
+    });
+
+    /*
     var $trackTr = $($(this).parents('tr')[0]);
     var image = $trackTr.attr('data-image') || null;
     var title = $trackTr.attr('data-title') || '';
     var artist = $trackTr.attr('data-artist') || '';
     var bpm = $trackTr.attr('data-bpm') || '';
     var key = $trackTr.attr('data-key') || null;
+
     var waveform = $trackTr.attr('data-waveform') || null;
     var streamUrl = $trackTr.attr('data-stream-url') || null;
     var downloadUrl = $trackTr.attr('data-download-url') || null;
     var purchaseUrl = $trackTr.attr('data-purchase-url') || null;
     var duration = $trackTr.attr('data-duration') || '00:00';
+
     var turntableSide;
     if ($(this).hasClass('turntable-loader-left')) {
       turntableSide = 'left';
@@ -58,13 +77,15 @@
       turntableSide = 'right';
     }
     var $turntable = $('.turntable-' + turntableSide);
+
     var selectorString = '.turntable-track-';
-    var audios = $('.turntable-' + turntableSide).find('audio');
+    var audios = $turntable.find('audio');
     if (audios.length > 0) {
       _.each(audios, function(audio) {
         $(audio).remove();
       });
     }
+
     SC.stream(streamUrl, function(sound){
       var $turntableControls = $($turntable.find('.turntable-controls'));
       var $audio = $('<audio>');
@@ -83,6 +104,7 @@
       }
       $turntable.find(selectorString + 'artist').text(artist);
       $turntable.find(selectorString + 'waveform-image').attr('src', waveform);
+
       var $progressBar = $turntable.find('.turntable-waveform-progress');
       if (parseInt($progressBar.css('width')) > 0) {
         $progressBar.css('width', 0);
@@ -96,6 +118,7 @@
       $audio.bind('ended', trackEnds);
       $audio.append($source);
       $turntableControls.append($audio);
+
       $timeElapsedDisplay.text(formatTimeDisplay(0));
       $timeDurationDisplay.text(formatTimeDisplay(duration));
       $turntableControls.find('.download-button').remove();
@@ -112,6 +135,7 @@
         $turntableControls.append($a);
       }
     });
+    */
   }
   function playTrack() {
     var $self = $(this);
