@@ -23,7 +23,9 @@ RSpec.describe SoundCloudConnector, type: :service do
     end
 
     it 'has array of tracks with bpms in established range' do
-      soundcloud.tracks.map(&:bpm).uniq.each do |bpm|
+      bpms = soundcloud.tracks.map(&:bpm).uniq
+      raise 'test setup failed' if bpms.empty?
+      bpms.each do |bpm|
         expect(bpm).to be >= bpm_min
         expect(bpm).to be <= bpm_max
       end
