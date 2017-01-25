@@ -10,6 +10,10 @@
   font-family: 'Alegreya-Regular';
   src:         font-url('fonts/Alegreya/Alegreya-Regular.ttf');
 }
+@font-face {
+  font-family: "Nunito-Bold";
+  src: font-url("fonts/Nunito/Nunito-Bold.ttf");
+}
 
 // Element Styles
 
@@ -23,7 +27,10 @@ body {
 h1 {
   font-family: 'Graffonti-3d';
   color:       $red;
-  font-size:   5em;
+  font-size:   3em;
+  @media (min-width: $screen-lg-min) {
+    font-size:   5em;
+  }
 }
 
 fieldset {
@@ -56,6 +63,23 @@ button {
 
 // Bootstrap Customizations
 
+.panel {
+  background-color: inherit;
+}
+.panel-heading {
+  color:       $red;
+  font-size:   0.75em;
+  font-family: 'Nunito-Bold';
+  @media (orientation: landscape) {
+    font-size: 1.2em;
+  }
+}
+.panel-body {
+  height:     30em;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
 .form-control {
   background-color: $grey;
   color:            $white;
@@ -70,8 +94,12 @@ button {
 // Original Styles
 
 .section {
-  padding-top:    3em;
-  padding-bottom: 3em;
+  padding-top:    1em;
+  padding-bottom: 1em;
+  @media (min-width: $screen-lg-min) {
+    padding-top:    3em;
+    padding-bottom: 3em;
+  }
 }
 
 .search-header {
@@ -82,9 +110,6 @@ button {
   background-color: $black-translucent;
   border-radius:    1em;
   margin-bottom:    1em;
-  @media (min-width: $screen-sm-min) and (orientation: portrait) {
-    font-size: 2.2em;
-  }
 }
 
 .asterisk {
@@ -92,8 +117,54 @@ button {
 }
 
 .spinner {
-  max-width: 50%;
+  max-width: 100%;
+  @media (min-width: $screen-lg-min) {
+    max-width: 50%;
+  }
 }
+
+.track {
+  margin-bottom: 1.5em;
+  @media (min-width: $screen-md-min) {
+    margin-bottom: 0.5em;
+  }
+  @media (min-width: $screen-lg-min) {
+    margin-bottom: 0em;
+  }
+}
+
+.track-button {
+  max-width: 50%;
+  padding:   0.1em;
+  @media (orientation: landscape) {
+    max-width: 25%;
+  }
+  @media (min-width: $screen-lg-min) {
+    padding: 0.33em;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+// Browser-Specific Stylings
+
+::-webkit-scrollbar {
+  width: 0.66em;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px $white-ghost;
+  border-radius:      6px;
+  background-color:   $black-translucent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius:    10px;
+  background-color: $burgundy;
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: $red;
+}
+
 
 /*
 $panel-background-color: rgba(7, 7, 7, .68);
@@ -104,10 +175,6 @@ $yellow: rgba(175, 150, 0, 1);
 @font-face {
   font-family: "Nunito-Regular";
   src: font-url("fonts/Nunito/Nunito-Regular.ttf");
-}
-@font-face {
-  font-family: "Nunito-Bold";
-  src: font-url("fonts/Nunito/Nunito-Bold.ttf");
 }
 @font-face {
   font-family: "Graffonti-Gradient";

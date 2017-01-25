@@ -1,88 +1,35 @@
-%div{data: {hook: 'search-container', soundcloud_client_id: @soundcloud_client_id}}
-  .search-console
-    %span.search-number-of-results
-      %p= "Number of Search Results: #{@tracks.count} "
-    %span.search-spinner-container
-      =image_tag("spin.png", class: "spinner")
-  %table
-    %thead
-      %tr
-        %th.search-column-title-head Title
-        %th.search-column-artist-head Artist
-        %th.search-column-bpm-head Bpm
-        %th.search-column-key-head Key
-        %th.search-column-buttons-head
-    %tbody
-      - @tracks.each do |track|
-        %tr.search-result-row{:data => {:title => track.title, :artist => track.user.username, :bpm => track.bpm, :key => track.key_signature,
-          :download_url => track.download_url, :purchase_url => track.purchase_url, :stream_url => track.stream_url, :image => track.artwork_url,
-          :waveform => track.waveform_url, :duration => (track.duration / 1000)}}
-          %td.search-column-title= track.title
-          %td.search-column-artist= track.user.username
-          %td.search-column-bpm= "%g" % track.bpm
-          %td.search-column-key= track.key_signature
-          %td.search-column-buttons
-            - if track.download_url
-              =image_tag("down-arrow.png", class: "search-result-buttons download-button", :data => {:download_url => track.download_url})
-            - if track.purchase_url
-              %a{:href => track.purchase_url, :class => "purchase-link"}
-                =image_tag("dollar-sign.png", class: "search-result-buttons")
-            - if track.streamable
-              =image_tag("turntable-left.png", class: "search-result-buttons turntable-loader turntable-loader-left")
-              =image_tag("turntable-right.png", class: "search-result-buttons turntable-loader turntable-loader-right")
-  .dj-coffin
-    .dj-coffin-separator
-    .turntable.turntable-left
-      .turntable-top-panel
-        =image_tag("track-image-default.png", class: "turntable-track-image")
-        %span.turntable-track-info
-          %div.turntable-track-info-upper
-            %span.turntable-track-title
-              %p
-            %span.turntable-track-bpm
-              %p
-          %div.turntable-track-info-lower
-            %span.turntable-track-artist
-              %p
-            %span.turntable-track-key
-              %p
-      .turntable-bottom-panel
-        .turntable-time-wave-container
-          .time-elapsed.time-elapsed-left
-            %small
-            %small
-            %small
-          .turntable-waveform-interface{:data => {:side => "left"}}
-            .turntable-waveform-progress
-            =image_tag("", class: "turntable-track-waveform-image")
-        .turntable-controls
-          =image_tag("play-button.png", class: "turntable-play-button")
-          =image_tag("pause-button.png", class: "turntable-pause-button")
-    .mixer
-    .turntable.turntable-right
-      .turntable-top-panel
-        =image_tag("track-image-default.png", class: "turntable-track-image")
-        %span.turntable-track-info
-          %div.turntable-track-info-upper
-            %span.turntable-track-title
-              %p
-            %span.turntable-track-bpm
-              %p
-          %div.turntable-track-info-lower
-            %span.turntable-track-artist
-              %p
-            %span.turntable-track-key
-              %p
-      .turntable-bottom-panel
-        .turntable-time-wave-container
-          .time-elapsed.time-elapsed-right
-            %small
-            %small
-            %small
-          .turntable-waveform-interface{:data => {:side => "right"}}
-            .turntable-waveform-progress
-            =image_tag("", class: "turntable-track-waveform-image")
-        .turntable-controls
-          =image_tag("play-button.png", class: "turntable-play-button")
-          =image_tag("pause-button.png", class: "turntable-pause-button")
-    .dj-coffin-separator
+.row.section
+  .col-lg-offset-1.col-lg-10.col-xs-12
+    .row.section.console
+      .col-lg-offset-1.col-lg-10.col-xs-12
+        .row
+          .col-xs-11
+            %h4
+              %span=@tracks.count
+              %span Results
+          .col-xs-1.text-right
+            =image_tag('spin.png', class: 'spinner')
+        .panel
+          .panel-heading
+            .row
+              .col-lg-4.col-xs-3 Title
+              .col-lg-4.col-xs-3 Artist
+              .col-lg-1.col-xs-1 BPM
+              .col-lg-1.col-xs-1 Key
+              .col-lg-2.col-xs-4
+          .panel-body
+            - @tracks.each do |track|
+              .row.track
+                .col-lg-4.col-xs-3=track.title
+                .col-lg-4.col-xs-3=track.user.username
+                .col-lg-1.col-xs-3=track.bpm
+                .col-lg-1.col-xs-3=track.key_signature
+                .col-lg-2.col-xs-3.text-right
+                  - if track.download_url
+                    =image_tag('down-arrow.png', class: 'track-button download-button', data: {download_url: track.download_url})
+                  - if track.purchase_url
+                    %a{href: track.purchase_url, target: '_blank', class: 'purchase-link'}
+                      =image_tag('dollar-sign.png', class: 'track-button')
+                  - if track.streamable
+                    =image_tag('turntable-left.png', class: 'track-button turntable-loader turntable-loader-left')
+                    =image_tag('turntable-right.png', class: 'track-button turntable-loader turntable-loader-right')
