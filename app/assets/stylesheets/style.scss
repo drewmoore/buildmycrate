@@ -97,9 +97,13 @@ button {
   padding-top:    1em;
   padding-bottom: 1em;
   @media (min-width: $screen-lg-min) {
-    padding-top:    3em;
-    padding-bottom: 3em;
+    padding-top:    2em;
+    padding-bottom: 2em;
   }
+}
+
+.padded-sides {
+  padding: 0.5em;
 }
 
 .search-header {
@@ -109,7 +113,6 @@ button {
 .console {
   background-color: $black-translucent;
   border-radius:    1em;
-  margin-bottom:    1em;
 }
 
 .asterisk {
@@ -142,6 +145,19 @@ button {
   @media (min-width: $screen-lg-min) {
     padding: 0.33em;
   }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.turntable-track-image {
+  width: 75%;
+}
+.turntable-track-waveform-image {
+  min-height: 2em;
+}
+.turntable-button {
+  width: 8%;
   &:hover {
     cursor: pointer;
   }
