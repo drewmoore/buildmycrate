@@ -9,18 +9,22 @@
         {{/if}}
       .col-xs-9
         .row
-          .col-xs-12
-            %p {{title}}
-            %p {{bpm}}
+          .col-xs-6.fat-bottom
+            %span {{title}}
+          .col-xs-6.fat-bottom.text-right
+            %span {{bpm}} bpm
         .row
-          .col-xs-12
-            %p {{artist}}
-            %p {{key}}
+          .col-xs-6
+            %span {{artist}}
+          .col-xs-6.text-right
+            {{#if key}}
+            %span Key: {{key}}
+            {{/if}}
     .row
-      .col-xs-12
-        %small 0.00
+      .col-xs-12.text-right
+        %small 00:00
         %small
-        %small {{duration}}
+        %small {{timeDisplay duration}}
     .row
       .col-xs-12
         .turntable-waveform-progress

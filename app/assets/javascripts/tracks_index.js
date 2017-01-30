@@ -14,6 +14,9 @@
     initSoundCloud();
     setTableHeaders();
     defineEvents();
+
+    Handlebars.registerHelper('timeDisplay', timeDisplay);
+
   }
   function initSoundCloud() {
     soundCloudClientId = $('[data-hook="track-list"]').data('soundcloud-client-id');
@@ -52,7 +55,6 @@
 
     SC.stream(trackData.streamUrl, function(sound){
       trackData.audioUrl = sound.url;
-
       $turntableContainer.html(template(trackData));
     });
 
@@ -212,6 +214,13 @@
     }
     var timeString = min + ":" + sec;
     return timeString;
+  }
+  function timeDisplay(milliseconds) {
+    var totalSeconds = milliseconds / 1000;
+    var minutes      = Math.floor(totalSeconds / 60);
+    var seconds      = Math.floor(totalSeconds % 60);
+    return minutes.toLocaleString('latn', { minimumIntegerDigits: 2 }) + ':' +
+           seconds.toLocaleString('latn', { minimumIntegerDigits: 2 });
   }
   function songProgressTimerLeftFunction(event) {
     var audio = $('.turntable-left').find('audio')[0];
