@@ -9,21 +9,21 @@
         {{/if}}
       .col-xs-9
         .row
-          .col-xs-6.fat-bottom
+          .col-xs-9.fat-bottom
             %span {{title}}
-          .col-xs-6.fat-bottom.text-right
+          .col-xs-3.fat-bottom.text-right
             %span {{bpm}} bpm
         .row
-          .col-xs-6
+          .col-xs-9
             %span {{artist}}
-          .col-xs-6.text-right
+          .col-xs-3.text-right
             {{#if key}}
             %span Key: {{key}}
             {{/if}}
     .row
       .col-xs-12.text-right
-        %small 00:00
-        %small
+        %small {{timeDisplay 0}}
+        %small /
         %small {{timeDisplay duration}}
     .row
       .col-xs-12
