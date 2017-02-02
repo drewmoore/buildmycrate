@@ -1,7 +1,7 @@
 class SoundCloudConnector
   class << self
     def request_limit
-      3
+      2
     end
 
     def result_limit
