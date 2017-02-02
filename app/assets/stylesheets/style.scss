@@ -1,0 +1,217 @@
+@import 'variables';
+
+// Fonts
+
+@font-face {
+  font-family: 'Graffonti-3d';
+  src:         font-url('fonts/graffonti/Graffonti-3d.ttf');
+}
+@font-face {
+  font-family: 'Alegreya-Regular';
+  src:         font-url('fonts/Alegreya/Alegreya-Regular.ttf');
+}
+@font-face {
+  font-family: "Nunito-Bold";
+  src: font-url("fonts/Nunito/Nunito-Bold.ttf");
+}
+
+// Element Styles
+
+body {
+  background-color: black;
+  background-image: asset-data-url('mosaic.jpg');
+  font-family:      'Alegreya-Regular';
+  color:            $white;
+}
+
+h1 {
+  font-family: 'Graffonti-3d';
+  color:       $red;
+  font-size:   3em;
+  @media (min-width: $screen-lg-min) {
+    font-size:   5em;
+  }
+}
+
+fieldset {
+  border:        1px solid $grey;
+  border-radius: 1em;
+}
+
+legend {
+  width:         auto;
+  border:        none;
+  margin-left:   2em;
+  margin-bottom: 0em;
+  color:         inherit;
+  font-size:     1.1em;
+}
+
+button {
+  font-size:        2em;
+  background-color: $black;
+  color:            $red;
+  font-family:      'Graffonti-3d';
+  border:           none;
+  &:hover {
+    color: $yellow;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+// Bootstrap Customizations
+
+.panel {
+  background-color: inherit;
+}
+.panel-heading {
+  color:       $red;
+  font-size:   0.75em;
+  font-family: 'Nunito-Bold';
+  @media (orientation: landscape) {
+    font-size: 1.2em;
+  }
+}
+.panel-body {
+  height:     15em;
+  overflow-y: auto;
+  overflow-x: auto;
+  @media (min-width: $screen-md-min) {
+    height: 24em;
+  }
+}
+
+.form-control {
+  background-color: $grey;
+  color:            $white;
+  border:           none;
+  // Restore bootstrap defaults on focus.
+  &:focus {
+    border:        1px solid $input-border;
+    border-radius: 4px;
+  }
+}
+
+// Original Styles
+
+.relative {
+  position: relative;
+}
+
+.section {
+  padding-top:    1em;
+  padding-bottom: 1em;
+  @media (min-width: $screen-lg-min) {
+    padding-top:    2em;
+    padding-bottom: 2em;
+  }
+}
+
+.fat-bottom {
+  padding-bottom: 0.5em;
+  @media (orientation: landscape) {
+    padding-bottom: 2em;
+  }
+}
+
+.search-header {
+  padding-bottom: 0.5em;
+}
+
+.console {
+  background-color: $black-translucent;
+  border-radius:    1em;
+}
+
+.asterisk {
+  color: $red;
+}
+
+.spinner {
+  max-width: 100%;
+  @media (min-width: $screen-lg-min) {
+    max-width: 50%;
+  }
+}
+
+.track {
+  margin-bottom: 1.5em;
+  @media (min-width: $screen-md-min) {
+    margin-bottom: 0.5em;
+  }
+  @media (min-width: $screen-lg-min) {
+    margin-bottom: 0em;
+  }
+}
+
+.turntable-container {
+  padding:   0.5em;
+  font-size: 1.3em;
+}
+
+.track-button {
+  max-width: 50%;
+  padding:   0.1em;
+  @media (orientation: landscape) {
+    max-width: 25%;
+  }
+  @media (min-width: $screen-lg-min) {
+    padding: 0.33em;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.turntable-track-image {
+  width: 75%;
+}
+
+.waveform-container {
+  padding-top:    1em;
+  padding-bottom: 1em;
+}
+
+.turntable-waveform-progress, .turntable-track-waveform-image {
+  height: 4em;
+}
+.turntable-waveform-progress {
+  position:         absolute;
+  top:              0em;
+  left:             0em;
+  z-index:          -1;
+  width:            0%;
+  background-color: $red;
+}
+.turntable-track-waveform-image {
+  width:   100%;
+}
+
+.controls {
+  img {
+    width: 8%;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+// Browser-Specific Stylings
+
+::-webkit-scrollbar {
+  width: 0.66em;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px $white-ghost;
+  border-radius:      6px;
+  background-color:   $black-translucent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius:    10px;
+  background-color: $burgundy;
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: $red;
+}

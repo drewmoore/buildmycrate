@@ -1,0 +1,45 @@
+%script{id: 'turntable-template', type: 'text/x-handlebars-template'}
+  .col-xs-12.section.console{data: {hook: 'turntable'}}
+    .row
+      .col-xs-3
+        {{#if image}}
+        %img.turntable-track-image{src: '{{image}}', alt: 'Track Image'}
+        {{else}}
+        =image_tag('track-image-default.png', alt: 'Track Image', class: 'turntable-track-image')
+        {{/if}}
+      .col-xs-9
+        .row
+          .col-xs-9.fat-bottom
+            %span {{title}}
+          .col-xs-3.fat-bottom.text-right
+            %span {{bpm}} bpm
+        .row
+          .col-xs-9
+            %span {{artist}}
+          .col-xs-3.text-right
+            {{#if key}}
+            %span Key: {{key}}
+            {{/if}}
+    .row
+      .col-xs-12.text-right
+        %small{data: { hook: 'time-elapsed' } } {{timeDisplay 0}}
+        %small='|'
+        %small {{timeDisplay duration}}
+    .row
+      .col-xs-12.waveform-container
+        .relative
+          .turntable-waveform-progress{data: {hook: 'turntable-waveform-progress'}}
+          %img.turntable-track-waveform-image{src: '{{waveform}}', alt: 'Track Waveform', data: {hook: 'turntable-track-waveform'}}
+    .row
+      .col-xs-12.controls
+        =image_tag('play-button.png',  data: { hook: 'play-button' },  alt: 'Play Button')
+        =image_tag('pause-button.png', data: { hook: 'pause-button' }, alt: 'Pause Button')
+        {{#if downloadUrl}}
+        =image_tag('down-arrow.png', class: 'track-button', alt: 'Download Track Button', data: { hook: 'download-button', download_url: '{{downloadUrl}}' })
+        {{/if}}
+        {{#if purchaseUrl}}
+        %a{href: '{{purchaseUrl}}', target: '_blank', class: 'purchase-link'}
+          =image_tag('dollar-sign.png', alt: 'Purchase Track Button', class: 'track-button')
+        {{/if}}
+        %audio{data: {hook: 'track-audio'}}
+          %source{src: '{{audioUrl}}'}

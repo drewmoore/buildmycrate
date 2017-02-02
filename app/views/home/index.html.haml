@@ -1,70 +1,38 @@
-%div.search-container
-  .search-console
-    .search-header
-      %h1= "Build My Crate"
-    .search-fieldspace
-      %form{ action: "/tracks", method: "get" }
-        - if flash[:alert]
-          %div.asterisk=flash[:alert]
-        %fieldset
-          %legend Bpm Range
-          %div
-            %label From: <small class="asterisk">*</small>
-            %input{ type: "text", :name => :bpm_min, :required => true }
-          %div
-            %label To:
-            %input{ type: "text", :name => :bpm_max }
-        %div
-          %label Key Signature:
-          %select{ :name => :key_signature }
-            %option
-            %option Ab
-            %option A
-            %option A#
-            %option Bb
-            %option B
-            %option B#
-            %option Cb
-            %option C
-            %option C#
-            %option Db
-            %option D
-            %option D#
-            %option Eb
-            %option E
-            %option E#
-            %option Fb
-            %option F
-            %option F#
-            %option Gb
-            %option G
-            %option G#
-            %option Abm
-            %option Am
-            %option A#m
-            %option Bbm
-            %option Bm
-            %option B#m
-            %option Cbm
-            %option Cm
-            %option C#m
-            %option Dbm
-            %option Dm
-            %option D#m
-            %option Ebm
-            %option Em
-            %option E#m
-            %option Fbm
-            %option Fm
-            %option F#m
-            %option Gbm
-            %option Gm
-            %option G#m
-        %button Find Trax!
-        %label.required-label
-          %small.asterisk * required
-  .search-console
-    %span.search-number-of-results
-      .filler
-    %span.search-spinner-container
-      =image_tag("spin.png", class: "spinner")
+.row.section
+  .col-lg-offset-2.col-lg-8.col-xs-12
+    %h1.search-header.text-center Build My Crate
+    .row.section.console
+      .col-lg-offset-2.col-lg-8.col-xs-12
+        %form#search.form-horizontal{action: tracks_path, method: :get}
+          - if flash[:alert]
+            .form-group.has-error
+              .col-xs-12
+                %span=flash[:alert]
+          .form-group
+            %fieldset.col-xs-12
+              %legend BPM Range
+              .form-group
+                %label.col-xs-offset-1.col-xs-3.control-label.text-right{for: :bpm_min}
+                  %small.asterisk *
+                  %span Min:
+                %div.col-xs-7
+                  %input.form-control{type: :text, id: :bpm_min, name: :bpm_min, required: true}
+              .form-group
+                %label.col-xs-offset-1.col-xs-3.control-label.text-right{for: :bpm_max} Max:
+                %div.col-xs-7
+                  %input.form-control{type: :text, id: :bpm_max, name: :bpm_max}
+          .form-group
+            %label.col-xs-offset-1.col-xs-3.control-label.text-right{for: :key_signature} Key Signature:
+            %div.col-xs-7
+              %select.form-control{id: :key_signature, name: :key_signature}
+                %option{value: ''}
+                - ('a'..'g').each do |base_note|
+                  - [['b', '♭'], ['', '♮'], ['#','♯']].each do |accidental_set|
+                    - ['', 'maj', 'min'].each do |key|
+                      %option{value: base_note + accidental_set.first + key}
+                        =(base_note + accidental_set.last).capitalize + ' ' + key
+          .row
+            .col-xs-offset-2.col-xs-2.control-label
+              =image_tag('spin.png', class: 'spinner', alt: 'Loading Indicator')
+            .col-xs-7.text-right
+              %button{type: :submit} Find Trax!

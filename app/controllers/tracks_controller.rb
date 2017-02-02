@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   def index
-    soundcloud = SoundCloudConnector.new(params)
+    soundcloud            = SoundCloudConnector.new(params)
     @soundcloud_client_id = ENV['SOUND_CLOUD_CLIENT_ID']
     @tracks               = soundcloud.tracks
     @error                = soundcloud.error
