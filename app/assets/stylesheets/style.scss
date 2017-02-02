@@ -96,6 +96,10 @@ button {
 
 // Original Styles
 
+.relative {
+  position: relative;
+}
+
 .section {
   padding-top:    1em;
   padding-bottom: 1em;
@@ -164,10 +168,25 @@ button {
 .turntable-track-image {
   width: 75%;
 }
+
+.waveform-container {
+  padding-top:    1em;
+  padding-bottom: 1em;
+}
+
+.turntable-waveform-progress, .turntable-track-waveform-image {
+  height: 4em;
+}
+.turntable-waveform-progress {
+  position:         absolute;
+  top:              0em;
+  left:             0em;
+  z-index:          -1;
+  width:            0%;
+  background-color: $red;
+}
 .turntable-track-waveform-image {
-  width:      100%;
-  max-height: 6em;
-  padding:    1em 0em;
+  width:   100%;
 }
 
 .controls {

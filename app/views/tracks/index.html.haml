@@ -30,7 +30,7 @@
                 .col-lg-1.col-xs-3=track[:key_signature]
                 .col-lg-2.col-xs-3.text-right
                   - if track[:download_url]
-                    =image_tag('down-arrow.png', class: 'track-button download-button', data: {download_url: track[:download_url]})
+                    =image_tag('down-arrow.png', class: 'track-button', alt: 'Download Track Button', data: { hook: 'download-button', download_url: track[:download_url] })
                   - if track[:purchase_url]
                     %a{href: track[:purchase_url], target: '_blank', class: 'purchase-link'}
                       =image_tag('dollar-sign.png', class: 'track-button')
@@ -39,7 +39,7 @@
                     =image_tag('turntable-right.png', class: 'track-button', data: { hook: 'turntable-loader' })
     .row
       .col-md-6.col-xs-12
-        .row.turntable-container{data: {hook: 'turntable-container'}}
+        .row.turntable-container{data: {hook: 'turntable-container', turntable_id: generate_id }}
       .col-md-6.col-xs-12
         .row.turntable-container{data: {hook: 'turntable-container'}}
     =render(partial: 'tracks/templates/turntable')

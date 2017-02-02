@@ -33,11 +33,6 @@ class SoundCloudConnector
   private
 
   def retrieve_tracks(query)
-    path = "#{Rails.root}/spec/vcr_cassettes/soundcloud_success.yml"
-    yaml = YAML.load(File.read(path))
-    @tracks += YAML.load(yaml['http_interactions'].first["response"]["body"]["string"]).map(&:with_indifferent_access)
-
-=begin
     request_count = 0
     soundcloud    = Soundcloud.new(
       client_id:     ENV['SOUND_CLOUD_CLIENT_ID'],
@@ -58,6 +53,5 @@ class SoundCloudConnector
       end
       request_count += 1
     end
-=end
   end
 end
