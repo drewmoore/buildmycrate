@@ -1,3 +1,3 @@
-import TestThis from './components/testThis.js.es6';
+import App from './components/app.js.jsx';
 
-TestThis.shout();
+$(document).on('turbolinks:load', () => App.render());
