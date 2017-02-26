@@ -1,3 +1,5 @@
+ruby "2.4.0"
+
 source 'https://rubygems.org'
 
 gem 'haml-rails'
@@ -40,6 +42,7 @@ group :production do
   gem 'rails_12factor'
 end
 gem 'unicorn'
-ruby "2.4.0"
 
 gem 'bootstrap-sass'
+
+gem 'browserify-rails'

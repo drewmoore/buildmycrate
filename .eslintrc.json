@@ -1,0 +1,13 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "key-spacing": [ "error", { "align": "value" } ],
+    "no-multi-spaces": [ "error", { "exceptions": { "ImportDeclaration": true }} ],
+    "comma-dangle": [ "error", "only-multiline" ]
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}

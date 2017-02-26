@@ -19,3 +19,5 @@
 /bin
 
 /spec/vcr_cassettes/
+
+/node_modules

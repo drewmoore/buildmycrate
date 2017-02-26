@@ -1,0 +1,33 @@
+{
+  "name": "buildmycrate",
+  "version": "1.0.0",
+  "description": "A virtual dj console that searches Soundcloud's API and mixes tracks in the browser.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drewmoore/buildmycrate.git"
+  },
+  "author": "Andrew Moore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drewmoore/buildmycrate/issues"
+  },
+  "homepage": "https://github.com/drewmoore/buildmycrate#readme",
+  "dependencies": {
+    "babel-preset-es2015": "^6.22.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0",
+    "browserify-incremental": "^3.1.1"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "devDependencies": {
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0"
+  }
+}
