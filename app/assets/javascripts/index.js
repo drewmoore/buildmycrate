@@ -1,3 +1,4 @@
-import App from './components/app.js.jsx';
+import renderApp from './reactApp/index.js.jsx';
 
-$(document).on('turbolinks:load', () => App.render());
+// Allow the react app to be rendered globally.
+window.renderApp = renderApp;

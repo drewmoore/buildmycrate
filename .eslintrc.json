@@ -2,7 +2,7 @@
   "extends": "airbnb",
   "rules": {
     "key-spacing": [ "error", { "align": "value" } ],
-    "no-multi-spaces": [ "error", { "exceptions": { "ImportDeclaration": true }} ],
+    "no-multi-spaces": 0,
     "comma-dangle": [ "error", "only-multiline" ],
     "import/extensions": [ "warn", { "jsx": "always" }]
   }
