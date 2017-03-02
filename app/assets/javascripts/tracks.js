@@ -99,9 +99,6 @@
     return parseInt($(audio).parent().width() / audio.duration);
   }
   function spinIt(event) {
-
-    console.log('hello spinIt')
-
     spinTimer = setInterval(updateSpinner, 1);
   }
   function updateSpinner() {
