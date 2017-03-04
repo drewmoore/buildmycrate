@@ -1,7 +1,5 @@
 (function() {
   var soundCloudClientId;
-  var spinTimer;
-  var spinCounter = 0;
   var turntables = {};
 
   document.addEventListener('turbolinks:load', initialize);
@@ -26,7 +24,6 @@
   function defineEvents() {
     var $turntableContainer = $('[data-hook="turntable-container"]');
     $('[data-hook="turntable-loader"]').click(loadTurnTable);
-    $('form#search').submit(spinIt);
     $('.container-fluid').on('click', '[data-hook="download-button"]', download);
     // DJ Console Interface
     $turntableContainer.on('click', '[data-hook="play-button"]',  playTrack);
@@ -97,15 +94,6 @@
   }
   function progressInterval(audio) {
     return parseInt($(audio).parent().width() / audio.duration);
-  }
-  function spinIt(event) {
-    spinTimer = setInterval(updateSpinner, 1);
-  }
-  function updateSpinner() {
-    $('.spinner').css('transform',         'rotate(' + spinCounter + 'deg)');
-    $('.spinner').css('-ms-transform',     'rotate(' + spinCounter + 'deg)');
-    $('.spinner').css('-webkit-transform', 'rotate(' + spinCounter + 'deg)');
-    spinCounter += 3;
   }
   function download() {
     var self = this;

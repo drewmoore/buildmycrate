@@ -10,14 +10,7 @@ const TrackList = ({ tracks }) => (
 );
 
 TrackList.propTypes = {
-  tracks: PropTypes.arrayOf(
-    PropTypes.shape({
-      id:           PropTypes.number.isRequired,
-      title:        PropTypes.string,
-      bpm:          PropTypes.number,
-      keySignature: PropTypes.string
-    }).isRequired
-  ).isRequired
+  tracks: PropTypes.arrayOf(PropTypes.shape(Track.propTypes).isRequired).isRequired
 };
 
 export default TrackList;

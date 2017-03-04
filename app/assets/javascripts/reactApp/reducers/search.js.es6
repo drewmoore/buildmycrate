@@ -1,6 +1,8 @@
+import SearchActions from '../actions/search.js.es6';
+
 const search = (state = {}, action = {}) => {
   switch (action.type) {
-    case 'UPDATE_SEARCH':
+    case SearchActions.UPDATE_SEARCH:
       return action.search;
     default:
       return state;
