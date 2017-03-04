@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module BuildmycrateSandbox
   class Application < Rails::Application
     config.serve_static_assets = true
+    # Transpile es6 and react assets prior to asset compilation.
     config.browserify_rails.commandline_options = '-t [babelify]'
   end
 end

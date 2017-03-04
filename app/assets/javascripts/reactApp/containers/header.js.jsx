@@ -17,10 +17,12 @@ const searchIsEmpty = (search = {}) => (
 );
 
 const Header = connect(state => state)(({ search }) => (
-  <div>
-    <h1 className="search-header text-center">
-      {searchIsEmpty(search) ? 'Build My Crate' : ''}
-    </h1>
+  <div className="row section">
+    <div className="col-xs-12 col-lg-offset-2 col-lg-8">
+      <h1 className="search-header text-center">
+        {searchIsEmpty(search) ? 'Build My Crate' : ''}
+      </h1>
+    </div>
   </div>
 ));
 

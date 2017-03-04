@@ -20,7 +20,8 @@ class SoundCloudConnector
     @tracks.select do |track|
       matches = @filters.map do |key, value|
         next unless value.present?
-        track[key] == value
+        track[key].downcase! if track[key].is_a?(String)
+        track[key] == value.downcase
       end
       !matches.include? false
     end

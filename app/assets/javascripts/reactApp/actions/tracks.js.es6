@@ -8,7 +8,7 @@ export default class TracksActions {
       dispatch(action);
       // TODO: Replace hardcoded URL:
       const url = '/tracks.json';
-      return $.ajax(url, search).success(data =>
+      return $.ajax(url, { data: search }).success(data =>
         dispatch(self.receive(search, data))
       );
     };
