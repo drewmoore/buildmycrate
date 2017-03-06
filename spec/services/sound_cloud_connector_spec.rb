@@ -1,9 +1,9 @@
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe SoundCloudConnector, type: :service do
-  bpm_min       = 120
-  bpm_max       = 140
-  key_signature = 'A'
+  bpm_min       = 80
+  bpm_max       = 160
+  key_signature = 'c'
 
   let :soundcloud do
     VCR.use_cassette :soundcloud_success do

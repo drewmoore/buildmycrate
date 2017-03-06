@@ -46,7 +46,7 @@ class SoundCloudConnector
           '/tracks', limit: self.class.result_limit,
           offset: request_count * self.class.result_limit,
           bpm: {
-            from: query[:bpm_min], to: bpm_max
+            from: query[:bpm_min].to_s, to: bpm_max.to_s 
           }
         )
       rescue => e

@@ -1,9 +1,9 @@
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe TracksController, type: :controller do
   bpm_min       = 100
   bpm_max       = 130
-  key_signature = 'C'
+  key_signature = 'c'
 
   describe 'GET #index' do
     before do
