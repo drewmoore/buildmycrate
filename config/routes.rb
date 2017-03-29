@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   # For testing react rewrite.
   get '/react', to: 'home#react'
+  get '/search', to: 'tracks#search'
 end

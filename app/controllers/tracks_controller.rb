@@ -13,4 +13,7 @@ class TracksController < ApplicationController
       redirect_to controller: :home, action: :index
     end
   end
+
+  def search
+  end
 end

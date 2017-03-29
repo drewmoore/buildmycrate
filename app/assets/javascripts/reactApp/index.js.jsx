@@ -1,18 +1,24 @@
-import React        from 'react';
-import { render }   from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import thunk        from 'redux-thunk';
-import rootReducer  from './reducers/index.js';
-import App          from './components/app.js.jsx';
-import SpinnerTimer from './timers/spinner.js.es6';
+import React          from 'react';
+import { render }     from 'react-dom';
+import { Provider }   from 'react-redux';
+import { createStore, applyMiddleware }      from 'redux';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
+import createHistory  from 'history/createBrowserHistory';
+import thunk          from 'redux-thunk';
+import rootReducer    from './reducers/index.js';
+import App            from './components/app.js.jsx';
+import SpinnerTimer   from './timers/spinner.js.es6';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const history    = createHistory();
+const middleWare = applyMiddleware(thunk, routerMiddleware(history));
+const store      = createStore(rootReducer, middleWare);
 
-const renderApp = () => {
+const renderApp  = () => {
   render(
     <Provider store={store}>
-      <App />
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
   );

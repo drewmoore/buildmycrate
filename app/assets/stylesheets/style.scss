@@ -134,6 +134,15 @@ button {
   @media (min-width: $screen-lg-min) {
     max-width: 50%;
   }
+  &.small {
+    max-width: 50%;
+    @media (orientation: landscape) {
+      max-width: 33%;
+    }
+    @media (min-width: $screen-lg-min) {
+      max-width: 12%;
+    }
+  }
 }
 
 .track {
