@@ -14,6 +14,7 @@ class TracksController < ApplicationController
     end
   end
 
+  # TODO: render whatever. delete unneeded view file
   def search
   end
 end

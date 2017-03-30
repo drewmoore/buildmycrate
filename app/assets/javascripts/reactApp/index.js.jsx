@@ -11,9 +11,9 @@ import SpinnerTimer   from './timers/spinner.js.es6';
 
 const history    = createHistory();
 const middleWare = applyMiddleware(thunk, routerMiddleware(history));
-const store      = createStore(rootReducer, middleWare);
 
-const renderApp  = () => {
+const renderApp  = (initialState) => {
+  const store = createStore(rootReducer(initialState), middleWare);
   render(
     <Provider store={store}>
       <ConnectedRouter history={history}>

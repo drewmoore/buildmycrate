@@ -1,5 +1,4 @@
 import { push }      from 'react-router-redux';
-import TracksActions from './tracks.js.es6';
 
 export default class SearchActions {
   static UPDATE_SEARCH() { return 'UPDATE_SEARCH'; }
@@ -8,9 +7,8 @@ export default class SearchActions {
     const self   = this;
     const action = { type: self.UPDATE_SEARCH, search };
     return (dispatch) => {
-      dispatch(TracksActions.fetch(search));
-      // TODO: replace hardcoded url:
-      dispatch(push('/search'));
+      // TODO: replace hardcoded url. Move to a path helper for params.
+      dispatch(push(`/search?${$.param(search)}`));
       return action;
     };
   }
