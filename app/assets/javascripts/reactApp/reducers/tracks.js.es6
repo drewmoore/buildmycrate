@@ -19,7 +19,6 @@ const fetchTrackState = (state, action) => {
       newState = {
         isFetching:  false,
         items:       action.tracks.map(assignId),
-        lastUpdated: action.receivedAt
       };
       break;
     default:
