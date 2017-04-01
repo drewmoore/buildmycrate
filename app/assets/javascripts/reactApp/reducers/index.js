@@ -4,7 +4,7 @@ import search from './search.js.es6';
 import tracks from './tracks.js.es6';
 
 const rootReducer = initialState => (
-  combineReducers({ search: search(initialState), tracks, router: routerReducer })
+  combineReducers({ search: search(initialState), tracks, routing: routerReducer })
 );
 
 export default rootReducer;
