@@ -3,8 +3,6 @@ import { routerReducer }   from 'react-router-redux';
 import search from './search.js.es6';
 import tracks from './tracks.js.es6';
 
-const rootReducer = initialState => (
-  combineReducers({ search: search(initialState), tracks, routing: routerReducer })
-);
+const rootReducer = combineReducers({ search, tracks, routing: routerReducer });
 
 export default rootReducer;
