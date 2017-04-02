@@ -30,8 +30,8 @@
           <div id="root"></div>
         </div>
       </div>
-      <%= render partial: 'layouts/react', locals: { initial_state: @initial_state } %>
       <%= yield %>
     </div>
+    <%= render partial: 'layouts/react', locals: { initial_state: @initial_state } %>
   </body>
 </html>

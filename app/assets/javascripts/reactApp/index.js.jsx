@@ -3,7 +3,7 @@ import { render }            from 'react-dom';
 import { Provider }          from 'react-redux';
 import thunk                 from 'redux-thunk';
 import { createStore, applyMiddleware }           from 'redux';
-import { Router, Route, browserHistory }          from 'react-router';
+import { Router, Route, IndexRoute, browserHistory }          from 'react-router';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import rootReducer           from './reducers/index.js';
 import Home                  from './components/home.js.jsx';
@@ -18,8 +18,10 @@ const renderApp  = (initialState) => {
   render(
     <Provider store={store}>
       <Router history={history}>
-        <Route exact path="/react"  component={Home} />
-        <Route exact path="/search" component={SearchResultTrackList} />
+        <Route path="/">
+          <IndexRoute component={Home} />
+          <Route path="search" component={SearchResultTrackList} />
+        </Route>
       </Router>
     </Provider>,
     document.getElementById('root')
