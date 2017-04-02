@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
-import Track  from './track.js.jsx';
-import Images from '../helpers/images.js.es6';
+import SearchSchema from '../schemas/search.js.es6';
+import Track        from './track.js.jsx';
+import Images       from '../helpers/images.js.es6';
 
 import TracksActions from '../actions/tracks.js.es6';
 
@@ -58,11 +59,7 @@ TrackList.propTypes = {
   tracks: PropTypes.arrayOf(
     PropTypes.shape(Track.propTypes).isRequired
   ).isRequired,
-  search: PropTypes.shape({
-    bpm_min:       PropTypes.string.optional,
-    bpm_max:       PropTypes.string.optional,
-    key_signature: PropTypes.string.optional
-  }).isRequired,
+  search:     SearchSchema.PropTypes.isRequired,
   dispatch:   PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
 };

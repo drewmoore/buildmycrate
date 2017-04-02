@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
+import SearchSchema         from '../schemas/search.js.es6';
 import SearchHandler        from '../handlers/search.js.es6';
 import Images               from '../helpers/images.js.es6';
 
-const SearchForm = ({ isFetching, dispatch }) => (
+const SearchForm = ({ search, isFetching, dispatch }) => (
   <div className="row">
     <div className="col-xs-12 col-lg-offset-2 col-lg-8">
       <div className="row section console">
@@ -25,7 +26,7 @@ const SearchForm = ({ isFetching, dispatch }) => (
                   </label>
                   <div className="col-xs-7">
                     <input
-                      className="form-control" type="number"
+                      className="form-control" type="number" defaultValue={search.bpm_min || ''}
                       id="bpm_min" name="bpm_min" required="true"
                     />
                   </div>
@@ -38,7 +39,10 @@ const SearchForm = ({ isFetching, dispatch }) => (
                     Max:
                   </label>
                   <div className="col-xs-7">
-                    <input className="form-control" type="number" id="bpm_max" name="bpm_max" />
+                    <input
+                      className="form-control" type="number"
+                      id="bpm_max" name="bpm_max" defaultValue={search.bpm_max || ''}
+                    />
                   </div>
                 </div>
               </fieldset>
@@ -51,7 +55,10 @@ const SearchForm = ({ isFetching, dispatch }) => (
                 Key Signature:
               </label>
               <div className="col-xs-7">
-                <select className="form-control" id="key_signature" name="key_signature">
+                <select
+                  className="form-control" id="key_signature" name="key_signature"
+                  defaultValue={search.key_signature}
+                >
                   <option value="" />
                   {['a', 'b', 'c', 'd', 'e', 'f', 'g'].map(baseNote => (
                     [['b', '♭'], ['', '♮'], ['#', '♯']].map(accidentalSet => (
@@ -85,8 +92,13 @@ const SearchForm = ({ isFetching, dispatch }) => (
 );
 
 SearchForm.propTypes = {
+  search:     SearchSchema.PropTypes.isRequired,
   isFetching: PropTypes.bool.isRequired,
   dispatch:   PropTypes.func.isRequired
+};
+
+SearchForm.defaultProps = {
+  search: SearchSchema.Defaults
 };
 
 export default SearchForm;
