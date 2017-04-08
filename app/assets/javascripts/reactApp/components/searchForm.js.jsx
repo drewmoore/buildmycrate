@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
 import SearchSchema         from '../schemas/search.js.es6';
-import SearchHandler        from '../handlers/search.js.es6';
 import Images               from '../helpers/images.js.es6';
 
-const SearchForm = ({ search, isFetching, dispatch }) => (
+const SearchForm = ({ search, isFetching, submitForm }) => (
   <div className="row">
     <div className="col-xs-12 col-lg-offset-2 col-lg-8">
       <div className="row section console">
@@ -11,7 +10,7 @@ const SearchForm = ({ search, isFetching, dispatch }) => (
           <form
             id="search"
             className="form-horizontal"
-            onSubmit={e => SearchHandler.formSubmit(e, dispatch)}
+            onSubmit={submitForm}
           >
             <div className="form-group">
               <fieldset className="col-xs-12">
@@ -94,7 +93,7 @@ const SearchForm = ({ search, isFetching, dispatch }) => (
 SearchForm.propTypes = {
   search:     SearchSchema.PropTypes.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  dispatch:   PropTypes.func.isRequired
+  submitForm: PropTypes.func.isRequired
 };
 
 SearchForm.defaultProps = {
