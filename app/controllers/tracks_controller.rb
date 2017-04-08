@@ -1,4 +1,5 @@
 class TracksController < ApplicationController
+  # TODO: merge tracks#index and search
   def index
 
     # TODO: RESTORE

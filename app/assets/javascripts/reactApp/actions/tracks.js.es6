@@ -1,4 +1,5 @@
-import fetch from 'isomorphic-fetch';
+import fetch  from 'isomorphic-fetch';
+import Routes from '../routes.js.es6';
 
 export default class TracksActions {
   static FETCH_TRACKS() { return 'FETCH_TRACKS'; }
@@ -8,9 +9,8 @@ export default class TracksActions {
     const action = { type: self.FETCH_TRACKS };
     return (dispatch) => {
       dispatch(action);
-      // TODO: Replace hardcoded URL:
-      const url = '/tracks.json';
-      return fetch(`${url}?${$.param(search)}`)
+      // TODO: merge tracks#index and search
+      return fetch(Routes.tracks.index({ search }))
         .then(response => response.json())
         .then(json => dispatch(self.receive(json)));
     };
