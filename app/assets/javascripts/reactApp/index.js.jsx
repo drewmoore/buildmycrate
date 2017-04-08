@@ -12,7 +12,7 @@ import SpinnerTimer          from './timers/spinner.js.es6';
 
 const middleWare = applyMiddleware(thunk, routerMiddleware(browserHistory));
 
-const renderApp  = (initialState) => {
+const renderApp  = (initialState = {}) => {
   const store   = createStore(rootReducer, initialState, middleWare);
   const history = syncHistoryWithStore(browserHistory, store);
   render(

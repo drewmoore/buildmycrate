@@ -7,7 +7,9 @@ import TracksActions from '../actions/tracks.js.es6';
 
 class TrackList extends Component {
   componentDidMount() {
-    this.props.dispatch(TracksActions.fetch(this.props.search));
+    if (!this.props.tracks.length && !this.props.isFetching) {
+      this.props.dispatch(TracksActions.fetch(this.props.search));
+    }
   }
 
   render() {

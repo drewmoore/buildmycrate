@@ -17,8 +17,8 @@ const fetchTrackState = (state, action) => {
   switch (action.status) {
     case 'success':
       newState = {
-        isFetching:  false,
-        items:       action.tracks.map(assignId),
+        isFetching: false,
+        items:      action.tracks.map(assignId),
       };
       break;
     default:
