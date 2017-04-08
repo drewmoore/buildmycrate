@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 export default class TracksActions {
   static FETCH_TRACKS() { return 'FETCH_TRACKS'; }
 
@@ -8,9 +10,9 @@ export default class TracksActions {
       dispatch(action);
       // TODO: Replace hardcoded URL:
       const url = '/tracks.json';
-      return $.ajax(url, { data: search }).success(data =>
-        dispatch(self.receive(data))
-      );
+      return fetch(`${url}?${$.param(search)}`)
+        .then(response => response.json())
+        .then(json => dispatch(self.receive(json)));
     };
   }
 
