@@ -1,8 +1,16 @@
 export default class Routes {
   static get tracks() {
     return {
-      search({ search }) {
-        return `/search?${$.param(search)}`;
+      search(params) {
+        // TODO: modularize into class.
+        // TODO: allow permitted params.
+        let query;
+        if (typeof params === 'string') {
+          query = params;
+        } else {
+          query = $.param(params.search);
+        }
+        return `/search?${query}`;
       },
       // TODO: merge tracks#index and search
       index({ search }) {

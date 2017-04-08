@@ -4,12 +4,8 @@ import Routes   from '../routes.js.es6';
 export default class SearchHandler {
   static formSubmit(event, dispatch) {
     event.preventDefault();
-    const $form = $(event.target);
-    const search = {
-      bpm_min:       $form.find('input[name="bpm_min"]').val(),
-      bpm_max:       $form.find('input[name="bpm_max"]').val(),
-      key_signature: $form.find('select[name="key_signature"]').val()
-    };
-    dispatch(push(Routes.tracks.search({ search })));
+    // Serialize the form to a query string and generate url for search results view.
+    // Dispatch the change of location.
+    dispatch(push(Routes.tracks.search($(event.target).serialize())));
   }
 }
