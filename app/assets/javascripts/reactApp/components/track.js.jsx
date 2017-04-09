@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import TrackSchema          from '../schemas/track.js.es6';
 import Images               from '../helpers/images.js.es6';
 
 const Track = ({
@@ -48,24 +49,7 @@ const Track = ({
   </div>
 );
 
-Track.propTypes = {
-  title:        PropTypes.string,
-  bpm:          PropTypes.number,
-  user:         PropTypes.shape({ username: PropTypes.string }),
-  keySignature: PropTypes.string,
-  downloadUrl:  PropTypes.string,
-  purchaseUrl:  PropTypes.string,
-  streamable:   PropTypes.bool
-};
-
-Track.defaultProps = {
-  title:        '',
-  bpm:          null,
-  user:         { username: '' },
-  keySignature: '',
-  downloadUrl:  '',
-  purchaseUrl:  '',
-  streamable:   ''
-};
+Track.propTypes    = TrackSchema.PropTypes.isRequired;
+Track.defaultProps = TrackSchema.Defaults;
 
 export default Track;

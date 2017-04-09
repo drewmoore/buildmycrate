@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import SearchSchema from '../schemas/search.js.es6';
+import TrackSchema  from '../schemas/track.js.es6';
 import Track        from './track.js.jsx';
 import Images       from '../helpers/images.js.es6';
 
@@ -58,9 +59,7 @@ class TrackList extends Component {
 }
 
 TrackList.propTypes = {
-  tracks: PropTypes.arrayOf(
-    PropTypes.shape(Track.propTypes).isRequired
-  ).isRequired,
+  tracks:     PropTypes.arrayOf(TrackSchema.PropTypes.isRequired).isRequired,
   search:     SearchSchema.PropTypes.isRequired,
   dispatch:   PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,

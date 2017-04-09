@@ -6,6 +6,7 @@ const mapStateToProps = state => ({
   search:     state.search,
   isFetching: state.tracks.isFetching
 });
-const SearchResultTrackList = connect(mapStateToProps, null)(TrackList);
+
+const SearchResultTrackList = connect(mapStateToProps)(TrackList);
 
 export default SearchResultTrackList;
