@@ -1,15 +1,10 @@
-import TracksActions from '../actions/tracks.js.es6';
+import { toCollection }  from './helpers/index.js.es6';
+import TracksActions     from '../actions/tracks.js.es6';
+import TurntablesActions from '../actions/turntables.js.es6';
 
 const defaultState = {
   isFetching: false,
-  items:      []
-};
-
-let id = 1;
-
-const assignId = (track) => {
-  id += 1;
-  return Object.assign(track, { id });
+  items:      {}
 };
 
 const fetchTrackState = (state, action) => {
@@ -18,7 +13,7 @@ const fetchTrackState = (state, action) => {
     case 'success':
       newState = {
         isFetching: false,
-        items:      action.tracks.map(assignId),
+        items:      toCollection(action.tracks, { turntableIds: [] }),
       };
       break;
     default:
@@ -27,10 +22,21 @@ const fetchTrackState = (state, action) => {
   return Object.assign({}, state, newState);
 };
 
+const associateTurntable = (state, action) => {
+  const newState = Object.assign({}, state);
+  const track    = newState.items[action.trackId];
+  if (track.turntableIds.indexOf(action.turntableId) === -1) {
+    track.turntableIds.push(action.turntableId);
+  }
+  return newState;
+};
+
 const tracks = (state = defaultState, action = {}) => {
   switch (action.type) {
     case TracksActions.FETCH_TRACKS:
       return fetchTrackState(state, action);
+    case TurntablesActions.ASSOCIATE_TRACK:
+      return associateTurntable(state, action);
     default:
       return state;
   }

@@ -1,9 +1,11 @@
-import React, { PropTypes } from 'react';
-import TrackSchema          from '../schemas/track.js.es6';
-import Images               from '../helpers/images.js.es6';
+import React                  from 'react';
+import TrackSchema            from '../schemas/track.js.es6';
+import TurntableIconContainer from '../containers/turntableIcon.js.jsx';
+import Images                 from '../helpers/images.js.es6';
 
 const Track = ({
-  title, user, bpm, keySignature, downloadUrl, purchaseUrl, streamable
+  id, title, user, bpm, keySignature, downloadUrl, purchaseUrl,
+  streamable, turntables
 }) => (
   <div className="row track">
     <div className="col-xs-3 col-lg-4">{title}</div>
@@ -31,18 +33,9 @@ const Track = ({
       }
       {streamable &&
         <span>
-          <img
-            src={Images.turntableLeft()}
-            className="track-button"
-            alt="Button to load left turntable"
-            data-hook="turntable-loader"
-          />
-          <img
-            src={Images.turntableRight()}
-            className="track-button"
-            alt="Button to load right turntable"
-            data-hook="turntable-loader"
-          />
+          {turntables.map(turntable =>
+            <TurntableIconContainer key={turntable.id} {...turntable} />
+          )}
         </span>
       }
     </div>

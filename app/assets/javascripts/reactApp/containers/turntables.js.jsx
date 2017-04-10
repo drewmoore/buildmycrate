@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
-  state
+  turntables: Object.values(state.turntables.items)
 });
 
 const Turntables = connect(mapStateToProps)(() => (

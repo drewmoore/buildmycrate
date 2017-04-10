@@ -1,14 +1,14 @@
-import React                 from 'react';
-import { render }            from 'react-dom';
-import { Provider }          from 'react-redux';
-import thunk                 from 'redux-thunk';
+import React         from 'react';
+import { render }    from 'react-dom';
+import { Provider }  from 'react-redux';
+import thunk         from 'redux-thunk';
 import { createStore, applyMiddleware }              from 'redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware }    from 'react-router-redux';
-import rootReducer           from './reducers/index.js';
-import Home                  from './components/home.js.jsx';
-import SearchResults         from './components/searchResults.js.jsx';
-import SpinnerTimer          from './timers/spinner.js.es6';
+import rootReducer   from './reducers/index.js';
+import Home          from './components/home.js.jsx';
+import SearchResults from './components/searchResults.js.jsx';
+import SpinnerTimer  from './timers/spinner.js.es6';
 
 const middleWare = applyMiddleware(thunk, routerMiddleware(browserHistory));
 
