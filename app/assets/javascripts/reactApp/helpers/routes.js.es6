@@ -1,4 +1,8 @@
-export default class Routes {
+/*
+ * Helper for communication between client and server. Better syncs routes between
+ * React and Rails.
+ */
+export default class RouteHelper {
   static get tracks() {
     return {
       search(params) {
