@@ -16,8 +16,7 @@ const renderApp  = (initialState = {}) => {
   const history = syncHistoryWithStore(browserHistory, store);
   render(
     <Provider store={store}>
-      {/* Manually render Routes component so that Provider is a direct parent of Router */}
-      {new Routes({ history }).render()}
+      <Routes history={history} />
     </Provider>,
     document.getElementById('root')
   );
