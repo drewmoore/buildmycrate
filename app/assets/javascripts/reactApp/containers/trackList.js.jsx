@@ -7,6 +7,6 @@ const mapStateToProps = state => ({
   isFetching: state.tracks.isFetching
 });
 
-const SearchResultTrackList = connect(mapStateToProps)(TrackList);
+const TrackListContainer = connect(mapStateToProps)(TrackList);
 
-export default SearchResultTrackList;
+export default TrackListContainer;
