@@ -11,6 +11,7 @@ export default class TrackSchema {
       artworkUrl:   PropTypes.string,
       downloadUrl:  PropTypes.string,
       purchaseUrl:  PropTypes.string,
+      streamUrl:    PropTypes.string,
       streamable:   PropTypes.bool.isRequired
     });
   }

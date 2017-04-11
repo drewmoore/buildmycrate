@@ -1,3 +1,4 @@
+/* global SC */ // Allow soundcloud's SDK as a global. It is loaded via the gem used by server.
 import React         from 'react';
 import { render }    from 'react-dom';
 import { Provider }  from 'react-redux';
@@ -10,9 +11,12 @@ import Routes        from './components/routes.js.jsx';
 import SpinnerTimer  from './timers/spinner.js.es6';
 
 const middleWare = applyMiddleware(thunk, routerMiddleware(browserHistory));
-
-const renderApp  = (initialState = {}) => {
-  const store   = createStore(rootReducer, initialState, middleWare);
+const renderApp  = (initializers = {}) => {
+  SC.initialize({
+    client_id:    initializers.soundcloud.client_id,
+    redirect_uri: `${window.location.host}/callback`
+  });
+  const store   = createStore(rootReducer, {}, middleWare);
   const history = syncHistoryWithStore(browserHistory, store);
   render(
     <Provider store={store}>

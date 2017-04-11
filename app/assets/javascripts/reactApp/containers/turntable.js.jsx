@@ -16,11 +16,21 @@ const mapStateToProps = (state, ownProps) => {
     waveformUrl:         track.waveformUrl,
     downloadUrl:         track.downloadUrl,
     purchaseUrl:         track.purchaseUrl,
-    streamUrl:           track.streamUrl
+    streamUrl:           track.streamUrl,
+    playable:            ownProps.audioUrl && ownProps.audioUrl.length
   };
   return Object.assign(props, mapTrackToProps(track));
 };
 
-const TurntableContainer = connect(mapStateToProps)(Turntable);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  play() {
+    const audio = document.getElementById(`audio-for-turntable-${ownProps.id}`);
+    if (audio) {
+      audio.play();
+    }
+  }
+});
+
+const TurntableContainer = connect(mapStateToProps, mapDispatchToProps)(Turntable);
 
 export default TurntableContainer;

@@ -8,8 +8,12 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   loadTurntable() {
-    const association = { turntableId: ownProps.id, trackId: ownProps.trackId };
+    const association = {
+      turntable: ownProps,
+      track:     { id: ownProps.trackId, streamUrl: ownProps.trackStreamUrl }
+    };
     dispatch(TurntablesActions.associateTrack(association));
+    dispatch(TurntablesActions.fetchAudio(association));
   }
 });
 

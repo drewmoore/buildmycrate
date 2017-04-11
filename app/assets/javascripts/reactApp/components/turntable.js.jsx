@@ -3,9 +3,9 @@ import Images          from '../helpers/images.js.es6';
 import TurntableSchema from '../schemas/turntable.js.es6';
 
 const Turntable = ({
-  id, title, artist, waveformUrl, downloadUrl, purchaseUrl, streamUrl,
+  id, title, artist, waveformUrl, downloadUrl, purchaseUrl, audioUrl,
   imageDisplay, keyDisplay, timeElapsedDisplay, timeDurationDisplay,
-  bpmDisplay, purchaseable, downloadable
+  bpmDisplay, purchaseable, downloadable, playable, play
 }) => (
   <div className="col-xs-12 col-md-6">
     <div className={`row turntable-container ${id === 0 ? 'alpha' : 'omega'}`}>
@@ -58,7 +58,12 @@ const Turntable = ({
         <div className="row">
           <div className="col-xs-12 controls">
             {/* TODO: examine and probably remove data-hooks */}
-            <img src={Images.playButton()}  data-hook="play-button"  alt="Play Button" />
+            <img
+              src={Images.playButton()}
+              onClick={play}
+              data-hook="play-button"
+              alt="Play Button"
+            />
             <img src={Images.pauseButton()} data-hook="pause-button" alt="Pause Button" />
             {downloadable &&
               <img
@@ -83,9 +88,11 @@ const Turntable = ({
                 />
               </a>
             }
-            <audio data-hook="track-audio">
-              <source src={streamUrl} />
-            </audio>
+            {playable &&
+              <audio id={`audio-for-turntable-${id}`} data-hook="track-audio">
+                <source src={audioUrl} />
+              </audio>
+            }
           </div>
         </div>
       </div>

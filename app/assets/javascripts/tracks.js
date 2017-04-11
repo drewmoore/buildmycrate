@@ -5,7 +5,9 @@
   document.addEventListener('turbolinks:load', initialize);
 
   function initialize() {
-    initSoundCloud();
+
+    // initSoundCloud();
+
     defineEvents();
     initializeTurntables();
     Handlebars.registerHelper('timeDisplay', timeDisplay);

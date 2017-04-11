@@ -19,6 +19,6 @@
       </div>
       <%= yield %>
     </div>
-    <%= render partial: 'layouts/react' %>
+    <%= render partial: 'layouts/react', locals: { initializers: @initializers } %>
   </body>
 </html>

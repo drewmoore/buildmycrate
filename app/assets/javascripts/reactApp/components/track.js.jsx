@@ -4,8 +4,8 @@ import TurntableIconContainer from '../containers/turntableIcon.js.jsx';
 import Images                 from '../helpers/images.js.es6';
 
 const Track = ({
-  title, user, bpm, keySignature, downloadUrl, purchaseUrl, downloadable, purchaseable,
-  streamable, turntables
+  id, title, user, bpm, keySignature, downloadUrl, purchaseUrl, streamUrl,
+  downloadable, purchaseable, streamable, turntables
 }) => (
   <div className="row track">
     <div className="col-xs-3 col-lg-4">{title}</div>
@@ -34,7 +34,12 @@ const Track = ({
       {streamable &&
         <span>
           {turntables.map(turntable =>
-            <TurntableIconContainer key={turntable.id} {...turntable} />
+            <TurntableIconContainer
+              key={turntable.id}
+              trackId={id}
+              trackStreamUrl={streamUrl}
+              {...turntable}
+            />
           )}
         </span>
       }
