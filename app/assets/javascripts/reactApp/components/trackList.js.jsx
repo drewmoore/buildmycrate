@@ -15,7 +15,7 @@ class TrackList extends Component {
 
   render() {
     return (
-      <div className="row section">
+      <div className="row section half-bottom">
         <div className="col-xs-12 col-lg-offset-1 col-lg-10">
           <div className="row section console">
             <div className="col-xs-12">

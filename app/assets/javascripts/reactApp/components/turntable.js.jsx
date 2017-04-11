@@ -3,11 +3,11 @@ import Images          from '../helpers/images.js.es6';
 import TurntableSchema from '../schemas/turntable.js.es6';
 
 const Turntable = ({
-  track, imageDisplay, keyDisplay, timeElapsedDisplay, timeDurationDisplay,
+  id, track, imageDisplay, keyDisplay, timeElapsedDisplay, timeDurationDisplay,
   purchaseable, downloadable
 }) => (
   <div className="col-xs-12 col-md-6">
-    <div className="row turntable-container">
+    <div className={`row turntable-container ${id === 0 ? 'alpha' : 'omega'}`}>
       <div className="col-xs-12 section console">
         <div className="row">
           <div className="col-xs-3">
@@ -34,9 +34,9 @@ const Turntable = ({
         </div>
         <div className="row">
           <div className="col-xs-12 text-right">
-            <small data-hook="time-elapsed">{timeElapsedDisplay}</small>
+            <small data-hook="time-elapsed">{timeElapsedDisplay} </small>
             <small> | </small>
-            <small>{timeDurationDisplay}</small>
+            <small> {timeDurationDisplay}</small>
           </div>
         </div>
         <div className="row">

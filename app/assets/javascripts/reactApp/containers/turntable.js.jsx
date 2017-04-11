@@ -8,7 +8,6 @@ const mapStateToProps = (state, ownProps) => {
   const props = {
     imageDisplay:        track.image || Images.trackDefault(),
     keyDisplay:          !track.key ? '' : `Key: ${track.key}`,
-    // TODO: move global timeDisplay to local helper.
     timeElapsedDisplay:  timeDisplay(),
     timeDurationDisplay: timeDisplay(track.duration)
   };

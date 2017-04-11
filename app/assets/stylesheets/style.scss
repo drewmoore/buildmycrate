@@ -106,6 +106,9 @@ button {
   @media (min-width: $screen-lg-min) {
     padding-top:    2em;
     padding-bottom: 2em;
+    &.half-bottom {
+      padding-bottom: 1em;
+    }
   }
 }
 
@@ -156,8 +159,17 @@ button {
 }
 
 .turntable-container {
-  padding:   0.5em;
+  padding:   0.25em 0em;
   font-size: 1.3em;
+  @media (min-width: $screen-md-min) {
+    padding: 0.25em;
+    &.alpha {
+      padding-left: 0px;
+    }
+    &.omega {
+      padding-right: 0px;
+    }
+  }
 }
 
 .track-button {
