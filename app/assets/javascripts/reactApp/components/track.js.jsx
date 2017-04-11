@@ -4,7 +4,7 @@ import TurntableIconContainer from '../containers/turntableIcon.js.jsx';
 import Images                 from '../helpers/images.js.es6';
 
 const Track = ({
-  id, title, user, bpm, keySignature, downloadUrl, purchaseUrl,
+  title, user, bpm, keySignature, downloadUrl, purchaseUrl, downloadable, purchaseable,
   streamable, turntables
 }) => (
   <div className="row track">
@@ -13,7 +13,7 @@ const Track = ({
     <div className="col-xs-3 col-lg-1">{bpm}</div>
     <div className="col-xs-3 col-lg-1">{keySignature}</div>
     <div className="col-xs-3 col-lg-2 text-right">
-      {downloadUrl && downloadUrl.length &&
+      {downloadable &&
         <img
           src={Images.downArrow()}
           className="track-button"
@@ -22,7 +22,7 @@ const Track = ({
           data-download-url={downloadUrl}
         />
       }
-      {purchaseUrl && purchaseUrl.length &&
+      {purchaseable &&
         <a href={purchaseUrl} target="_blank" className="purchase-link" rel="noopener noreferrer">
           <img
             src={Images.dollarSign()}

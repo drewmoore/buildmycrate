@@ -32,4 +32,16 @@ export default class Images {
   static turntableRight() {
     return imagePaths().turntableRight;
   }
+
+  static trackDefault() {
+    return imagePaths().trackDefault;
+  }
+
+  static playButton() {
+    return imagePaths().playButton;
+  }
+
+  static pauseButton() {
+    return imagePaths().pauseButton;
+  }
 }
