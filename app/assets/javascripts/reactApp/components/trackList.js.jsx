@@ -59,7 +59,7 @@ class TrackList extends Component {
 }
 
 TrackList.propTypes = {
-  tracks:     PropTypes.arrayOf(TrackSchema.PropTypes.isRequired).isRequired,
+  tracks:     PropTypes.arrayOf(TrackSchema.PropTypes).isRequired,
   search:     SearchSchema.PropTypes.isRequired,
   dispatch:   PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,

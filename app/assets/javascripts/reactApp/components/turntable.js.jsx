@@ -3,8 +3,9 @@ import Images          from '../helpers/images.js.es6';
 import TurntableSchema from '../schemas/turntable.js.es6';
 
 const Turntable = ({
-  id, track, imageDisplay, keyDisplay, timeElapsedDisplay, timeDurationDisplay,
-  purchaseable, downloadable
+  id, title, artist, waveformUrl, downloadUrl, purchaseUrl, streamUrl,
+  imageDisplay, keyDisplay, timeElapsedDisplay, timeDurationDisplay,
+  bpmDisplay, purchaseable, downloadable
 }) => (
   <div className="col-xs-12 col-md-6">
     <div className={`row turntable-container ${id === 0 ? 'alpha' : 'omega'}`}>
@@ -16,15 +17,15 @@ const Turntable = ({
           <div className="col-xs-9">
             <div className="row">
               <div className="col-xs-9 fat-bottom">
-                <span>{track.title}</span>
+                <span>{title}</span>
               </div>
               <div className="col-xs-3 fat-bottom text-right">
-                <span>{!(track.bpm && track.bpm.length) ? '' : `${track.bpm} bpm`}</span>
+                <span>{bpmDisplay}</span>
               </div>
             </div>
             <div className="row">
               <div className="col-xs-9">
-                <span>{track.artist}</span>
+                <span>{artist}</span>
               </div>
               <div className="col-xs-3 text-right">
                 <span>{keyDisplay}</span>
@@ -42,13 +43,15 @@ const Turntable = ({
         <div className="row">
           <div className="col-xs-12 waveform-container">
             <div className="relative">
-              <div className="turntable-waveform-progress" data-hook="turntable-waveform-progress">
-                <img
-                  className="turntable-track-waveform-image"
-                  src={track.waveform} alt="Track Waveform"
-                  data-hook="turntable-track-waveform"
-                />
-              </div>
+              <div
+                className="turntable-waveform-progress"
+                data-hook="turntable-waveform-progress"
+              />
+              <img
+                className="turntable-track-waveform-image"
+                src={waveformUrl} alt="Track Waveform"
+                data-hook="turntable-track-waveform"
+              />
             </div>
           </div>
         </div>
@@ -61,14 +64,14 @@ const Turntable = ({
               <img
                 src={Images.downArrow()}
                 data-hook="download-button"
-                data-download-url={track.downloadUrl}
+                data-download-url={downloadUrl}
                 className="track-button"
                 alt="Download Track Button"
               />
             }
             {purchaseable &&
               <a
-                href={track.purchaseUrl}
+                href={purchaseUrl}
                 className="purchase-link"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -81,7 +84,7 @@ const Turntable = ({
               </a>
             }
             <audio data-hook="track-audio">
-              <source src={track.audioUrl} />
+              <source src={streamUrl} />
             </audio>
           </div>
         </div>

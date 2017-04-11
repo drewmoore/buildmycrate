@@ -3,15 +3,15 @@ import { PropTypes } from 'react';
 export default class TrackSchema {
   static get PropTypes() {
     return PropTypes.shape({
-      id:           PropTypes.integer,
-      turntables:   PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.integer })),
-      title:        PropTypes.string,
-      bpm:          PropTypes.number,
-      user:         PropTypes.shape({ username: PropTypes.string }),
+      id:           PropTypes.number.isRequired,
+      title:        PropTypes.string.isRequired,
+      bpm:          PropTypes.number.isRequired,
+      user:         PropTypes.shape({ username: PropTypes.string }).isRequired,
       keySignature: PropTypes.string,
+      artworkUrl:   PropTypes.string,
       downloadUrl:  PropTypes.string,
       purchaseUrl:  PropTypes.string,
-      streamable:   PropTypes.bool
+      streamable:   PropTypes.bool.isRequired
     });
   }
 
@@ -23,7 +23,7 @@ export default class TrackSchema {
       keySignature: '',
       downloadUrl:  '',
       purchaseUrl:  '',
-      streamable:   ''
+      streamable:   false
     };
   }
 }
