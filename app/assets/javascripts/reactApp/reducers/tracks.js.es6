@@ -1,3 +1,4 @@
+import update           from 'immutability-helper';
 import { toCollection } from './helpers/index.js.es6';
 import TracksActions    from '../actions/tracks.js.es6';
 
@@ -5,8 +6,6 @@ const defaultState = {
   isFetching: false,
   items:      {}
 };
-
-const findTrack = (state, action) => (state.items[action.trackId]);
 
 const fetchTrackState = (state, action) => {
   let newState;
@@ -20,22 +19,20 @@ const fetchTrackState = (state, action) => {
     default:
       newState = { isFetching: true };
   }
-  return Object.assign({}, state, newState);
+  return update(state, { $merge: newState });
 };
 
 const fetchAudioState = (state, action) => {
-  const newState  = Object.assign({}, state);
-  const track     = findTrack(newState, action);
+  let updatedTrack;
   switch (action.status) {
     case 'success':
-      track.isFetching = false;
-      track.audioUrl   = action.audioUrl;
+      updatedTrack = { isFetching: false, audioUrl: action.audioUrl };
       break;
     default:
-      track.isFetching = true;
+      updatedTrack = { isFetching: true };
       break;
   }
-  return newState;
+  return update(state, { items: { [action.trackId]: { $merge: updatedTrack } } });
 };
 
 const tracks = (state = defaultState, action = {}) => {

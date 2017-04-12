@@ -1,7 +1,8 @@
 // Extract track props for components that use tracks.
 export const mapTrackToProps = track => ({
   downloadable: track.downloadUrl && track.downloadUrl.length,
-  purchaseable: track.purchaseUrl && track.purchaseUrl.length
+  purchaseable: track.purchaseUrl && track.purchaseUrl.length,
+  playable:     track.audioUrl && track.audioUrl.length
 });
 
 // Display current track time and track duration in familiar LCD-appearing format.
