@@ -13,7 +13,8 @@ export const mapTrackToDispatch = (dispatch, track) => ({
   // TODO: dispatch action to set new track field 'downloaded'.
   download() {
     const url = `${track.downloadUrl}?client_id=${AppConfig.soundcloudClientId}`;
-    window.location.replace(url);
+    const $iframe = $('<iframe>').attr('src', url);
+    $('body').append($iframe);
   }
 });
 
