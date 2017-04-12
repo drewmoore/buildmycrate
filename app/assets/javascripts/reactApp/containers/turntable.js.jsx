@@ -17,7 +17,8 @@ const mapStateToProps = (state, ownProps) => {
     downloadUrl:         track.downloadUrl,
     purchaseUrl:         track.purchaseUrl,
     streamUrl:           track.streamUrl,
-    playable:            ownProps.audioUrl && ownProps.audioUrl.length
+    audioUrl:            track.audioUrl,
+    playable:            track.audioUrl && track.audioUrl.length
   };
   return Object.assign(props, mapTrackToProps(track));
 };

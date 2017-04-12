@@ -1,5 +1,6 @@
 import { connect }       from 'react-redux';
 import TurntableIcon     from '../components/turntableIcon.js.jsx';
+import TracksActions     from '../actions/tracks.js.es6';
 import TurntablesActions from '../actions/turntables.js.es6';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -8,12 +9,13 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   loadTurntable() {
+    const track = { id: ownProps.trackId, streamUrl: ownProps.trackStreamUrl };
     const association = {
-      turntable: ownProps,
-      track:     { id: ownProps.trackId, streamUrl: ownProps.trackStreamUrl }
+      turntableId: ownProps.id,
+      trackId:     track.id
     };
+    dispatch(TracksActions.fetchAudio(track));
     dispatch(TurntablesActions.associateTrack(association));
-    dispatch(TurntablesActions.fetchAudio(association));
   }
 });
 

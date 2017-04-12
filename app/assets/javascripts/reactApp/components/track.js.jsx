@@ -36,9 +36,9 @@ const Track = ({
           {turntables.map(turntable =>
             <TurntableIconContainer
               key={turntable.id}
+              {...turntable}
               trackId={id}
               trackStreamUrl={streamUrl}
-              {...turntable}
             />
           )}
         </span>
