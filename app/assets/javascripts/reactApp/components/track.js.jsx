@@ -4,8 +4,8 @@ import TurntableIconContainer from '../containers/turntableIcon.js.jsx';
 import Images                 from '../helpers/images.js.es6';
 
 const Track = ({
-  id, title, user, bpm, keySignature, downloadUrl, purchaseUrl, streamUrl,
-  downloadable, purchaseable, streamable, turntables
+  id, title, user, bpm, keySignature, purchaseUrl, streamUrl,
+  downloadable, purchaseable, streamable, turntables, download
 }) => (
   <div className="row track">
     <div className="col-xs-3 col-lg-4">{title}</div>
@@ -16,10 +16,9 @@ const Track = ({
       {downloadable &&
         <img
           src={Images.downArrow()}
+          onClick={download}
           className="track-button"
           alt="Download Track Button"
-          data-hook="download-button"
-          data-download-url={downloadUrl}
         />
       }
       {purchaseable &&

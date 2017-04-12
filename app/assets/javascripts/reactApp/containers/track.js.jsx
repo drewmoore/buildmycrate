@@ -1,6 +1,6 @@
 import { connect }         from 'react-redux';
 import Track               from '../components/track.js.jsx';
-import { mapTrackToProps } from './helpers/tracks.js.es6';
+import { mapTrackToProps, mapTrackToDispatch } from './helpers/tracks.js.es6';
 
 const mapStateToProps = (state, ownProps) => {
   const props = {
@@ -9,6 +9,8 @@ const mapStateToProps = (state, ownProps) => {
   return Object.assign(props, mapTrackToProps(ownProps));
 };
 
-const TrackContainer = connect(mapStateToProps)(Track);
+const mapDispatchToProps = (dispatch, ownProps) => mapTrackToDispatch(dispatch, ownProps);
+
+const TrackContainer = connect(mapStateToProps, mapDispatchToProps)(Track);
 
 export default TrackContainer;

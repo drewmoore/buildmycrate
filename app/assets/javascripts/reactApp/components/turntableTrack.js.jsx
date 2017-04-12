@@ -3,9 +3,9 @@ import TrackSchema from '../schemas/track.js.es6';
 import Images          from '../helpers/images.js.es6';
 
 const TurntableTrack = ({
-  title, artist, waveformUrl, downloadUrl, purchaseUrl, audioUrl, turntableId,
+  title, artist, waveformUrl, purchaseUrl, audioUrl, turntableId,
   imageDisplay, keyDisplay, timeElapsedDisplay, timeDurationDisplay,
-  bpmDisplay, purchaseable, downloadable, playable, play, pause
+  bpmDisplay, purchaseable, downloadable, playable, play, pause, download
 }) => (
   <div>
     <div className="row">
@@ -61,13 +61,11 @@ const TurntableTrack = ({
             <img
               src={Images.playButton()}
               onClick={play}
-              data-hook="play-button"
               alt="Play Button"
             />
             <img
               src={Images.pauseButton()}
               onClick={pause}
-              data-hook="pause-button"
               alt="Pause Button"
             />
           </span>
@@ -75,10 +73,9 @@ const TurntableTrack = ({
         {downloadable &&
           <img
             src={Images.downArrow()}
+            onClick={download}
             className="track-button"
             alt="Download Track Button"
-            data-hook="download-button"
-            data-download-url={downloadUrl}
           />
         }
         {purchaseable &&

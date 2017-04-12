@@ -1,5 +1,5 @@
 import { connect }    from 'react-redux';
-import { mapTrackToProps, timeDisplay } from './helpers/tracks.js.es6';
+import { mapTrackToProps, mapTrackToDispatch, timeDisplay  } from './helpers/tracks.js.es6';
 import TurntableTrack from '../components/turntableTrack.js.jsx';
 import Images         from '../helpers/images.js.es6';
 
@@ -17,16 +17,22 @@ const mapStateToProps = (state, ownProps) => {
   return Object.assign(props, mapTrackToProps(ownProps));
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  play() {
-    const audio = turntableAudio(ownProps);
-    if (audio) { audio.play(); }
-  },
-  pause() {
-    const audio = turntableAudio(ownProps);
-    if (audio) { audio.pause(); }
-  }
-});
+// TODO: use dispatcher with events to set further properties on track instances.
+const mapDispatchToProps = (dispatch, ownProps) => (
+  Object.assign(
+    mapTrackToDispatch(dispatch, ownProps),
+    {
+      play() {
+        const audio = turntableAudio(ownProps);
+        if (audio) { audio.play(); }
+      },
+      pause() {
+        const audio = turntableAudio(ownProps);
+        if (audio) { audio.pause(); }
+      }
+    }
+  )
+);
 
 const TurntableTrackContainer = connect(mapStateToProps, mapDispatchToProps)(TurntableTrack);
 

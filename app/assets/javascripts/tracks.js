@@ -7,8 +7,8 @@
   function initialize() {
 
     // initSoundCloud();
-
-    defineEvents();
+    // defineEvents();
+    
     initializeTurntables();
     Handlebars.registerHelper('timeDisplay', timeDisplay);
   }

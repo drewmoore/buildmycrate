@@ -46,7 +46,10 @@ class TrackList extends Component {
                 </div>
                 <div className="panel-body" data-hook="track-list">
                   {this.props.tracks.map(track =>
-                    <TrackContainer key={track.id} {...track} />
+                    <TrackContainer
+                      key={track.id}
+                      {...track}
+                    />
                   )}
                 </div>
               </div>
@@ -62,7 +65,7 @@ TrackList.propTypes = {
   tracks:     PropTypes.arrayOf(TrackSchema.PropTypes).isRequired,
   search:     SearchSchema.PropTypes.isRequired,
   dispatch:   PropTypes.func.isRequired,
-  isFetching: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool.isRequired
 };
 
 export default TrackList;
