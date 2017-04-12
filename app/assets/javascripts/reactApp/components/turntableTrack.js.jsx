@@ -61,11 +61,13 @@ const TurntableTrack = ({
             <img
               src={Images.playButton()}
               onClick={play}
+              className="track-button"
               alt="Play Button"
             />
             <img
               src={Images.pauseButton()}
               onClick={pause}
+              className="track-button"
               alt="Pause Button"
             />
           </span>

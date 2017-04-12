@@ -12,8 +12,8 @@ export const mapTrackToDispatch = (dispatch, track) => ({
   // Download track from Soundcloud. Set client_id in params from pre-initialized config.
   // TODO: dispatch action to set new track field 'downloaded'.
   download() {
-    const url = `${track.downloadUrl}?client_id=${AppConfig.soundcloudClientId}`;
-    const $iframe = $('<iframe>').attr('src', url);
+    const url     = `${track.downloadUrl}?client_id=${AppConfig.soundcloudClientId}`;
+    const $iframe = $('<iframe>').css('display', 'none').attr('src', url);
     $('body').append($iframe);
   }
 });
