@@ -3,6 +3,8 @@ import { mapTrackToProps, timeDisplay } from './helpers/tracks.js.es6';
 import TurntableTrack from '../components/turntableTrack.js.jsx';
 import Images         from '../helpers/images.js.es6';
 
+const turntableAudio = ownProps => document.getElementById(`audio-for-turntable-${ownProps.turntableId}`);
+
 const mapStateToProps = (state, ownProps) => {
   const props = {
     imageDisplay:        ownProps.artworkUrl || Images.trackDefault(),
@@ -17,10 +19,12 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   play() {
-    const audio = document.getElementById(`audio-for-turntable-${ownProps.turntableId}`);
-    if (audio) {
-      audio.play();
-    }
+    const audio = turntableAudio(ownProps);
+    if (audio) { audio.play(); }
+  },
+  pause() {
+    const audio = turntableAudio(ownProps);
+    if (audio) { audio.pause(); }
   }
 });
 

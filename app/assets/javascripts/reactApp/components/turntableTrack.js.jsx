@@ -5,7 +5,7 @@ import Images          from '../helpers/images.js.es6';
 const TurntableTrack = ({
   title, artist, waveformUrl, downloadUrl, purchaseUrl, audioUrl, turntableId,
   imageDisplay, keyDisplay, timeElapsedDisplay, timeDurationDisplay,
-  bpmDisplay, purchaseable, downloadable, playable, play
+  bpmDisplay, purchaseable, downloadable, playable, play, pause
 }) => (
   <div>
     <div className="row">
@@ -56,20 +56,29 @@ const TurntableTrack = ({
     <div className="row">
       <div className="col-xs-12 controls">
         {/* TODO: examine and probably remove data-hooks */}
-        <img
-          src={Images.playButton()}
-          onClick={play}
-          data-hook="play-button"
-          alt="Play Button"
-        />
-        <img src={Images.pauseButton()} data-hook="pause-button" alt="Pause Button" />
+        {playable &&
+          <span>
+            <img
+              src={Images.playButton()}
+              onClick={play}
+              data-hook="play-button"
+              alt="Play Button"
+            />
+            <img
+              src={Images.pauseButton()}
+              onClick={pause}
+              data-hook="pause-button"
+              alt="Pause Button"
+            />
+          </span>
+        }
         {downloadable &&
           <img
             src={Images.downArrow()}
-            data-hook="download-button"
-            data-download-url={downloadUrl}
             className="track-button"
             alt="Download Track Button"
+            data-hook="download-button"
+            data-download-url={downloadUrl}
           />
         }
         {purchaseable &&
