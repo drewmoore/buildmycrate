@@ -1,4 +1,13 @@
-let timer;
+/*
+ * Class for managing the timer that moves the spinning loading indicator.
+ */
+
+// Set the timer as a global to avoid having duplicates running if duplicate react
+// apps are created.
+if (typeof window.spinnerTimer === 'undefined') {
+  window.spinnerTimer = null;
+}
+
 let spinCounter = 0;
 
 const timerInterval  = 1;
@@ -13,6 +22,7 @@ const updateSpinner  = () => {
 
 export default class SpinnerTimer {
   static start() {
-    timer = setInterval(updateSpinner, timerInterval);
+    clearInterval(window.spinnerTimer);
+    window.spinnerTimer = setInterval(updateSpinner, timerInterval);
   }
 }

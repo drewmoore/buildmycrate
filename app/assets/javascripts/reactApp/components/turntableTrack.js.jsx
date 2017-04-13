@@ -31,28 +31,32 @@ const TurntableTrack = ({
         </div>
       </div>
     </div>
-    <div className="row">
-      <div className="col-xs-12 text-right">
-        <small data-hook="time-elapsed">{timeElapsedDisplay} </small>
-        <small> | </small>
-        <small> {timeDurationDisplay}</small>
-      </div>
-    </div>
-    <div className="row">
-      <div className="col-xs-12 waveform-container">
-        <div className="relative">
-          <div
-            className="turntable-waveform-progress"
-            data-hook="turntable-waveform-progress"
-          />
-          <img
-            className="turntable-track-waveform-image"
-            src={waveformUrl} alt="Track Waveform"
-            data-hook="turntable-track-waveform"
-          />
+    {playable &&
+      <div>
+        <div className="row">
+          <div className="col-xs-12 text-right">
+            <small data-hook="time-elapsed">{timeElapsedDisplay} </small>
+            <small> | </small>
+            <small> {timeDurationDisplay}</small>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12 waveform-container">
+            <div className="relative">
+              <div
+                className="turntable-waveform-progress"
+                data-hook="turntable-waveform-progress"
+              />
+              <img
+                className="turntable-track-waveform-image"
+                src={waveformUrl} alt="Track Waveform"
+                data-hook="turntable-track-waveform"
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    }
     <div className="row">
       <div className="col-xs-12 controls">
         {/* TODO: examine and probably remove data-hooks */}
