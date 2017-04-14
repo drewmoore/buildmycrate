@@ -4,7 +4,7 @@ import { mapTrackToProps, mapTrackToDispatch } from '../../helpers/tracks.js.es6
 
 const turntableAudio = ownProps => document.getElementById(`audio-for-turntable-${ownProps.turntableId}`);
 
-const mapStateToProps = (state, ownProps) => { return mapTrackToProps(ownProps); };
+const mapStateToProps = (state, ownProps) => mapTrackToProps(ownProps);
 
 // TODO: use dispatcher with events to set further properties on track instances.
 const mapDispatchToProps = (dispatch, ownProps) => (
