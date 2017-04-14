@@ -1,9 +1,9 @@
-import React                   from 'react';
-import TurntablesTrackDisplayContainer from '../../containers/turntables/track/Display.js.jsx';
-import TurntablesTrackTimeContainer from '../../containers/turntables/track/Time.js.jsx';
+import React                            from 'react';
+import TurntablesTrackDisplayContainer  from '../../containers/turntables/track/Display.js.es6';
+import TurntablesTrackTimeContainer     from '../../containers/turntables/track/Time.js.es6';
 import TurntablesTrackWaveformContainer from '../../containers/turntables/track/Waveform.js.es6';
 import TurntablesTrackControlsContainer from '../../containers/turntables/track/Controls.js.es6';
-import TurntableSchema         from '../../schemas/turntable.js.es6';
+import TurntableSchema                  from '../../schemas/turntable.js.es6';
 
 const TurntablesListItem = ({ id, track, optionalClasses }) => (
   <div className="col-xs-12 col-md-6">

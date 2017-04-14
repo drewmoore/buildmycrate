@@ -23,6 +23,8 @@ const mapDispatchToProps = (dispatch, ownProps) => (
   )
 );
 
-const TurntablesTrackControlsContainer = connect(mapStateToProps, mapDispatchToProps)(TurntablesTrackControls);
+const TurntablesTrackControlsContainer = connect(
+  mapStateToProps, mapDispatchToProps
+)(TurntablesTrackControls);
 
 export default TurntablesTrackControlsContainer;

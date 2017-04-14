@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react';
-import TurntablesListItemContainer from '../../containers/turntables/ListItem.js.jsx';
-import TurntableSchema      from '../../schemas/turntable.js.es6';
+import React, { PropTypes }        from 'react';
+import TurntablesListItemContainer from '../../containers/turntables/ListItem.js.es6';
+import TurntableSchema             from '../../schemas/turntable.js.es6';
 
 const TurntablesList = ({ turntables }) => (
   <div className="row">

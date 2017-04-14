@@ -1,6 +1,6 @@
 import React                   from 'react';
-import TracksListContainer     from '../containers/tracks/List.js.jsx';
-import TurntablesListContainer from '../containers/turntables/List.js.jsx';
+import TracksListContainer     from '../containers/tracks/List.js.es6';
+import TurntablesListContainer from '../containers/turntables/List.js.es6';
 
 const SearchResults = () => (
   <div>

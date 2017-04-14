@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import TracksListItemContainer         from '../../containers/tracks/ListItem.js.jsx';
+import TracksListItemContainer         from '../../containers/tracks/ListItem.js.es6';
 import TracksActions                   from '../../actions/tracks.js.es6';
 import SearchSchema                    from '../../schemas/search.js.es6';
 import TrackSchema                     from '../../schemas/track.js.es6';
