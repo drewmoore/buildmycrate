@@ -7,15 +7,6 @@ const mapStateToProps = (state, ownProps) => ({
   optionalClasses: (ownProps.id === 0 ? 'alpha' : 'omega')
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  play() {
-    const audio = document.getElementById(`audio-for-turntable-${ownProps.id}`);
-    if (audio) {
-      audio.play();
-    }
-  }
-});
-
-const TurntableContainer = connect(mapStateToProps, mapDispatchToProps)(Turntable);
+const TurntableContainer = connect(mapStateToProps)(Turntable);
 
 export default TurntableContainer;
