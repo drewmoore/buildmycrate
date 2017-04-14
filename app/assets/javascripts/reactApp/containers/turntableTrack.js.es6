@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   const props = {
     imageDisplay:        ownProps.artworkUrl || Images.trackDefault(),
     keyDisplay:          !ownProps.key ? '' : `Key: ${ownProps.key}`,
-    timeElapsedDisplay:  timeDisplay(),
+    timeElapsedDisplay:  timeDisplay(ownProps.timeElapsed),
     timeDurationDisplay: timeDisplay(ownProps.duration),
     bpmDisplay:          ownProps.bpm ? `${ownProps.bpm} bpm` : '',
     artist:              ownProps.user ? ownProps.user.username : ''

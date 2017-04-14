@@ -2,11 +2,11 @@ import React                   from 'react';
 import TurntableTrackContainer from '../containers/turntableTrack.js.es6';
 import TurntableSchema         from '../schemas/turntable.js.es6';
 
-const Turntable = ({ id, track }) => (
+const Turntable = ({ id, track, timeElapsed, optionalClasses }) => (
   <div className="col-xs-12 col-md-6">
-    <div className={`row turntable-container ${id === 0 ? 'alpha' : 'omega'}`}>
+    <div className={`row turntable-container ${optionalClasses}`}>
       <div className="col-xs-12 section console">
-        <TurntableTrackContainer turntableId={id} {...track} />
+        <TurntableTrackContainer turntableId={id} timeElapsed={timeElapsed} {...track} />
       </div>
     </div>
   </div>
