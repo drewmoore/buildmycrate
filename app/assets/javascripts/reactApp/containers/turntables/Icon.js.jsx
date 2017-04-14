@@ -1,7 +1,7 @@
 import { connect }       from 'react-redux';
-import TurntableIcon     from '../components/turntableIcon.js.jsx';
-import TracksActions     from '../actions/tracks.js.es6';
-import TurntablesActions from '../actions/turntables.js.es6';
+import TurntablesIcon    from '../../components/turntables/Icon.js.jsx';
+import TracksActions     from '../../actions/tracks.js.es6';
+import TurntablesActions from '../../actions/turntables.js.es6';
 
 const mapStateToProps = (state, ownProps) => ({
   side: ownProps.id % 2 === 0 ? 'left' : 'right'
@@ -19,6 +19,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   }
 });
 
-const TurntableIconContainer = connect(mapStateToProps, mapDispatchToProps)(TurntableIcon);
+const TurntablesIconContainer = connect(mapStateToProps, mapDispatchToProps)(TurntablesIcon);
 
-export default TurntableIconContainer;
+export default TurntablesIconContainer;

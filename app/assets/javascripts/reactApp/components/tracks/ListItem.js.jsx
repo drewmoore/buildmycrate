@@ -1,9 +1,9 @@
-import React                  from 'react';
-import TrackSchema            from '../../schemas/track.js.es6';
-import TurntableIconContainer from '../../containers/turntableIcon.js.jsx';
-import Images                 from '../../helpers/images.js.es6';
+import React                   from 'react';
+import TrackSchema             from '../../schemas/track.js.es6';
+import TurntablesIconContainer from '../../containers/turntables/Icon.js.jsx';
+import Images                  from '../../helpers/images.js.es6';
 
-const ListItem = ({
+const TracksListItem = ({
   id, title, user, bpm, keySignature, purchaseUrl, streamUrl,
   downloadable, purchaseable, streamable, turntables, download
 }) => (
@@ -33,7 +33,7 @@ const ListItem = ({
       {streamable &&
         <span>
           {turntables.map(turntable =>
-            <TurntableIconContainer
+            <TurntablesIconContainer
               key={turntable.id}
               {...turntable}
               trackId={id}
@@ -46,7 +46,7 @@ const ListItem = ({
   </div>
 );
 
-ListItem.propTypes    = TrackSchema.PropTypes.isRequired;
-ListItem.defaultProps = TrackSchema.Defaults;
+TracksListItem.propTypes    = TrackSchema.PropTypes.isRequired;
+TracksListItem.defaultProps = TrackSchema.Defaults;
 
-export default ListItem;
+export default TracksListItem;

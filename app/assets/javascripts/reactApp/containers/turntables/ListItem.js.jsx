@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
-import Turntable   from '../components/turntable.js.jsx';
+import { connect }        from 'react-redux';
+import TurntablesListItem from '../../components/turntables/ListItem.js.jsx';
 
 const mapStateToProps = (state, ownProps) => ({
   track:           state.tracks.items[ownProps.trackId] || {},
@@ -7,6 +7,6 @@ const mapStateToProps = (state, ownProps) => ({
   optionalClasses: (ownProps.id === 0 ? 'alpha' : 'omega')
 });
 
-const TurntableContainer = connect(mapStateToProps)(Turntable);
+const TurntablesListItemContainer = connect(mapStateToProps)(TurntablesListItem);
 
-export default TurntableContainer;
+export default TurntablesListItemContainer;
