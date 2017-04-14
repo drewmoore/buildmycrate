@@ -9,7 +9,6 @@ const TurntablesTrackControls = ({
 }) => (
   <div className="row">
     <div className="col-xs-10 controls">
-      {/* TODO: examine and probably remove data-hooks */}
       {playable &&
         <span>
           <img
