@@ -5,6 +5,15 @@ const mapStateToProps = (state, ownProps) => ({
   track: state.tracks.items[ownProps.trackId] || {}
 });
 
-const TurntableContainer = connect(mapStateToProps)(Turntable);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  play() {
+    const audio = document.getElementById(`audio-for-turntable-${ownProps.id}`);
+    if (audio) {
+      audio.play();
+    }
+  }
+});
+
+const TurntableContainer = connect(mapStateToProps, mapDispatchToProps)(Turntable);
 
 export default TurntableContainer;

@@ -12,7 +12,8 @@ export default class TrackSchema {
       downloadUrl:  PropTypes.string,
       purchaseUrl:  PropTypes.string,
       streamUrl:    PropTypes.string,
-      streamable:   PropTypes.bool.isRequired
+      streamable:   PropTypes.bool.isRequired,
+      isFetching:   PropTypes.bool.isRequired
     });
   }
 
@@ -24,7 +25,8 @@ export default class TrackSchema {
       keySignature: '',
       downloadUrl:  '',
       purchaseUrl:  '',
-      streamable:   false
+      streamable:   false,
+      isFetching:   false
     };
   }
 }

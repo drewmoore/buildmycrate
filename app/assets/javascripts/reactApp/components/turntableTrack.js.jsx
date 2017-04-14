@@ -1,9 +1,10 @@
-import React           from 'react';
+import React       from 'react';
+import Spinner     from './spinner.js.jsx';
 import TrackSchema from '../schemas/track.js.es6';
-import Images          from '../helpers/images.js.es6';
+import Images      from '../helpers/images.js.es6';
 
 const TurntableTrack = ({
-  title, artist, waveformUrl, purchaseUrl, audioUrl, turntableId,
+  title, artist, waveformUrl, purchaseUrl, audioUrl, turntableId, isFetching,
   imageDisplay, keyDisplay, timeElapsedDisplay, timeDurationDisplay,
   bpmDisplay, purchaseable, downloadable, playable, play, pause, download
 }) => (
@@ -58,7 +59,7 @@ const TurntableTrack = ({
       </div>
     }
     <div className="row">
-      <div className="col-xs-12 controls">
+      <div className="col-xs-10 controls">
         {/* TODO: examine and probably remove data-hooks */}
         {playable &&
           <span>
@@ -98,11 +99,15 @@ const TurntableTrack = ({
             />
           </a>
         }
+        {/* Audio element used to hold audio data and for HTML audio API controls. */}
         {playable &&
           <audio id={`audio-for-turntable-${turntableId}`} data-hook="track-audio">
             <source src={audioUrl} />
           </audio>
         }
+      </div>
+      <div className="col-xs-2 controls text-center">
+        <Spinner isSpinning={isFetching} />
       </div>
     </div>
   </div>

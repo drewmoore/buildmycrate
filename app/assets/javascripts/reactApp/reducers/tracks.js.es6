@@ -2,18 +2,21 @@ import update           from 'immutability-helper';
 import { toCollection } from './helpers/index.js.es6';
 import TracksActions    from '../actions/tracks.js.es6';
 
+// Defaults for tracks state.
 const defaultState = {
   isFetching: false,
   items:      {}
 };
 
-const fetchTrackState = (state, action) => {
+const fetchTracksState = (state, action) => {
   let newState;
+  // Defaults for track item in collection.
+  const defaultTrackState = { isFetching: false };
   switch (action.status) {
     case 'success':
       newState = {
         isFetching: false,
-        items:      toCollection(action.tracks),
+        items:      toCollection(action.tracks, defaultTrackState),
       };
       break;
     default:
@@ -38,7 +41,7 @@ const fetchAudioState = (state, action) => {
 const tracks = (state = defaultState, action = {}) => {
   switch (action.type) {
     case TracksActions.FETCH_TRACKS:
-      return fetchTrackState(state, action);
+      return fetchTracksState(state, action);
     case TracksActions.FETCH_AUDIO:
       return fetchAudioState(state, action);
     default:

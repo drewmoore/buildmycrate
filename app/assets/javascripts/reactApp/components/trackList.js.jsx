@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import SearchSchema   from '../schemas/search.js.es6';
 import TrackSchema    from '../schemas/track.js.es6';
 import TrackContainer from '../containers/track.js.jsx';
-import Images         from '../helpers/images.js.es6';
+import Spinner        from './spinner.js.jsx';
 
 import TracksActions from '../actions/tracks.js.es6';
 
@@ -29,11 +29,7 @@ class TrackList extends Component {
                       </h4>
                     </div>
                     <div className="col-xs-4 text-right">
-                      <img
-                        src={Images.spinner()}
-                        className={`spinner small ${this.props.isFetching ? 'spinning' : ''}`}
-                        alt="Loading Indicator"
-                      />
+                      <Spinner isSpinning={this.props.isFetching} optionalClasses="small" />
                     </div>
                   </div>
                   <div className="row">
@@ -46,10 +42,7 @@ class TrackList extends Component {
                 </div>
                 <div className="panel-body" data-hook="track-list">
                   {this.props.tracks.map(track =>
-                    <TrackContainer
-                      key={track.id}
-                      {...track}
-                    />
+                    <TrackContainer key={track.id} {...track} />
                   )}
                 </div>
               </div>

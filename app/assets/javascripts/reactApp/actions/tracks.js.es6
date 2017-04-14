@@ -1,11 +1,12 @@
 /* global SC */ // Allow soundcloud's SDK as a global. It is loaded via the gem used by server.
-import fetch  from 'isomorphic-fetch';
+import fetch       from 'isomorphic-fetch';
 import RouteHelper from '../helpers/routes.js.es6';
 
 export default class TracksActions {
   static get FETCH_TRACKS() { return 'TRACKS_FETCH_TRACKS'; }
   static get FETCH_AUDIO()  { return 'TRACKS_FETCH_AUDIO'; }
 
+  // Fetch tracks from search API.
   static fetch(search = {}) {
     const self   = this;
     const action = { type: self.FETCH_TRACKS };
@@ -18,6 +19,7 @@ export default class TracksActions {
     };
   }
 
+  // Fetch the audio data for streaming a specific track.
   static fetchAudio(track) {
     const self      = this;
     const action    = { type: self.FETCH_AUDIO, trackId: track.id };
@@ -31,6 +33,7 @@ export default class TracksActions {
     };
   }
 
+  // Handle receiving of tracks from server.
   // TODO: enable better error handling.
   static receiveTracks(data) {
     return {
@@ -40,6 +43,7 @@ export default class TracksActions {
     };
   }
 
+  // Handle receiving of audio data for a track.
   // TODO: enable better error handling.
   static receiveAudio(trackId, data) {
     return {

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
+import Spinner              from './spinner.js.jsx';
 import SearchSchema         from '../schemas/search.js.es6';
-import Images               from '../helpers/images.js.es6';
 
 const SearchForm = ({ search, isFetching, submitForm }) => (
   <div className="row">
@@ -73,11 +73,7 @@ const SearchForm = ({ search, isFetching, submitForm }) => (
             </div>
             <div className="row">
               <div className="col-xs-offset-2 col-xs-2 control-label">
-                <img
-                  src={Images.spinner()}
-                  className={`spinner ${isFetching ? 'spinning' : ''}`}
-                  alt="Loading Indicator"
-                />
+                <Spinner isSpinning={isFetching} />
               </div>
               <div className="col-xs-7 text-right">
                 <button type="submit">Find Trax!</button>
