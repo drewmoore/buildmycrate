@@ -1,8 +1,9 @@
 import update            from 'immutability-helper';
 import TurntablesActions from '../actions/turntables.js.es6';
+import { toCollection }  from './helpers/index.js.es6';
 
 // Initialize two turnatables.
-const defaultState  = { items: { 0: { id: 0 }, 1: { id: 1 } } };
+const defaultState  = { items: toCollection([{}, {}]) };
 
 const associateTrack = (state, action) => {
   const newState = { trackId: action.trackId };
