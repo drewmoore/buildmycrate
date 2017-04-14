@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import TrackList   from '../components/trackList.js.jsx';
+import TracksList   from '../../components/tracks/List.js.jsx';
 
 const mapStateToProps = state => ({
   tracks:     Object.values(state.tracks.items),
@@ -7,6 +7,6 @@ const mapStateToProps = state => ({
   isFetching: state.tracks.isFetching
 });
 
-const TrackListContainer = connect(mapStateToProps)(TrackList);
+const TracksListContainer = connect(mapStateToProps)(TracksList);
 
-export default TrackListContainer;
+export default TracksListContainer;

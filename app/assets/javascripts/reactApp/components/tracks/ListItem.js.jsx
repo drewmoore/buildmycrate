@@ -1,9 +1,9 @@
 import React                  from 'react';
-import TrackSchema            from '../schemas/track.js.es6';
-import TurntableIconContainer from '../containers/turntableIcon.js.jsx';
-import Images                 from '../helpers/images.js.es6';
+import TrackSchema            from '../../schemas/track.js.es6';
+import TurntableIconContainer from '../../containers/turntableIcon.js.jsx';
+import Images                 from '../../helpers/images.js.es6';
 
-const Track = ({
+const ListItem = ({
   id, title, user, bpm, keySignature, purchaseUrl, streamUrl,
   downloadable, purchaseable, streamable, turntables, download
 }) => (
@@ -46,7 +46,7 @@ const Track = ({
   </div>
 );
 
-Track.propTypes    = TrackSchema.PropTypes.isRequired;
-Track.defaultProps = TrackSchema.Defaults;
+ListItem.propTypes    = TrackSchema.PropTypes.isRequired;
+ListItem.defaultProps = TrackSchema.Defaults;
 
-export default Track;
+export default ListItem;

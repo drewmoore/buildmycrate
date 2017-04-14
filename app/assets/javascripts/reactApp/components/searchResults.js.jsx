@@ -1,10 +1,10 @@
 import React               from 'react';
-import TrackListContainer  from '../containers/trackList.js.jsx';
+import TracksListContainer from '../containers/tracks/List.js.jsx';
 import TurntablesContainer from '../containers/turntables.js.jsx';
 
 const SearchResults = () => (
   <div>
-    <TrackListContainer />
+    <TracksListContainer />
     <TurntablesContainer />
   </div>
 );
