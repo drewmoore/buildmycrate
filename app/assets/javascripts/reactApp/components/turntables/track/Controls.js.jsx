@@ -1,7 +1,8 @@
-import React from 'react';
-import TrackSchema from '../../../schemas/track.js.es6';
-import Images      from '../../../helpers/images.js.es6';
-import Spinner     from '../../spinner.js.jsx';
+import React          from 'react';
+import TurntableAudio from '../Audio.js.jsx';
+import TrackSchema    from '../../../schemas/track.js.es6';
+import Images         from '../../../helpers/images.js.es6';
+import Spinner        from '../../spinner.js.jsx';
 
 const TurntablesTrackControls = ({
   purchaseUrl, audioUrl, turntableId, isFetching,
@@ -47,12 +48,7 @@ const TurntablesTrackControls = ({
           />
         </a>
       }
-      {/* Audio element used to hold audio data and for HTML audio API controls. */}
-      {playable &&
-        <audio id={`audio-for-turntable-${turntableId}`} data-hook="track-audio">
-          <source src={audioUrl} />
-        </audio>
-      }
+      <TurntableAudio playable={playable} turntableId={turntableId} audioUrl={audioUrl} />
     </div>
     <div className="col-xs-2 controls text-center">
       <Spinner isSpinning={isFetching} />
