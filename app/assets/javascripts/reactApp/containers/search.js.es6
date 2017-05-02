@@ -1,5 +1,5 @@
 import { connect }   from 'react-redux';
-import SearchForm    from '../components/searchForm.js.jsx';
+import SearchForm    from '../components/search/Form.js.jsx';
 import SearchHandler from '../handlers/search.js.es6';
 
 const mapStateToProps = state => ({

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import Spinner              from './spinner.js.jsx';
-import SearchSchema         from '../schemas/search.js.es6';
+import Spinner              from '../spinner.js.jsx';
+import SearchSchema         from '../../schemas/search.js.es6';
 
 const SearchForm = ({ search, isFetching, submitForm }) => (
   <div className="row">

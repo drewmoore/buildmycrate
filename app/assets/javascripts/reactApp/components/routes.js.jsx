@@ -7,7 +7,7 @@
 import React, { PropTypes }          from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
 import Home                          from './home.js.jsx';
-import SearchResults                 from './searchResults.js.jsx';
+import SearchResults                 from './search/Results.js.jsx';
 
 const Routes = ({ history }) => (
   <Router history={history}>
