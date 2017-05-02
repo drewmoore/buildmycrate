@@ -1,23 +1,19 @@
 import { connect } from 'react-redux';
 import TurntablesTrackControls from '../../../components/turntables/track/Controls.js.jsx';
+import TurntablesActions       from '../../../actions/turntables.js.es6';
 import { mapTrackToProps, mapTrackToDispatch } from '../../helpers/tracks.js.es6';
-
-const turntableAudio = ownProps => document.getElementById(`audio-for-turntable-${ownProps.turntableId}`);
 
 const mapStateToProps = (state, ownProps) => mapTrackToProps(ownProps);
 
-// TODO: use dispatcher with events to set further properties on track instances.
 const mapDispatchToProps = (dispatch, ownProps) => (
   Object.assign(
     mapTrackToDispatch(dispatch, ownProps),
     {
       play() {
-        const audio = turntableAudio(ownProps);
-        if (audio) { audio.play(); }
+        dispatch(TurntablesActions.play({ id: ownProps.turntableId }));
       },
       pause() {
-        const audio = turntableAudio(ownProps);
-        if (audio) { audio.pause(); }
+        dispatch(TurntablesActions.pause({ id: ownProps.turntableId }));
       }
     }
   )
