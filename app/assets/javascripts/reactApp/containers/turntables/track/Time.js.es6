@@ -1,6 +1,7 @@
-import { connect }                      from 'react-redux';
-import { timeDisplay, mapTrackToProps } from '../../helpers/tracks.js.es6';
-import TurntablesTrackTime              from '../../../components/turntables/track/Time.js.jsx';
+import { connect }         from 'react-redux';
+import { timeDisplay }     from '../../../helpers/displays.js.es6';
+import { mapTrackToProps } from '../../helpers/tracks.js.es6';
+import TurntablesTrackTime from '../../../components/turntables/track/Time.js.jsx';
 
 const mapStateToProps = (state, ownProps) => {
   const props = {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { timeDisplay }      from '../../../containers/helpers/tracks.js.es6';
+import { timeDisplay }      from '../../../helpers/displays.js.es6';
 import TrackSchema          from '../../../schemas/track.js.es6';
 import TrackElapsedTimer    from '../../../timers/track/elapsed.js.es6';
 
@@ -27,7 +27,7 @@ class TurntablesTrackTime extends Component {
     // Update the time display by getting the audio element for the turntable, getting
     // the current time, and converting those milliseconds to seconds. Set this in
     // the component's internal state, separate from the store.
-    const audio = document.getElementById(`audio-for-turntable-${this.props.turntableId}`);
+    const audio = this.props.getAudioElement(this.props.turntableId);
     if (!audio) { return; }
     this.setState({ timeElapsed: audio.currentTime * 1000 });
   }

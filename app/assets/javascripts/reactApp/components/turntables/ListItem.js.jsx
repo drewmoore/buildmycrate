@@ -5,12 +5,12 @@ import TurntablesTrackWaveformContainer from '../../containers/turntables/track/
 import TurntablesTrackControlsContainer from '../../containers/turntables/track/Controls.js.es6';
 import TurntableSchema                  from '../../schemas/turntable.js.es6';
 
-const TurntablesListItem = ({ id, track, isPlaying, optionalClasses }) => (
+const TurntablesListItem = ({ id, track, isPlaying, getAudioElement, optionalClasses }) => (
   <div className="col-xs-12 col-md-6">
     <div className={`row turntable-container ${optionalClasses}`}>
       <div className="col-xs-12 section console">
         <TurntablesTrackDisplayContainer  {...track} />
-        <TurntablesTrackTimeContainer     {...track} turntableId={id} isPlaying={isPlaying} />
+        <TurntablesTrackTimeContainer     {...track} turntableId={id} isPlaying={isPlaying} getAudioElement={getAudioElement} />
         <TurntablesTrackWaveformContainer {...track} />
         <TurntablesTrackControlsContainer {...track} turntableId={id} />
       </div>
