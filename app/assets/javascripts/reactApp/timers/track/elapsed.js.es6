@@ -3,15 +3,15 @@
  * the track is playing.
  */
 export default class TrackElapsedTimer {
-  constructor(method) {
+  constructor(callback) {
     this.clock    = null;
     this.interval = 1000;
-    this.method   = method;
+    this.callback = callback;
   }
 
   start() {
     clearInterval(this.clock);
-    this.clock = setInterval(this.method, this.interval);
+    this.clock = setInterval(this.callback, this.interval);
   }
 
   stop() {

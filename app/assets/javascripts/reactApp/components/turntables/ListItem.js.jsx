@@ -6,7 +6,7 @@ import TurntablesTrackControlsContainer from '../../containers/turntables/track/
 import TurntableSchema                  from '../../schemas/turntable.js.es6';
 
 const newAudioElement = (url) => {
-  const audio  = document.createElement('audio');
+  const audio = document.createElement('audio');
   audio.attributes.src = url;
   return audio;
 };
@@ -40,7 +40,10 @@ class TurntablesListItem extends Component {
               {...this.props.track} turntableId={this.props.id} audio={this.audio}
               isPlaying={this.props.isPlaying}
             />
-            <TurntablesTrackWaveformContainer {...this.props.track} />
+            <TurntablesTrackWaveformContainer
+              {...this.props.track} turntableId={this.props.id} audio={this.audio}
+              isPlaying={this.props.isPlaying}
+            />
             <TurntablesTrackControlsContainer
               {...this.props.track} turntableId={this.props.id} audio={this.audio}
             />

@@ -10,7 +10,7 @@ const updateTurnTable = (id, state, newState) => (
 );
 
 const associateTrack = (state, action) => (
-  updateTurnTable(action.turntableId, state, { trackId: action.trackId })
+  updateTurnTable(action.turntableId, state, { trackId: action.trackId, isPlaying: false })
 );
 
 const play = (state, action) => (

@@ -1,25 +1,64 @@
-import React       from 'react';
-import TrackSchema from '../../../schemas/track.js.es6';
+import React, { Component } from 'react';
+import TrackSchema          from '../../../schemas/track.js.es6';
+import TrackProgressTimer   from '../../../timers/track/progress.js.es6';
 
-const TurntablesTrackWaveform = ({ playable, waveformUrl }) => (
-  <div className="row">
-    <div className="col-xs-12 waveform-container">
-      {playable &&
-        <div className="relative">
-          <div
-            className="turntable-waveform-progress"
-            data-hook="turntable-waveform-progress"
-          />
-          <img
-            className="turntable-track-waveform-image"
-            src={waveformUrl} alt="Track Waveform"
-            data-hook="turntable-track-waveform"
-          />
+// The component that displays a "progress bar" as a turntable's audio plays.
+class TurntablesTrackWaveform extends Component {
+  constructor(props) {
+    super(props);
+    // Define selectors for the waveform container and progress indicator. These
+    // are used in template and in progress timer's internal methods.
+    this.containerId = `waveform-container-for-${this.props.turntableId}`;
+    this.indicatorId = `waveform-progress-for-${this.props.turntableId}`;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // Start or stop the track time elapsed timer based on whether or not the
+    // track is playing.
+    if (this.timer) { this.timer.startOrStop(nextProps.isPlaying); }
+  }
+
+  // After the component updates, check if there is a new audio source. If so,
+  // initialize a new timer to expand the track progress indicator as the audio
+  // plays. This must occur after component renders, since the timer's initialization
+  // requires a container element's width to determine the progress interval.
+  // The timer is set as a property on the component, as it is not used globally.
+  componentDidUpdate(prevProps) {
+    if (this.props.audioUrl !== prevProps.audioUrl) {
+      this.timer = new TrackProgressTimer(this.containerId, this.indicatorId, this.props.audio);
+    }
+  }
+
+  componentWillUnmount() {
+    // Clear the timer on unmounting component.
+    this.timer.stop();
+  }
+
+  render() {
+    return (
+      <div className="row">
+        <div
+          id={this.containerId}
+          className="col-xs-12 waveform-container"
+        >
+          {this.props.playable &&
+            <div className="relative">
+              <div
+                id={this.indicatorId}
+                className="turntable-waveform-progress"
+              />
+              <img
+                className="turntable-track-waveform-image"
+                src={this.props.waveformUrl} alt="Track Waveform"
+                data-hook="turntable-track-waveform"
+              />
+            </div>
+          }
         </div>
-      }
-    </div>
-  </div>
-);
+      </div>
+    );
+  }
+}
 
 TurntablesTrackWaveform.propTypes    = TrackSchema.PropTypes.isRequired;
 TurntablesTrackWaveform.defaultProps = TrackSchema.Defaults;

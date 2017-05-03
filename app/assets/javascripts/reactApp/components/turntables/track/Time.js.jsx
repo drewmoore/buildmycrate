@@ -7,7 +7,7 @@ class TurntablesTrackTime extends Component {
   constructor(props) {
     super(props);
     // Attach the timer for track time elapsed to the component, since not used globally.
-    // Dispatching time updates superfluous.
+    // Dispatching time updates seems superfluous.
     this.timer = new TrackElapsedTimer(() => this.updateTimeElapsed());
     this.state = { timeElapsed: 0 };
   }
@@ -16,6 +16,13 @@ class TurntablesTrackTime extends Component {
     // Start or stop the track time elapsed timer based on whether or not the
     // track is playing.
     this.timer.startOrStop(nextProps.isPlaying);
+  }
+
+  componentWillUpdate(nextProps) {
+    // Reset time elapsed display when next track audio loaded.
+    if (this.props.audioUrl !== nextProps.audioUrl && this.props.audio) {
+      this.updateTimeElapsed();
+    }
   }
 
   componentWillUnmount() {
