@@ -31,9 +31,14 @@ class TurntablesListItem extends Component {
         <div className={`row turntable-container ${this.props.optionalClasses}`}>
           <div className="col-xs-12 section console">
             <TurntablesTrackDisplayContainer  {...this.props.track} />
-            <TurntablesTrackTimeContainer     {...this.props.track} turntableId={this.props.id} isPlaying={this.props.isPlaying} audio={this.audio} />
+            <TurntablesTrackTimeContainer
+              {...this.props.track} turntableId={this.props.id} audio={this.audio}
+              isPlaying={this.props.isPlaying}
+            />
             <TurntablesTrackWaveformContainer {...this.props.track} />
-            <TurntablesTrackControlsContainer {...this.props.track} turntableId={this.props.id} audio={this.audio} />
+            <TurntablesTrackControlsContainer
+              {...this.props.track} turntableId={this.props.id} audio={this.audio}
+            />
           </div>
         </div>
       </div>
