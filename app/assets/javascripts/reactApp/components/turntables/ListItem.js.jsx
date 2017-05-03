@@ -25,6 +25,11 @@ class TurntablesListItem extends Component {
     }
   }
 
+  componentWillUnmount() {
+    // Reset audio to stop playing.
+    if (this.audio) { this.audio.load(); }
+  }
+
   render() {
     return (
       <div className="col-xs-12 col-md-6">
