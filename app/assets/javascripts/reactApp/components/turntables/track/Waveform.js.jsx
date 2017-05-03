@@ -34,6 +34,14 @@ class TurntablesTrackWaveform extends Component {
     this.timer.stop();
   }
 
+  // Handle the user clicking the waveform. This allows the audio position to be
+  // adjusted manually.
+  waveformClick(event) {
+    const $waveform     = $(event.target);
+    const positionRatio = event.nativeEvent.offsetX / $waveform.width();
+    this.props.audio.currentTime = this.props.audio.duration * positionRatio;
+  }
+
   render() {
     return (
       <div className="row">
@@ -49,8 +57,9 @@ class TurntablesTrackWaveform extends Component {
               />
               <img
                 className="turntable-track-waveform-image"
-                src={this.props.waveformUrl} alt="Track Waveform"
-                data-hook="turntable-track-waveform"
+                alt="Track Waveform"
+                src={this.props.waveformUrl}
+                onClick={e => this.waveformClick(e)}
               />
             </div>
           }
