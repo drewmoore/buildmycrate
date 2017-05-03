@@ -27,9 +27,8 @@ class TurntablesTrackTime extends Component {
     // Update the time display by getting the audio element for the turntable, getting
     // the current time, and converting those milliseconds to seconds. Set this in
     // the component's internal state, separate from the store.
-    const audio = this.props.getAudioElement(this.props.turntableId);
-    if (!audio) { return; }
-    this.setState({ timeElapsed: audio.currentTime * 1000 });
+    if (!this.props.audio) { return; }
+    this.setState({ timeElapsed: this.props.audio.currentTime * 1000 });
   }
 
   render() {

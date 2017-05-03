@@ -10,10 +10,10 @@ const mapDispatchToProps = (dispatch, ownProps) => (
     mapTrackToDispatch(dispatch, ownProps),
     {
       play() {
-        dispatch(TurntablesActions.play({ id: ownProps.turntableId }));
+        dispatch(TurntablesActions.play({ id: ownProps.turntableId, audio: ownProps.audio }));
       },
       pause() {
-        dispatch(TurntablesActions.pause({ id: ownProps.turntableId }));
+        dispatch(TurntablesActions.pause({ id: ownProps.turntableId, audio: ownProps.audio }));
       }
     }
   )

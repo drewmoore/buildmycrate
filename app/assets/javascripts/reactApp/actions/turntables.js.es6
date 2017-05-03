@@ -1,5 +1,3 @@
-const turntableAudio = id => document.getElementById(`audio-for-turntable-${id}`);
-
 export default class TurntablesActions {
   static get ASSOCIATE_TRACK() { return 'ASSOCIATE_TRACK_TO_TURNTABLE'; }
   static get PLAY()            { return 'PLAY_TURNTABLE'; }
@@ -13,8 +11,7 @@ export default class TurntablesActions {
     };
   }
 
-  static play({ id }) {
-    const audio = turntableAudio(id);
+  static play({ id, audio }) {
     if (audio) { audio.play(); }
     return {
       type: this.PLAY,
@@ -22,8 +19,7 @@ export default class TurntablesActions {
     };
   }
 
-  static pause({ id }) {
-    const audio = turntableAudio(id);
+  static pause({ id, audio }) {
     if (audio) { audio.pause(); }
     return {
       type: this.PAUSE,

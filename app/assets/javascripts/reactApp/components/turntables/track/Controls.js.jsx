@@ -1,12 +1,10 @@
 import React          from 'react';
-import TurntableAudio from '../Audio.js.jsx';
 import TrackSchema    from '../../../schemas/track.js.es6';
 import Images         from '../../../helpers/images.js.es6';
 import Spinner        from '../../spinner.js.jsx';
 
 const TurntablesTrackControls = ({
-  purchaseUrl, audioUrl, turntableId, isFetching,
-  purchaseable, downloadable, playable, play, pause, download
+  purchaseUrl, isFetching, purchaseable, downloadable, playable, play, pause, download
 }) => (
   <div className="row">
     <div className="col-xs-10 controls">
@@ -48,7 +46,6 @@ const TurntablesTrackControls = ({
           />
         </a>
       }
-      <TurntableAudio playable={playable} turntableId={turntableId} audioUrl={audioUrl} />
     </div>
     <div className="col-xs-2 controls text-center">
       <Spinner isSpinning={isFetching} />
