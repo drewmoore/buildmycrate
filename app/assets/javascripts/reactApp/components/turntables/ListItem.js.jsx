@@ -6,9 +6,9 @@ import TurntablesTrackControlsContainer from '../../containers/turntables/track/
 import TurntableSchema                  from '../../schemas/turntable.js.es6';
 
 const newAudioElement = (url) => {
-  const $audio  = $('<audio>');
-  $audio.attr('src', url);
-  return $audio[0];
+  const audio  = document.createElement('audio');
+  audio.attributes.src = url;
+  return audio;
 };
 
 class TurntablesListItem extends Component {
