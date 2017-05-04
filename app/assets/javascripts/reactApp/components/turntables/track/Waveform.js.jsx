@@ -24,7 +24,10 @@ class TurntablesTrackWaveform extends Component {
   // requires a container element's width to determine the progress interval.
   // The timer is set as a property on the component, as it is not used globally.
   componentDidUpdate(prevProps) {
-    if (this.props.audioUrl !== prevProps.audioUrl) {
+    if (
+      this.props.audioUrl     !== prevProps.audioUrl ||
+      this.props.basePosition !== prevProps.basePosition
+    ) {
       this.timer = new TrackProgressTimer(this.containerId, this.indicatorId, this.props.audio);
     }
   }
@@ -32,14 +35,6 @@ class TurntablesTrackWaveform extends Component {
   componentWillUnmount() {
     // Clear the timer on unmounting component.
     this.timer.stop();
-  }
-
-  // Handle the user clicking the waveform. This allows the audio position to be
-  // adjusted manually.
-  waveformClick(event) {
-    const $waveform     = $(event.target);
-    const positionRatio = event.nativeEvent.offsetX / $waveform.width();
-    this.props.audio.currentTime = this.props.audio.duration * positionRatio;
   }
 
   render() {
@@ -59,7 +54,7 @@ class TurntablesTrackWaveform extends Component {
                 className="turntable-track-waveform-image"
                 alt="Track Waveform"
                 src={this.props.waveformUrl}
-                onClick={e => this.waveformClick(e)}
+                onClick={e => this.props.waveformClick(e)}
               />
             </div>
           }

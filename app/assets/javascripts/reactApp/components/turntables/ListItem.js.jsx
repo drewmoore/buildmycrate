@@ -12,13 +12,15 @@ const newAudioElement = (url) => {
 };
 
 class TurntablesListItem extends Component {
+  // Conditionally initialize or update an audio element to be attached to
+  // component. This cannot be a prop or part of the state or it will be overwritten and playback
+  // interrupted. State must be immutable. Audio elements must be mutable.
   componentWillReceiveProps(nextProps) {
-    // Conditionally initialize or update an audio element to be attached to
-    // component. This cannot be a prop or it will be overwritten and playback
-    // interrupted.
+    // New audio element.
     if (!this.audio && nextProps.track.audioUrl) {
       this.audio = newAudioElement(this.props.track.audioUrl);
     }
+    // Update audio src and reload.
     if (this.audio && this.audio.src !== nextProps.track.audioUrl) {
       this.audio.src = nextProps.track.audioUrl;
       this.audio.load();
@@ -38,11 +40,11 @@ class TurntablesListItem extends Component {
             <TurntablesTrackDisplayContainer  {...this.props.track} />
             <TurntablesTrackTimeContainer
               {...this.props.track} turntableId={this.props.id} audio={this.audio}
-              isPlaying={this.props.isPlaying}
+              isPlaying={this.props.isPlaying} basePosition={this.props.basePosition}
             />
             <TurntablesTrackWaveformContainer
               {...this.props.track} turntableId={this.props.id} audio={this.audio}
-              isPlaying={this.props.isPlaying}
+              isPlaying={this.props.isPlaying} basePosition={this.props.basePosition}
             />
             <TurntablesTrackControlsContainer
               {...this.props.track} turntableId={this.props.id} audio={this.audio}

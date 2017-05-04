@@ -21,6 +21,11 @@ const pause = (state, action) => (
   updateTurnTable(action.id, state, { isPlaying: false })
 );
 
+// For a user adjusting the track position or current time.
+const setBasePosition = (state, action) => (
+  updateTurnTable(action.id, state, { basePosition: action.newTime })
+);
+
 const turntables = (state = defaultState, action = {}) => {
   switch (action.type) {
     case TurntablesActions.ASSOCIATE_TRACK:
@@ -29,6 +34,8 @@ const turntables = (state = defaultState, action = {}) => {
       return play(state, action);
     case TurntablesActions.PAUSE:
       return pause(state, action);
+    case TurntablesActions.SET_BASE_POSITION:
+      return setBasePosition(state, action);
     default:
       return state;
   }

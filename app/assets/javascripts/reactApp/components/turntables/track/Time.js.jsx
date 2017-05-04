@@ -19,9 +19,15 @@ class TurntablesTrackTime extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    // Reset time elapsed display when next track audio loaded.
-    if (this.props.audioUrl !== nextProps.audioUrl && this.props.audio) {
-      this.updateTimeElapsed();
+    // Reset time elapsed display when next track audio loaded or track position
+    // has changed.
+    if (this.props.audio) {
+      if (
+        this.props.audioUrl     !== nextProps.audioUrl ||
+        this.props.basePosition !== nextProps.basePosition
+      ) {
+        this.updateTimeElapsed();
+      }
     }
   }
 
