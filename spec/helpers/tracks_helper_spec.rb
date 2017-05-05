@@ -5,9 +5,9 @@ RSpec.describe TracksHelper, type: :helper do
     snake_track = {
       title: 'Call Ticketron', user: { username: 'Run the Jewels' },
       bpm: 100, key_signature: 'Fmin',
-      downloadUrl: '//runthejewels.com/music/',
-      purchaseUrl: '//itunes.apple.com/us/artist/run-the-jewels/id732932144',
-      streamable:  true
+      download_url: '//runthejewels.com/music/',
+      purchase_url: '//itunes.apple.com/us/artist/run-the-jewels/id732932144',
+      streamable:   true
     }
     camel_keys = [
       :title, :user, :bpm, :keySignature, :downloadUrl, :purchaseUrl,
