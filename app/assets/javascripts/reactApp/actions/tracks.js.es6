@@ -13,7 +13,7 @@ export default class TracksActions {
     return (dispatch) => {
       dispatch(action);
       // TODO: merge tracks#index and search
-      return fetch(RouteHelper.tracks.index({ search }))
+      return fetch(RouteHelper.tracks.searchJSON({ search }))
         .then(response => response.json())
         .then(json => dispatch(self.receiveTracks(json)));
     };

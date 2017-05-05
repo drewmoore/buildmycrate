@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
     event.preventDefault();
     // Serialize the form to a query string and generate url for search results view.
     // Dispatch the change of location.
-    dispatch(push(RouteHelper.tracks.search($(event.target).serialize())));
+    dispatch(push(RouteHelper.tracks.searchHTML($(event.target).serialize())));
   }
 });
 

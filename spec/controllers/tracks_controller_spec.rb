@@ -4,11 +4,11 @@ RSpec.describe TracksController, type: :controller do
   bpm_min       = 100
   bpm_max       = 130
 
-  describe 'GET #index' do
+  describe 'GET #search' do
     before do
       VCR.use_cassette :tracks_index_success do
         get(
-          :index,
+          :search,
           params: { bpm_min: bpm_min, bpm_max: bpm_max, format: :json }
         )
       end

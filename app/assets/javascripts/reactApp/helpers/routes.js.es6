@@ -5,8 +5,9 @@
 export default class RouteHelper {
   static get tracks() {
     return {
-      search(params) {
-        // TODO: modularize into class.
+      searchHTML(params) {
+        // Route for rendering search results view. Results component automatically
+        // launches searches when mounted.
         // TODO: allow permitted params.
         let query;
         if (typeof params === 'string') {
@@ -16,9 +17,9 @@ export default class RouteHelper {
         }
         return `/search?${query}`;
       },
-      // TODO: merge tracks#index and search
-      index({ search }) {
-        return `/tracks.json?${$.param(search)}`;
+      searchJSON({ search }) {
+        // Route for searching for tracks with json. Feeds component props.
+        return `/search.json?${$.param(search)}`;
       }
     };
   }
