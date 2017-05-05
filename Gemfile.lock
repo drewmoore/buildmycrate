@@ -46,6 +46,10 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    browserify-rails (3.4.0)
+      addressable (>= 2.4.0)
+      railties (>= 4.0.0, < 5.1)
+      sprockets (>= 3.5.2)
     builder (3.2.3)
     coderay (1.1.1)
     concurrent-ruby (1.0.4)
@@ -220,6 +224,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  browserify-rails
   haml-rails
   jbuilder
   jquery-rails

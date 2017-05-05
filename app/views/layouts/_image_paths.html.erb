@@ -1,0 +1,14 @@
+<% # A container for asset paths, since Rails helpers aren't available client-side. %>
+<%= content_tag(
+  :div, nil, id: 'image-paths',
+  data: {
+    spinner:         path_to_asset('spin.png'),
+    down_arrow:      path_to_asset('down-arrow.png'),
+    dollar_sign:     path_to_asset('dollar-sign.png'),
+    turntable_left:  path_to_asset('turntable-left.png'),
+    turntable_right: path_to_asset('turntable-right.png'),
+    track_default:   path_to_asset('track-image-default.png'),
+    play_button:     path_to_asset('play-button.png'),
+    pause_button:    path_to_asset('pause-button.png')
+  }
+) %>
