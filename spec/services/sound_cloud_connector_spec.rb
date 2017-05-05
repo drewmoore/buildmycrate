@@ -3,13 +3,10 @@ require 'spec_helper'
 RSpec.describe SoundCloudConnector, type: :service do
   bpm_min       = 80
   bpm_max       = 160
-  key_signature = 'c'
 
   let :soundcloud do
     VCR.use_cassette :soundcloud_success do
-      SoundCloudConnector.new(
-        bpm_min: bpm_min, bpm_max: bpm_max, key_signature: key_signature
-      )
+      SoundCloudConnector.new(bpm_min: bpm_min, bpm_max: bpm_max)
     end
   end
 
@@ -28,14 +25,6 @@ RSpec.describe SoundCloudConnector, type: :service do
       bpms.each do |bpm|
         expect(bpm).to be >= bpm_min
         expect(bpm).to be <= bpm_max
-      end
-    end
-
-    it 'key signatures are only in the queried key signature' do
-      key_signatures = soundcloud.tracks.map(&:key_signature).uniq
-      raise 'test setup failed' if key_signatures.empty?
-      key_signatures.each do |signature|
-        expect(signature).to eq(key_signature)
       end
     end
   end
