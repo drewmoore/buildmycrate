@@ -6,7 +6,7 @@ const search = (state = {}, action = {}) => {
       return action.search;
     case '@@router/LOCATION_CHANGE':
       // TODO: switch to permitted params
-      return action.payload.query
+      return action.payload.query;
     default:
       return state;
   }

@@ -25,7 +25,7 @@ const SearchForm = ({ search, isFetching, submitForm }) => (
                   </label>
                   <div className="col-xs-7">
                     <input
-                      className="form-control" type="number" defaultValue={search.bpm_min || ''}
+                      className="form-control" type="number" defaultValue={search.bpm_min || 120}
                       id="bpm_min" name="bpm_min" required="true"
                     />
                   </div>
@@ -54,21 +54,30 @@ const SearchForm = ({ search, isFetching, submitForm }) => (
                 Key Signature:
               </label>
               <div className="col-xs-7">
-                <select
-                  className="form-control" id="key_signature" name="key_signature"
-                  defaultValue={search.key_signature}
-                >
-                  <option value="" />
-                  {['a', 'b', 'c', 'd', 'e', 'f', 'g'].map(baseNote => (
-                    [['b', '♭'], ['', '♮'], ['#', '♯']].map(accidentalSet => (
-                      ['', 'maj', 'min'].map(key => (
-                        <option value={`${baseNote}${accidentalSet[0]}${key}`}>
-                          {(`${baseNote} ${accidentalSet[1]}`).toUpperCase()} {key}
-                        </option>
-                      ))
-                    ))
-                  ))}
-                </select>
+                <div className="row">
+                  <div className="col-xs-12">
+                    <select
+                      className="form-control" id="key_signature" name="key_signature"
+                      defaultValue={search.key_signature}
+                    >
+                      <option value="" />
+                      {['a', 'b', 'c', 'd', 'e', 'f', 'g'].map(baseNote => (
+                        [['b', '♭'], ['', '♮'], ['#', '♯']].map(accidentalSet => (
+                          ['', 'maj', 'min'].map(key => (
+                            <option value={`${baseNote}${accidentalSet[0]}${key}`}>
+                              {(`${baseNote} ${accidentalSet[1]}`).toUpperCase()} {key}
+                            </option>
+                          ))
+                        ))
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-xs-12 padded-top text-right">
+                    <small>* Results may vary. Most tracks lack a designated key signature.</small>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="row">
@@ -76,7 +85,7 @@ const SearchForm = ({ search, isFetching, submitForm }) => (
                 <Spinner isSpinning={isFetching} />
               </div>
               <div className="col-xs-7 text-right">
-                <button type="submit">Find Trax!</button>
+                <button type="submit">Find Tracks!</button>
               </div>
             </div>
           </form>
