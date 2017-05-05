@@ -34,7 +34,7 @@ class TurntablesTrackWaveform extends Component {
 
   componentWillUnmount() {
     // Clear the timer on unmounting component.
-    this.timer.stop();
+    if (this.timer) { this.timer.stop(); }
   }
 
   render() {
