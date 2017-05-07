@@ -1,0 +1,20 @@
+var path = require('path');
+
+module.exports = {
+  entry:  path.resolve(__dirname, 'app/assets/javascripts/reactApp/index.js.jsx'),
+  output: {
+    filename: 'index.js',
+    path:     path.resolve(__dirname, 'app/assets/javascripts')
+  },
+  module: {
+    loaders: [
+      {
+        test:    /\.es6$|\.jsx$/,
+        exclude: /(node_modules|bower_components)/,
+        use:     {
+          loader: 'babel-loader'
+        }
+      }
+    ]
+  }
+};
