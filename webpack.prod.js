@@ -2,7 +2,7 @@ var Merge        = require('webpack-merge');
 var webpack      = require('webpack');
 var CommonConfig = require('./webpack.config.js');
 
-module.exports = function () {
+module.exports = function() {
   return Merge(
     CommonConfig,
     {
