@@ -6,7 +6,7 @@ import Images                 from '../../../helpers/images.js.es6';
 const mapStateToProps = (state, ownProps) => {
   const props = {
     imageDisplay: ownProps.artworkUrl || Images.trackDefault(),
-    keyDisplay:   !ownProps.key ? '' : `Key: ${ownProps.key}`,
+    keyDisplay:   !ownProps.keySignature ? '' : `Key: ${ownProps.keySignature}`,
     bpmDisplay:   ownProps.bpm ? `${ownProps.bpm} bpm` : '',
     artist:       ownProps.user ? ownProps.user.username : ''
   };
