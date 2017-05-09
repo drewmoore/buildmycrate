@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  entry:  path.resolve(__dirname, 'app/assets/javascripts/reactApp/index.js.jsx'),
+  entry:  path.resolve(__dirname, 'app/react/index.js.jsx'),
   output: {
     filename: 'index.js',
     path:     path.resolve(__dirname, 'app/assets/javascripts')
