@@ -51,7 +51,7 @@ class TurntablesTrackWaveform extends Component {
                 className="turntable-waveform-progress"
               />
               <img
-                className="turntable-track-waveform-image"
+                className="turntable-track-waveform-image clickable"
                 alt="Track Waveform"
                 src={this.props.waveformUrl}
                 onClick={e => this.props.waveformClick(e)}

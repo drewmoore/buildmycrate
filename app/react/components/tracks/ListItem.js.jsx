@@ -17,7 +17,7 @@ const TracksListItem = ({
         <img
           src={Images.downArrow()}
           onClick={download}
-          className="track-button"
+          className="track-button clickable"
           alt="Download Track Button"
         />
       }
@@ -25,7 +25,7 @@ const TracksListItem = ({
         <a href={purchaseUrl} target="_blank" className="purchase-link" rel="noopener noreferrer">
           <img
             src={Images.dollarSign()}
-            className="track-button"
+            className="track-button clickable"
             alt="Purchase Track Button"
           />
         </a>
