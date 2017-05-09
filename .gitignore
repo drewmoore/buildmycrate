@@ -21,3 +21,5 @@
 /spec/vcr_cassettes/
 
 /node_modules
+
+/app/assets/javascripts/build.js

@@ -3,7 +3,7 @@ var path = require('path');
 module.exports = {
   entry:  path.resolve(__dirname, 'app/react/index.js.jsx'),
   output: {
-    filename: 'index.js',
+    filename: 'build.js',
     path:     path.resolve(__dirname, 'app/assets/javascripts')
   },
   module: {
