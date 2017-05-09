@@ -44,5 +44,3 @@ end
 gem 'unicorn'
 
 gem 'bootstrap-sass'
-
-gem 'browserify-rails'

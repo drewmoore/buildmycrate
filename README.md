@@ -6,4 +6,4 @@ search parameters such as tempo and key signature. Two tracks at a time can be
 loaded and mixed together.
 
 The root of the React app can be found at:
-`/app/assets/javascripts/reactApp/`
+`/app/react/`
