@@ -1,0 +1,593 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-xs-12 col-lg-offset-2 col-lg-8"
+  >
+    <div
+      className="row section console"
+    >
+      <div
+        className="col-xs-12 col-lg-offset-2 col-lg-8"
+      >
+        <form
+          className="form-horizontal"
+          id="search"
+          onSubmit={[Function]}
+        >
+          <div
+            className="form-group"
+          >
+            <fieldset
+              className="col-xs-12"
+            >
+              <legend>
+                BPM Range
+              </legend>
+              <div
+                className="form-group"
+              >
+                <label
+                  className="col-xs-offset-1 col-xs-3 control-label text-right"
+                  htmlFor="bpm_min"
+                >
+                  <small
+                    className="asterisk"
+                  >
+                    *
+                  </small>
+                  <span>
+                    Min:
+                  </span>
+                </label>
+                <div
+                  className="col-xs-7"
+                >
+                  <input
+                    className="form-control"
+                    defaultValue={120}
+                    id="bpm_min"
+                    name="bpm_min"
+                    required="true"
+                    type="number"
+                  />
+                </div>
+              </div>
+              <div
+                className="form-group"
+              >
+                <label
+                  className="col-xs-offset-1 col-xs-3 control-label text-right"
+                  htmlFor="bpm_max"
+                >
+                  Max:
+                </label>
+                <div
+                  className="col-xs-7"
+                >
+                  <input
+                    className="form-control"
+                    defaultValue=""
+                    id="bpm_max"
+                    name="bpm_max"
+                    type="number"
+                  />
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-xs-offset-1 col-xs-3 control-label text-right"
+              htmlFor="key_signature"
+            >
+              Key Signature:
+            </label>
+            <div
+              className="col-xs-7"
+            >
+              <div
+                className="row"
+              >
+                <div
+                  className="col-xs-12"
+                >
+                  <select
+                    className="form-control"
+                    defaultValue=""
+                    id="key_signature"
+                    name="key_signature"
+                  >
+                    <option
+                      value=""
+                    />
+                    <option
+                      value="ab"
+                    >
+                      A ♭
+                       
+                      
+                    </option>
+                    <option
+                      value="abmaj"
+                    >
+                      A ♭
+                       
+                      maj
+                    </option>
+                    <option
+                      value="abmin"
+                    >
+                      A ♭
+                       
+                      min
+                    </option>
+                    <option
+                      value="a"
+                    >
+                      A ♮
+                       
+                      
+                    </option>
+                    <option
+                      value="amaj"
+                    >
+                      A ♮
+                       
+                      maj
+                    </option>
+                    <option
+                      value="amin"
+                    >
+                      A ♮
+                       
+                      min
+                    </option>
+                    <option
+                      value="a#"
+                    >
+                      A ♯
+                       
+                      
+                    </option>
+                    <option
+                      value="a#maj"
+                    >
+                      A ♯
+                       
+                      maj
+                    </option>
+                    <option
+                      value="a#min"
+                    >
+                      A ♯
+                       
+                      min
+                    </option>
+                    <option
+                      value="bb"
+                    >
+                      B ♭
+                       
+                      
+                    </option>
+                    <option
+                      value="bbmaj"
+                    >
+                      B ♭
+                       
+                      maj
+                    </option>
+                    <option
+                      value="bbmin"
+                    >
+                      B ♭
+                       
+                      min
+                    </option>
+                    <option
+                      value="b"
+                    >
+                      B ♮
+                       
+                      
+                    </option>
+                    <option
+                      value="bmaj"
+                    >
+                      B ♮
+                       
+                      maj
+                    </option>
+                    <option
+                      value="bmin"
+                    >
+                      B ♮
+                       
+                      min
+                    </option>
+                    <option
+                      value="b#"
+                    >
+                      B ♯
+                       
+                      
+                    </option>
+                    <option
+                      value="b#maj"
+                    >
+                      B ♯
+                       
+                      maj
+                    </option>
+                    <option
+                      value="b#min"
+                    >
+                      B ♯
+                       
+                      min
+                    </option>
+                    <option
+                      value="cb"
+                    >
+                      C ♭
+                       
+                      
+                    </option>
+                    <option
+                      value="cbmaj"
+                    >
+                      C ♭
+                       
+                      maj
+                    </option>
+                    <option
+                      value="cbmin"
+                    >
+                      C ♭
+                       
+                      min
+                    </option>
+                    <option
+                      value="c"
+                    >
+                      C ♮
+                       
+                      
+                    </option>
+                    <option
+                      value="cmaj"
+                    >
+                      C ♮
+                       
+                      maj
+                    </option>
+                    <option
+                      value="cmin"
+                    >
+                      C ♮
+                       
+                      min
+                    </option>
+                    <option
+                      value="c#"
+                    >
+                      C ♯
+                       
+                      
+                    </option>
+                    <option
+                      value="c#maj"
+                    >
+                      C ♯
+                       
+                      maj
+                    </option>
+                    <option
+                      value="c#min"
+                    >
+                      C ♯
+                       
+                      min
+                    </option>
+                    <option
+                      value="db"
+                    >
+                      D ♭
+                       
+                      
+                    </option>
+                    <option
+                      value="dbmaj"
+                    >
+                      D ♭
+                       
+                      maj
+                    </option>
+                    <option
+                      value="dbmin"
+                    >
+                      D ♭
+                       
+                      min
+                    </option>
+                    <option
+                      value="d"
+                    >
+                      D ♮
+                       
+                      
+                    </option>
+                    <option
+                      value="dmaj"
+                    >
+                      D ♮
+                       
+                      maj
+                    </option>
+                    <option
+                      value="dmin"
+                    >
+                      D ♮
+                       
+                      min
+                    </option>
+                    <option
+                      value="d#"
+                    >
+                      D ♯
+                       
+                      
+                    </option>
+                    <option
+                      value="d#maj"
+                    >
+                      D ♯
+                       
+                      maj
+                    </option>
+                    <option
+                      value="d#min"
+                    >
+                      D ♯
+                       
+                      min
+                    </option>
+                    <option
+                      value="eb"
+                    >
+                      E ♭
+                       
+                      
+                    </option>
+                    <option
+                      value="ebmaj"
+                    >
+                      E ♭
+                       
+                      maj
+                    </option>
+                    <option
+                      value="ebmin"
+                    >
+                      E ♭
+                       
+                      min
+                    </option>
+                    <option
+                      value="e"
+                    >
+                      E ♮
+                       
+                      
+                    </option>
+                    <option
+                      value="emaj"
+                    >
+                      E ♮
+                       
+                      maj
+                    </option>
+                    <option
+                      value="emin"
+                    >
+                      E ♮
+                       
+                      min
+                    </option>
+                    <option
+                      value="e#"
+                    >
+                      E ♯
+                       
+                      
+                    </option>
+                    <option
+                      value="e#maj"
+                    >
+                      E ♯
+                       
+                      maj
+                    </option>
+                    <option
+                      value="e#min"
+                    >
+                      E ♯
+                       
+                      min
+                    </option>
+                    <option
+                      value="fb"
+                    >
+                      F ♭
+                       
+                      
+                    </option>
+                    <option
+                      value="fbmaj"
+                    >
+                      F ♭
+                       
+                      maj
+                    </option>
+                    <option
+                      value="fbmin"
+                    >
+                      F ♭
+                       
+                      min
+                    </option>
+                    <option
+                      value="f"
+                    >
+                      F ♮
+                       
+                      
+                    </option>
+                    <option
+                      value="fmaj"
+                    >
+                      F ♮
+                       
+                      maj
+                    </option>
+                    <option
+                      value="fmin"
+                    >
+                      F ♮
+                       
+                      min
+                    </option>
+                    <option
+                      value="f#"
+                    >
+                      F ♯
+                       
+                      
+                    </option>
+                    <option
+                      value="f#maj"
+                    >
+                      F ♯
+                       
+                      maj
+                    </option>
+                    <option
+                      value="f#min"
+                    >
+                      F ♯
+                       
+                      min
+                    </option>
+                    <option
+                      value="gb"
+                    >
+                      G ♭
+                       
+                      
+                    </option>
+                    <option
+                      value="gbmaj"
+                    >
+                      G ♭
+                       
+                      maj
+                    </option>
+                    <option
+                      value="gbmin"
+                    >
+                      G ♭
+                       
+                      min
+                    </option>
+                    <option
+                      value="g"
+                    >
+                      G ♮
+                       
+                      
+                    </option>
+                    <option
+                      value="gmaj"
+                    >
+                      G ♮
+                       
+                      maj
+                    </option>
+                    <option
+                      value="gmin"
+                    >
+                      G ♮
+                       
+                      min
+                    </option>
+                    <option
+                      value="g#"
+                    >
+                      G ♯
+                       
+                      
+                    </option>
+                    <option
+                      value="g#maj"
+                    >
+                      G ♯
+                       
+                      maj
+                    </option>
+                    <option
+                      value="g#min"
+                    >
+                      G ♯
+                       
+                      min
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div
+                className="row"
+              >
+                <div
+                  className="col-xs-12 padded-top text-right"
+                >
+                  <small>
+                    * Results may vary. Most tracks lack a designated key signature.
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="row"
+          >
+            <div
+              className="col-xs-offset-2 col-xs-2 control-label"
+            >
+              <img
+                alt="Loading Indicator"
+                className="spinner  "
+                src={undefined}
+              />
+            </div>
+            <div
+              className="col-xs-7 text-right"
+            >
+              <button
+                type="submit"
+              >
+                Find Tracks!
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
