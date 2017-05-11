@@ -4,8 +4,9 @@
   "description": "A virtual dj console that searches Soundcloud's API and mixes tracks in the browser.",
   "main": "index.js",
   "scripts": {
-    "build":            "./node_modules/.bin/webpack --watch --config webpack.config.js",
-    "heroku-postbuild": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack.prod.js --progress"
+    "build": "./node_modules/.bin/webpack --watch --config webpack.config.js",
+    "heroku-postbuild": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack.prod.js --progress",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -40,10 +41,18 @@
     "node": ">= 0.10"
   },
   "devDependencies": {
+    "babel-jest": "^20.0.0",
     "eslint": "^3.16.1",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.0"
+    "eslint-plugin-react": "^6.10.0",
+    "jest": "^20.0.0",
+    "react-test-renderer": "^15.5.4"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$|.jsx$|.es6$": "babel-jest"
+    }
   }
 }
