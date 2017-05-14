@@ -3,7 +3,6 @@ import TurntablesTrackDisplayContainer  from '../../containers/turntables/track/
 import TurntablesTrackTimeContainer     from '../../containers/turntables/track/Time.js.es6';
 import TurntablesTrackWaveformContainer from '../../containers/turntables/track/Waveform.js.es6';
 import TurntablesTrackControlsContainer from '../../containers/turntables/track/Controls.js.es6';
-import TurntableSchema                  from '../../schemas/turntable.js.es6';
 
 const newAudioElement = (url) => {
   const audio = document.createElement('audio');
@@ -55,8 +54,5 @@ class TurntablesListItem extends Component {
     );
   }
 }
-
-TurntablesListItem.propTypes    = TurntableSchema.PropTypes.isRequired;
-TurntablesListItem.defaultProps = TurntableSchema.Defaults;
 
 export default TurntablesListItem;

@@ -1,7 +1,6 @@
-import React          from 'react';
-import TrackSchema    from '../../../schemas/track.js.es6';
-import Images         from '../../../helpers/images.js.es6';
-import Spinner        from '../../spinner.js.jsx';
+import React   from 'react';
+import Images  from '../../../helpers/images.js.es6';
+import Spinner from '../../spinner.js.jsx';
 
 const TurntablesTrackControls = ({
   purchaseUrl, isFetching, purchaseable, downloadable, playable, play, pause, download
@@ -52,8 +51,5 @@ const TurntablesTrackControls = ({
     </div>
   </div>
 );
-
-TurntablesTrackControls.propTypes    = TrackSchema.PropTypes.isRequired;
-TurntablesTrackControls.defaultProps = TrackSchema.Defaults;
 
 export default TurntablesTrackControls;

@@ -1,6 +1,5 @@
-import React, { PropTypes }        from 'react';
+import React                       from 'react';
 import TurntablesListItemContainer from '../../containers/turntables/ListItem.js.es6';
-import TurntableSchema             from '../../schemas/turntable.js.es6';
 
 const TurntablesList = ({ turntables }) => (
   <div className="row">
@@ -13,9 +12,5 @@ const TurntablesList = ({ turntables }) => (
     </div>
   </div>
 );
-
-TurntablesList.propTypes = {
-  turntables: PropTypes.arrayOf(TurntableSchema.PropTypes.isRequired).isRequired
-};
 
 export default TurntablesList;

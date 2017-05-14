@@ -1,6 +1,5 @@
-import React, { PropTypes } from 'react';
-import Spinner              from '../spinner.js.jsx';
-import SearchSchema         from '../../schemas/search.js.es6';
+import React   from 'react';
+import Spinner from '../spinner.js.jsx';
 
 const SearchForm = ({ bpmMin, bpmMax, keySignature, isFetching, submitForm }) => (
   <div className="row">
@@ -94,17 +93,5 @@ const SearchForm = ({ bpmMin, bpmMax, keySignature, isFetching, submitForm }) =>
     </div>
   </div>
 );
-
-SearchForm.propTypes = Object.assign(
-  SearchSchema.PropTypes.isRequired,
-  {
-    isFetching: PropTypes.bool.isRequired,
-    submitForm: PropTypes.func.isRequired
-  }
-);
-
-SearchForm.defaultProps = {
-  search: SearchSchema.Defaults
-};
 
 export default SearchForm;

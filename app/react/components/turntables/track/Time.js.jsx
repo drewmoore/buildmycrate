@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { timeDisplay }      from '../../../helpers/displays.js.es6';
-import TrackSchema          from '../../../schemas/track.js.es6';
 import TrackElapsedTimer    from '../../../timers/track/elapsed.js.es6';
 
 class TurntablesTrackTime extends Component {
@@ -60,8 +59,5 @@ class TurntablesTrackTime extends Component {
     );
   }
 }
-
-TurntablesTrackTime.propTypes    = TrackSchema.PropTypes.isRequired;
-TurntablesTrackTime.defaultProps = TrackSchema.Defaults;
 
 export default TurntablesTrackTime;

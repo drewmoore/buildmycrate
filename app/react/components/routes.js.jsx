@@ -4,7 +4,7 @@
  * Ignore linter requiring specific props definition for `history` object.
  */
 /* eslint-disable react/forbid-prop-types */
-import React, { PropTypes }          from 'react';
+import React                         from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
 import Home                          from './home.js.jsx';
 import SearchResults                 from './search/Results.js.jsx';
@@ -17,9 +17,5 @@ const Routes = ({ history }) => (
     </Route>
   </Router>
 );
-
-Routes.propTypes = {
-  history: PropTypes.object.isRequired
-};
 
 export default Routes;

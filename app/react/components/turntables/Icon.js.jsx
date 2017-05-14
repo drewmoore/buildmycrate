@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react';
-import Images               from '../../helpers/images.js.es6';
+import React  from 'react';
+import Images from '../../helpers/images.js.es6';
 
 const TurntablesIcon = ({ side, loadTurntable }) => (
   <img
@@ -9,10 +9,5 @@ const TurntablesIcon = ({ side, loadTurntable }) => (
     onClick={loadTurntable}
   />
 );
-
-TurntablesIcon.propTypes = {
-  side:          PropTypes.string.isRequired,
-  loadTurntable: PropTypes.func.isRequired
-};
 
 export default TurntablesIcon;
