@@ -6,8 +6,8 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack --watch --config webpack.config.js",
     "heroku-postbuild": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack.prod.js --progress",
-    "test": "jest",
-    "test-reset": "jest -u"
+    "test": "./node_modules/.bin/jest",
+    "test-reset": "./node_modules/.bin/jest -u"
   },
   "repository": {
     "type": "git",
