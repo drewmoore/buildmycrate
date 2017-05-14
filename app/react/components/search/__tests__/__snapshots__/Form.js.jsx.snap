@@ -48,7 +48,7 @@ exports[`should match snapshot 1`] = `
                 >
                   <input
                     className="form-control"
-                    defaultValue={120}
+                    defaultValue={130}
                     id="bpm_min"
                     name="bpm_min"
                     required="true"
@@ -70,7 +70,7 @@ exports[`should match snapshot 1`] = `
                 >
                   <input
                     className="form-control"
-                    defaultValue=""
+                    defaultValue={140}
                     id="bpm_max"
                     name="bpm_max"
                     type="number"
@@ -99,7 +99,7 @@ exports[`should match snapshot 1`] = `
                 >
                   <select
                     className="form-control"
-                    defaultValue=""
+                    defaultValue="cmaj"
                     id="key_signature"
                     name="key_signature"
                   >

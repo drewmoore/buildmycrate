@@ -4,8 +4,10 @@ import SearchForm    from '../components/search/Form.js.jsx';
 import RouteHelper   from '../helpers/routes.js.es6';
 
 const mapStateToProps = state => ({
-  search:     state.search,
-  isFetching: state.tracks.isFetching
+  bpmMin:       state.search.bpm_min || 120,
+  bpmMax:       state.search.bpm_max,
+  keySignature: state.search.key_signature,
+  isFetching:   state.tracks.isFetching
 });
 
 const mapDispatchToProps = dispatch => ({

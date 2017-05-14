@@ -6,7 +6,8 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack --watch --config webpack.config.js",
     "heroku-postbuild": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack.prod.js --progress",
-    "test": "jest"
+    "test": "jest",
+    "reset-snapshots": "jest -u"
   },
   "repository": {
     "type": "git",
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "babel-jest": "^20.0.0",
+    "enzyme": "^2.8.2",
     "eslint": "^3.16.1",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
@@ -49,6 +51,8 @@
     "eslint-plugin-react": "^6.10.0",
     "jest": "^20.0.0",
     "jquery": "^3.2.1",
+    "react-addons-test-utils": "^15.5.1",
+    "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4"
   },
   "jest": {
