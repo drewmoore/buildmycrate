@@ -9,3 +9,4 @@ before_script:
     - source ~/.bashrc
     - nvm install 7.3.0
     - nvm use 7.3.0
+    - npm install
