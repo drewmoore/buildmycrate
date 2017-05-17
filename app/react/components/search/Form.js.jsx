@@ -1,8 +1,7 @@
-import React, { PropTypes } from 'react';
-import Spinner              from '../spinner.js.jsx';
-import SearchSchema         from '../../schemas/search.js.es6';
+import React   from 'react';
+import Spinner from '../spinner.js.jsx';
 
-const SearchForm = ({ search, isFetching, submitForm }) => (
+const SearchForm = ({ bpmMin, bpmMax, keySignature, isFetching, submitForm }) => (
   <div className="row">
     <div className="col-xs-12 col-lg-offset-2 col-lg-8">
       <div className="row section console">
@@ -25,7 +24,7 @@ const SearchForm = ({ search, isFetching, submitForm }) => (
                   </label>
                   <div className="col-xs-7">
                     <input
-                      className="form-control" type="number" defaultValue={search.bpm_min || 120}
+                      className="form-control" type="number" defaultValue={bpmMin}
                       id="bpm_min" name="bpm_min" required="true"
                     />
                   </div>
@@ -40,7 +39,7 @@ const SearchForm = ({ search, isFetching, submitForm }) => (
                   <div className="col-xs-7">
                     <input
                       className="form-control" type="number"
-                      id="bpm_max" name="bpm_max" defaultValue={search.bpm_max || ''}
+                      id="bpm_max" name="bpm_max" defaultValue={bpmMax}
                     />
                   </div>
                 </div>
@@ -58,7 +57,7 @@ const SearchForm = ({ search, isFetching, submitForm }) => (
                   <div className="col-xs-12">
                     <select
                       className="form-control" id="key_signature" name="key_signature"
-                      defaultValue={search.key_signature}
+                      defaultValue={keySignature}
                     >
                       <option value="" />
                       {['a', 'b', 'c', 'd', 'e', 'f', 'g'].map(baseNote => (
@@ -94,15 +93,5 @@ const SearchForm = ({ search, isFetching, submitForm }) => (
     </div>
   </div>
 );
-
-SearchForm.propTypes = {
-  search:     SearchSchema.PropTypes.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  submitForm: PropTypes.func.isRequired
-};
-
-SearchForm.defaultProps = {
-  search: SearchSchema.Defaults
-};
 
 export default SearchForm;

@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react';
-import Images               from '../helpers/images.js.es6';
+import React  from 'react';
+import Images from '../helpers/images.js.es6';
 
 const Spinner = ({ isSpinning, optionalClasses = '' }) => (
   <img
@@ -8,14 +8,5 @@ const Spinner = ({ isSpinning, optionalClasses = '' }) => (
     alt="Loading Indicator"
   />
 );
-
-Spinner.propTypes = {
-  isSpinning:      PropTypes.bool.isRequired,
-  optionalClasses: PropTypes.string
-};
-
-Spinner.defaultProps = {
-  optionalClasses: ''
-};
 
 export default Spinner;

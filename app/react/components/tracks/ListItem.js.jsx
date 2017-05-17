@@ -1,5 +1,4 @@
 import React                   from 'react';
-import TrackSchema             from '../../schemas/track.js.es6';
 import TurntablesIconContainer from '../../containers/turntables/Icon.js.es6';
 import Images                  from '../../helpers/images.js.es6';
 
@@ -45,8 +44,5 @@ const TracksListItem = ({
     </div>
   </div>
 );
-
-TracksListItem.propTypes    = TrackSchema.PropTypes.isRequired;
-TracksListItem.defaultProps = TrackSchema.Defaults;
 
 export default TracksListItem;

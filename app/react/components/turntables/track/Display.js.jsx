@@ -1,5 +1,4 @@
-import React       from 'react';
-import TrackSchema from '../../../schemas/track.js.es6';
+import React from 'react';
 
 const TurntablesTrackDisplay = ({ imageDisplay, title, bpmDisplay, artist, keyDisplay }) => (
   <div className="row">
@@ -26,8 +25,5 @@ const TurntablesTrackDisplay = ({ imageDisplay, title, bpmDisplay, artist, keyDi
     </div>
   </div>
 );
-
-TurntablesTrackDisplay.propTypes    = TrackSchema.PropTypes.isRequired;
-TurntablesTrackDisplay.defaultProps = TrackSchema.Defaults;
 
 export default TurntablesTrackDisplay;

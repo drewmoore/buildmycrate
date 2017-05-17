@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import TrackSchema          from '../../../schemas/track.js.es6';
 import TrackProgressTimer   from '../../../timers/track/progress.js.es6';
 
 // The component that displays a "progress bar" as a turntable's audio plays.
@@ -63,8 +62,5 @@ class TurntablesTrackWaveform extends Component {
     );
   }
 }
-
-TurntablesTrackWaveform.propTypes    = TrackSchema.PropTypes.isRequired;
-TurntablesTrackWaveform.defaultProps = TrackSchema.Defaults;
 
 export default TurntablesTrackWaveform;

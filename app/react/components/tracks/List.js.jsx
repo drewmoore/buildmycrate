@@ -1,10 +1,7 @@
-import React, { PropTypes, Component } from 'react';
-import TracksListItemContainer         from '../../containers/tracks/ListItem.js.es6';
-import TracksActions                   from '../../actions/tracks.js.es6';
-import SearchSchema                    from '../../schemas/search.js.es6';
-import TrackSchema                     from '../../schemas/track.js.es6';
-import Spinner                         from './../spinner.js.jsx';
-
+import React, { Component }    from 'react';
+import TracksListItemContainer from '../../containers/tracks/ListItem.js.es6';
+import TracksActions           from '../../actions/tracks.js.es6';
+import Spinner                 from './../spinner.js.jsx';
 
 class TracksList extends Component {
   componentDidMount() {
@@ -53,12 +50,5 @@ class TracksList extends Component {
     );
   }
 }
-
-TracksList.propTypes = {
-  tracks:     PropTypes.arrayOf(TrackSchema.PropTypes).isRequired,
-  search:     SearchSchema.PropTypes.isRequired,
-  dispatch:   PropTypes.func.isRequired,
-  isFetching: PropTypes.bool.isRequired
-};
 
 export default TracksList;
