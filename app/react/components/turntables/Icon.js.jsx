@@ -6,6 +6,7 @@ const TurntablesIcon = ({ side, loadTurntable }) => (
     src={side === 'left' ? Images.turntableLeft() : Images.turntableRight()}
     className="track-button clickable"
     alt={`Button to load ${side} turntable`}
+    data-hook="turntable-icon"
     onClick={loadTurntable}
   />
 );

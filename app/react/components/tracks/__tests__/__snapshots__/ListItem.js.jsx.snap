@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TracksListItem DOM Snapshot should match snapshot 1`] = `
+<div
+  className="row track"
+>
+  <div
+    className="col-xs-3 col-lg-4"
+  >
+    Forty-Six and Two
+  </div>
+  <div
+    className="col-xs-3 col-lg-4"
+  >
+    Tool
+  </div>
+  <div
+    className="col-xs-3 col-lg-1"
+  >
+    80
+  </div>
+  <div
+    className="col-xs-3 col-lg-1"
+  >
+    dmin
+  </div>
+  <div
+    className="col-xs-3 col-lg-2 text-right"
+  >
+    <img
+      alt="Download Track Button"
+      className="track-button clickable"
+      onClick={[Function]}
+      src={undefined}
+    />
+    <a
+      className="purchase-link"
+      href="https://www.amazon.com/gp/search?ie=UTF8&keywords=Tool"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <img
+        alt="Purchase Track Button"
+        className="track-button clickable"
+        src={undefined}
+      />
+    </a>
+    <span>
+      <img
+        alt="Button to load left turntable"
+        className="track-button clickable"
+        data-hook="turntable-icon"
+        onClick={[Function]}
+        src="/turntable-left.jpg"
+      />
+      <img
+        alt="Button to load right turntable"
+        className="track-button clickable"
+        data-hook="turntable-icon"
+        onClick={[Function]}
+        src="/turntable-right.jpg"
+      />
+    </span>
+  </div>
+</div>
+`;

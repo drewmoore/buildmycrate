@@ -57,7 +57,7 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.jsx?$|^.+\\.es6?$|^.+\\.js?$":  "babel-jest"
+      "^.+\\.jsx?$|^.+\\.es6?$|^.+\\.js?$": "babel-jest"
     }
   }
 }

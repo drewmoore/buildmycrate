@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TurntablesIcon DOM Snapshot should match snapshot 1`] = `
+<img
+  alt="Button to load left turntable"
+  className="track-button clickable"
+  data-hook="turntable-icon"
+  onClick={[Function]}
+  src="/turntable-left.jpg"
+/>
+`;
