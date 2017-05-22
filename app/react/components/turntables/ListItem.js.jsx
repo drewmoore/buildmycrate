@@ -34,7 +34,10 @@ class TurntablesListItem extends Component {
   render() {
     return (
       <div className="col-xs-12 col-md-6">
-        <div className={`row turntable-container ${this.props.optionalClasses}`}>
+        <div
+          className={`row turntable-container ${this.props.optionalClasses}`}
+          data-hook="turntable-container"
+        >
           <div className="col-xs-12 section console">
             <TurntablesTrackDisplayContainer  {...this.props.track} />
             <TurntablesTrackTimeContainer
