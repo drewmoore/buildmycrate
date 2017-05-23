@@ -118,12 +118,14 @@ exports[`TurntablesListItem DOM Snapshot should match snapshot 1`] = `
             <img
               alt="Play Button"
               className="track-button clickable"
+              data-hook="track-button-play"
               onClick={[Function]}
               src={undefined}
             />
             <img
               alt="Pause Button"
               className="track-button clickable"
+              data-hook="track-button-pause"
               onClick={[Function]}
               src={undefined}
             />

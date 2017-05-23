@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TurntablesTrackControls DOM Snapshot should match snapshot 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-xs-10 controls"
+  >
+    <span>
+      <img
+        alt="Play Button"
+        className="track-button clickable"
+        data-hook="track-button-play"
+        onClick={[Function]}
+        src={undefined}
+      />
+      <img
+        alt="Pause Button"
+        className="track-button clickable"
+        data-hook="track-button-pause"
+        onClick={[Function]}
+        src={undefined}
+      />
+    </span>
+    <img
+      alt="Download Track Button"
+      className="track-button clickable"
+      data-hook="track-button-download"
+      onClick={[Function]}
+      src={undefined}
+    />
+    <a
+      className="purchase-link"
+      href="https://www.amazon.com/gp/search?ie=UTF8&keywords=Tool"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <img
+        alt="Purchase Track Button"
+        className="track-button clickable"
+        data-hook="track-button-purchase"
+        src={undefined}
+      />
+    </a>
+  </div>
+  <div
+    className="col-xs-2 controls text-center"
+  >
+    <img
+      alt="Loading Indicator"
+      className="spinner  "
+      src={undefined}
+    />
+  </div>
+</div>
+`;

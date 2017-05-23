@@ -4,24 +4,15 @@ import { Provider }   from 'react-redux';
 import renderer       from 'react-test-renderer';
 import { mount }      from 'enzyme';
 import TracksListItem from '../ListItem.js.jsx';
+import Fixtures       from '../../../__tests__/helpers/fixtures.js.es6';
 import store          from '../../../__tests__/helpers/store.js.es6';
 import '../../../__tests__/helpers/initialize.js.es6';
 
 describe('TracksListItem', () => {
   const props = {
-    id:           0,
-    title:        'Forty-Six and Two',
-    user:         { username: 'Tool' },
-    bpm:          80,
-    keySignature: 'dmin',
-    purchaseUrl:  'https://www.amazon.com/gp/search?ie=UTF8&keywords=Tool',
-    streamUrl:    'https://www.last.fm/music/Tool/_/Forty+Six+&+2',
-    downloadable: true,
-    purchaseable: true,
-    streamable:   true,
-    turntables:   [{ id: 0 }, { id: 1 }],
-    download:     () => {}
+    download: () => {}
   };
+  Object.assign(props, Fixtures.tracks.fortySixAndTwo);
   const template = (<Provider store={store}><TracksListItem {...props} /></Provider>);
 
   describe('DOM Snapshot', () => {

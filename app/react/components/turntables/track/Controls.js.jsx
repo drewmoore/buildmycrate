@@ -13,12 +13,14 @@ const TurntablesTrackControls = ({
             src={Images.playButton()}
             onClick={play}
             className="track-button clickable"
+            data-hook="track-button-play"
             alt="Play Button"
           />
           <img
             src={Images.pauseButton()}
             onClick={pause}
             className="track-button clickable"
+            data-hook="track-button-pause"
             alt="Pause Button"
           />
         </span>
@@ -28,6 +30,7 @@ const TurntablesTrackControls = ({
           src={Images.downArrow()}
           onClick={download}
           className="track-button clickable"
+          data-hook="track-button-download"
           alt="Download Track Button"
         />
       }
@@ -41,6 +44,7 @@ const TurntablesTrackControls = ({
           <img
             src={Images.dollarSign()}
             className="track-button clickable"
+            data-hook="track-button-purchase"
             alt="Purchase Track Button"
           />
         </a>
