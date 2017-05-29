@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TurntablesTrackWaveform DOM Snapshot should match snapshot 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-xs-12 waveform-container"
+    id="waveform-container-for-1"
+  >
+    <div
+      className="relative"
+    >
+      <div
+        className="turntable-waveform-progress"
+        id="waveform-progress-for-1"
+      />
+      <img
+        alt="Track Waveform"
+        className="turntable-track-waveform-image clickable"
+        onClick={[Function]}
+        src={undefined}
+      />
+    </div>
+  </div>
+</div>
+`;
