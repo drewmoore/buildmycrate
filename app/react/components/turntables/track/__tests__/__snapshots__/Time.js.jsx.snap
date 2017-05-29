@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TurntablesTrackTime DOM Snapshot should match snapshot 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-xs-12 text-right"
+  >
+    <div>
+      <small
+        data-hook="time-elapsed"
+      >
+        00 : 00
+         
+      </small>
+      <small>
+         | 
+      </small>
+      <small>
+         
+      </small>
+    </div>
+  </div>
+</div>
+`;

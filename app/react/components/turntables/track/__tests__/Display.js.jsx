@@ -5,7 +5,7 @@ import TurntablesTrackDisplay  from '../Display.js.jsx';
 import Fixtures                from '../../../../__tests__/helpers/fixtures.js.es6';
 import '../../../../__tests__/helpers/initialize.js.es6';
 
-describe('TurntablesTrackControls', () => {
+describe('TurntablesTrackDisplay', () => {
   const track = Fixtures.tracks.fortySixAndTwo;
   const props = {
     imageDisplay: track.artworkUrl,
